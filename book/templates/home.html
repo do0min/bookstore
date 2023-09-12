@@ -1,0 +1,320 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static%}
+
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<style>
+body {
+  font-family: Arial;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+</style>
+
+<div class="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <div class="caption">
+          <h2>hi hello</h2>
+          <div class="line-dec"></div>
+          <p>Pixie HTML Template can be converted into your desired CMS theme. Total <strong>5 pages</strong> included. You can use this Bootstrap v4.1.3 layout for any CMS. 
+              <br><br>Please tell your friends about <a rel="nofollow" href="https://www.facebook.com/tooplate/">Tooplate</a> free template site. Thank you. Photo credit goes to <a rel="nofollow" href="https://www.pexels.com">Pexels website</a>.</p>
+          <div class="main-button">
+            <a href="#">Order Now!</a>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Banner Ends Here -->
+
+<!-- Featured Starts Here --> 
+<div class="featured-items">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <div class="section-heading">
+          <div class="line-dec"></div>
+          <h1>Featured Items</h1>
+        </div> -->
+      </div>
+      <br><br>
+      <!-- <div class="col-md-12">
+        <div class="owl-carousel owl-theme">
+          <a href="{% static 'web_app/single-product.html' %}">
+                        <div class="featured-item">
+                            <img src="{% static 'web_app/assets/images/item-01.jpg' %}" alt="Item 1">
+                            <h4>Proin vel ligula</h4>
+                            <h6>$15.00</h6>
+                        </div>
+                    </a>
+                    <a href="single-product.html">
+              <div class="featured-item">
+                <img src="{% static 'web_app/assets/images/item-02.jpg' %}" alt="Item 2">
+                <h4>Erat odio rhoncus</h4>
+                <h6>$25.00</h6>
+              </div>
+            </a>
+            <a href="single-product.html">
+              <div class="featured-item">
+                <img src="{% static 'web_app/assets/images/item-03.jpg' %}" alt="Item 3">
+                <h4>Integer vel turpis</h4>
+                <h6>$35.00</h6>
+              </div>
+            </a>
+            <a href="single-product.html">
+              <div class="featured-item">
+                <img src="{% static 'web_app/assets/images/item-04.jpg' %}" alt="Item 4">
+                <h4>Sed purus quam</h4>
+                <h6>$45.00</h6>
+              </div>
+            </a>
+            <a href="single-product.html">
+              <div class="featured-item">
+                <img src="{% static 'web_app/assets/images/item-05.jpg' %}" alt="Item 5">
+                <h4>Morbi aliquet</h4>
+                <h6>$55.00</h6>
+              </div>
+            </a>
+            <a href="single-product.html">
+              <div class="featured-item">
+                <img src="{% static 'web_app/assets/images/item-06.jpg' %}" alt="Item 6">
+                <h4>Urna ac diam</h4>
+                <h6>$65.00</h6>
+              </div>
+            </a>
+            <a href="single-product.html">
+              <div class="featured-item">
+                <img src="{% static 'web_app/assets/images/item-04.jpg' %}" alt="Item 7">
+                <h4>Proin eget imperdiet</h4>
+                <h6>$75.00</h6>
+              </div>
+            </a>
+            <a href="single-product.html">
+              <div class="featured-item">
+                <img src="{% static 'web_app/assets/images/item-05.jpg' %}" alt="Item 8">
+                <h4>Nullam risus nisl</h4>
+                <h6>$85.00</h6>
+              </div>
+            </a>
+            <a href="single-product.html">
+              <div class="featured-item">
+                <img src="{% static 'web_app/assets/images/item-06.jpg' %}" alt="Item 9">
+                <h4>Cras tempus</h4>
+                <h6>$95.00</h6>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <!-- Featred Ends Here -->
+
+  <!--검색-->
+  <form method="POST" class="example" action="" style="margin:auto;max-width:350px">
+    {% csrf_token %}
+    <input type="text" placeholder="Search.." name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
+  <br>
+
+  <div class="container-fluid p-0 m-0 
+  align-items-center 
+  justify-content-center d-flex"
+style="min-height: 100vh;">
+
+<!-- Row for the card-->
+<div class="row w-100 p-0 w-0">
+
+  {% if result %}
+  <!-- 카드 내용 -->
+  {% for book in result  %}
+  {% load humanize %} 
+  <div class="col-lg-4 mb-2">
+    <div class="card mx-auto" style="width:18rem;">
+      <a href="" data-toggle="modal" data-target="#exampleModalLong">
+        <img class="card-img-top" src="{{book.image.url}}" alt="Card image cap" width="80px" height="200px">
+        </a>
+        <div class="card-body">
+            <h5 class="card-title"> {{book.name}} </h5>
+            <p class="card-text"> {{book.desc|truncatechars:70}} </p>
+            <p class = "card-text" style = "color: blue;"> {{ book.amount|intcomma }} </p>
+            <center>
+              <a href="#link" class="btn btn-info" role="button">구매하기</a>
+            </center>
+          </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+<!-- <center><h1>No Data Found</h1></center> -->
+
+  {% for book in book %}
+  <div class="col-lg-4 mb-2">
+    <div class="card mx-auto" style="width:18rem;">
+      <a href="" data-toggle="modal" data-target="#exampleModalLong" 
+      class="building-link" data-name="{{ building.name }}">
+        <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap" width="100px" height="250px">
+      </a>
+        <div class="card-body">
+            <h5 class="card-title"> 
+              {{book.name}} 
+            </h5>
+            <p class="card-text"> 
+              {{book.desc|truncatechars:70}} 
+            </p>
+            <p class = "card-text" style = "color: blue;"> 
+              {{ book.amount }} 
+            </p>
+
+            <br>
+
+            <center>
+              <a href="#link" class="btn btn-info" role="button">구매하기</a>
+            </center>
+          </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+ 
+<!-- Another column for card -->
+<div class="contact-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+         
+        <div id="map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.88762617726!2d127.04381262934571!3d37.5577112561269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca4a55b2f2d93%3A0xffdfb5c8c57860f5!2z7ZWc7JaR7Jes7J6Q64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1694117136465!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
+      </div>
+      <!-- <div class="col-md-6">
+        <div class="right-content">
+          <div class="container">
+            <form id="contact" action="" method="post">
+              <div class="row">
+                <div class="col-md-6">
+                  <fieldset>
+                    <input name="name" type="text" class="form-control" id="name" placeholder="도서명" required="">
+                  </fieldset>
+                </div>
+                </div>
+                </form>
+                </div>
+                </div>
+                </div> -->
+    </div>
+  </div>
+  </div>
+</div>
+            
+
+  <!-- Subscribe Form Starts Here -->
+  <div class="subscribe-form">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h1> Q & A</h1>
+          </div>
+        </div>
+        <div class="col-md-8 offset-md-2">
+          <div class="main-content">
+            <div class="container">
+              <form id="subscribe" action="" method="get">
+                <div class="row">
+                  <div class="col-md-7">
+                    <fieldset>
+                      <input type="text" placeholder="검색하기.." class="form-control"
+                      onfocus="if(this.value == '') { this.value = ''; }" 
+                      onBlur="if(this.value == '') { this.value = '';}"
+                      value="" required="">
+                    </fieldset>
+                  </div>
+                  <div class="col-md-5">
+                    <fieldset>
+                      <button type="submit" id="form-submit" class="button">검색</button>
+                    </fieldset>
+<!--                     
+                    <form method="POST" class="example" action="" style="margin:auto;max-width:350px">
+                      {% csrf_token %}
+                      <input type="text" placeholder="Search.." name="search">
+                      <button type="submit"><i class="fa fa-search"></i></button> -->
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Subscribe Form Ends Here -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="building-name"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+$('.building-link').click(function(){
+    $('#building-name').html($(this).data('name'));
+    $('#building-description').html($(this).data('description'));
+    $('#building-img').src($(this).data('img'));
+});
+</script>
+{% endblock %}
+
