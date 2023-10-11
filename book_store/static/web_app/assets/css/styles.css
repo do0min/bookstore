@@ -1,0 +1,36 @@
+
+div.menu-section.future-ict a.dropdown-item.future-ict {
+  font-size : 20px;
+  color: #FFC13D;
+  font-weight: bold;
+}
+
+div.menu-section.fusion-design a.dropdown-item.design {
+  font-size : 20px;
+  color: #FFC13D;
+  font-weight: bold;
+}
+
+div.menu-section.human-service a.dropdown-item.human-service {
+  font-size : 20px;
+  color: #FFC13D;
+  font-weight: bold;
+}
+
+div.menu-section.global-service a.dropdown-item.global-service {
+  font-size : 20px;
+  color: #FFC13D;
+  font-weight: bold;
+}
+
+/* 메뉴 섹션 가로배치 */
+.menu-sections {
+  display: flex;
+  flex-direction: row; /* 가로로 배치 */
+
+}
+
+/* 각 메뉴 섹션의 스타일 (선택적으로 스타일을 추가 및 수정하세요) */
+.menu-section {
+  padding: 20px; /* 각 메뉴 섹션의 간격을 조절 (선택사항) */
+}
