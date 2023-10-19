@@ -59,7 +59,7 @@
     <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
   <div class="container">
-    <a class="navbar-brand" href="#"><img src="{% static 'web_app/assets/images/header-logo.png' %}" alt="" height="50px" ></a>
+    <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'web_app/assets/images/header-logo.png' %}" alt="" height="50px" ></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -72,7 +72,7 @@
           </a>
         </li> -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="{% url 'buy' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             구매하기
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
