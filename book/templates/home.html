@@ -46,17 +46,24 @@ form.example::after {
 </style>
 
 <div class="banner">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-      </div>
+        <div class="slide">
+                  <img src="../images/banner-bg.jpg" alt="">
+              </div>
+        <div class="slide">
+            <img src="../images/banner02.png" alt="">
+        </div>
+        <div class="slide">
+            <img src="../images/banner03.png" alt="">
+        </div>
+        
     </div>
-  </div>
+
+    <div class="slider-dots">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    
 </div>
-
-  <button class="prev-button">이전</button>
-  <button class="next-button">다음</button>
-
 <!-- Banner Ends Here -->
 
 <!-- Featured Starts Here --> 
@@ -244,5 +251,44 @@ $('.building-link').click(function(){
     $('#building-img').src($(this).data('img'));
 });
 </script>
+
+ <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slideCount = slides.length;
+        const dots = document.querySelectorAll('.dot');
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.style.display = 'none');
+            slides[n].style.display = 'block';
+
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[n].classList.add('active');
+        }
+
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            showSlide(currentSlide);
+        }
+ 
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            showSlide(currentSlide);
+        }
+ 
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentSlide);
+            setInterval(nextSlide, 5000); // 5초마다 자동 슬라이드
+
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+            currentSlide = index;
+        });
+    });
+});
+    </script>
 {% endblock %}
 
