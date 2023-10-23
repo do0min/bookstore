@@ -34,3 +34,10 @@ div.menu-section.global-service a.dropdown-item.global-service {
 .menu-section {
   padding: 20px; /* 각 메뉴 섹션의 간격을 조절 (선택사항) */
 }
+
+.centered-div {
+  width: 50%; /* 원하는 가로 너비 설정 */
+  margin: 0 auto; /* 가운데 정렬 설정 */
+  background-color: lightgray; /* 배경색 설정 (선택사항) */
+  padding: 20px; /* 내용 주위의 여백 (선택사항) */
+}

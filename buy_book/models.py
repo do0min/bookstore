@@ -12,3 +12,8 @@ class book(models.Model):
 
     def __str__(self):
         return self.name
+    
+class buy_detail():
+    
+    def __str__(self) :
+        return self.name
