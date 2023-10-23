@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'base.html' %}
+    {% block content %}
+    {% load static %}
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+    
+        <title>교재구매</title>
+    
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    
+    
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}">
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}">
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}">
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/style' %}">
+
+        <style>
+            .centered-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /* min-height: 100vh; */
+            }
+            .centered-div {
+                padding: 20px; /* 내용 주위의 여백 (선택사항) */
+            }
+        .book-container {
+            display: flex;
+            align-items: center;
+        }
+        .book-description {
+            flex: 1;
+        }
+        .book-image {
+            flex: 1;
+            max-width: 200px;
+            max-height: 300px;
+        }
+        .book-details {
+            flex: 1;
+            text-align: right;
+        }
+        </style>
+    </head>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <!-- <div class="section-heading"> -->
+                <div class="centered-container">
+                    <div class="centered-div">
+                        <br><br>
+                        <h1>스마트IT과</h1>
+                        <p>미래ICT > 스마트IT과</p>
+                    </div>
+                </div>
+                <hr class="custom-hr">
+              </div>
+
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <!-- <div class="section-heading"> -->
+                      <div class="centered-container">
+                          <div class="centered-div">
+                              <h3>책 제목</h3>
+                              이미지
+                          </div>
+            </div>
+            <div class="contact-page">
+</div>
+</div>
+</div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="book-container">
+        <div class="book-description">
+            <h2>도서 제목</h2>
+            <p>도서 설명이 여기에 들어갑니다.</p>
+        </div>
+        <div class="book-image">
+            <img src="book-image.jpg" alt="도서 이미지">
+        </div>
+        <div class="book-details">
+            <h3>가격: $19.99</h3>
+            <button>구매하기</button>
+            <button>장바구니</button>
+            <button>관심</button>
+        </div>
+    </div>
+    </body>
+    {% endblock %}
+</html>

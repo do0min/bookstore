@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}관심도서{% endblock %}
+
+{% block content %}
+  <h1>찜하기</h1>
+
+  <!-- 장바구니 이미지 -->
+  <img src="{% static 'web_app/heart.png' %}" alt="찜하기 아이콘" width="50" height="50">
+
+  <!-- 여기에 장바구니 아이템 목록 등을 표시하는 내용 추가 -->
+  <!-- 예시로 임의의 텍스트를 사용하였습니다. 실제로는 장바구니 아이템을 동적으로 표시해야 합니다. -->
+
+  <div>
+    <h2>관심도서 목록</h2>
+    <ul>
+      <li>상품 1</li>
+      <li>상품 2</li>
+      <!-- 장바구니 아이템이 동적으로 추가되도록 수정이 필요합니다. -->
+    </ul>
+  </div>
+{% endblock %}
