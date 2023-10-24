@@ -12,19 +12,6 @@ def books_sub(request, subdepartment):
     }
     return render(request, 'books_sub.html', context)
 
-
-# def department_books(request, department_name):
-#     department = get_object_or_404(Department, name=department_name)
-#     subdepartments = SubDepartment.objects.filter(department=department)
-#     books = subdepartments.first().booklist.all() if subdepartments.exists() else []
-
-#     context = {
-#         'department': department,
-#         'books': books,
-#     }
-
-#     return render(request, 'books_sub_plus.html', context)
-
 def department_books(request, department_name):
     # Department 객체 가져오기
     department = get_object_or_404(Department, name=department_name)
