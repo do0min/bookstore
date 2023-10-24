@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.views import View
 
 def buy(request):
-    return render(request,'buy_base.html')
+    return render(request,'main.html')
 def buy_detail(request):
-    return render(request, 'buy_detail.html')
+    return render(request, 'detail.html')
 
