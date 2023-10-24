@@ -4,9 +4,14 @@
 {% load static %}
 
 {% block title %}장바구니{% endblock %}
+<link rel="stylesheet" href="{% static 'web_app/assets/css/style' %}">
 
 {% block content %}
-  <h1>장바구니</h1>
+<div class="book-container">
+  <div class="book-description">
+<br><br><br>
+
+  <h1 >장바구니</h1>
 
   <!-- 장바구니 이미지 -->
   <img src="{% static 'web_app/cart_image.png' %}" alt="장바구니 이미지" width="30" height="30">
@@ -22,4 +27,7 @@
       <!-- 장바구니 아이템이 동적으로 추가되도록 수정이 필요합니다. -->
     </ul>
   </div>
+</div>
+</div>
+
 {% endblock %}

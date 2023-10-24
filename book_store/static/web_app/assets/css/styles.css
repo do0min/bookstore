@@ -41,3 +41,57 @@ div.menu-section.global-service a.dropdown-item.global-service {
   background-color: lightgray; /* 배경색 설정 (선택사항) */
   padding: 20px; /* 내용 주위의 여백 (선택사항) */
 }
+
+
+.centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /* min-height: 100vh; */
+}
+.book-container {
+display: flex;
+align-items: center;
+}
+.book-description {
+  flex: 1;
+  padding-left: 20em;
+  float: left;
+  margin-right: 10px;
+}
+.book-image {
+flex: 1;
+max-width: 200px;
+max-height: 300px;
+text-align: center;
+}
+.book-details {
+  flex: 1;
+  text-align: right;
+  padding-right: 20em;
+}
+
+.price_left {
+  float: left;
+}
+.book-description {
+  float: left;
+  margin-right: 10px;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  /* clear: both; */
+}
+
+.clearfix {
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(243, 238, 166); 
+  padding: 20px; 
+}

@@ -6,6 +6,11 @@
 {% block title %}관심도서{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'web_app/assets/css/style' %}">
+
+<br><br><br>
+<div class="book-container">
+  <div class="book-description">
   <h1>찜하기</h1>
 
   <!-- 장바구니 이미지 -->
@@ -21,5 +26,7 @@
       <li>상품 2</li>
       <!-- 장바구니 아이템이 동적으로 추가되도록 수정이 필요합니다. -->
     </ul>
+  </div>
+  </div>
   </div>
 {% endblock %}
