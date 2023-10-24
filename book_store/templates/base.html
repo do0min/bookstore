@@ -1,0 +1,229 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+    <title>book store</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href= "{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href= "{% static 'web_app/assets/css/styles.css' %}" rel="stylesheet">
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}">
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+  </head>
+
+  <body>
+
+
+
+    <!-- Pre Header -->
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="container">
+        <div class="col-md-12">
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+           <li class="nav-item">
+          <a class="nav-link" href="{% url 'my_info' %}">My Page</a>
+        </li>
+          <li class="nav-item">
+            <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+          </li>
+          <form id="logout" method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <input type="hidden">
+          </form>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+    <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'web_app/assets/images/header-logo.png' %}" alt="" height="50px" ></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <!-- <li class="nav-item active">
+          <a class="nav-link" href="index.html">홈
+            <span class="sr-only">(current)</span>
+          </a>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            구매하기
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <!-- 미래ICT 메뉴 항목 -->
+          <div class="menu-sections">
+            <div class="menu-section future-ict">
+              <a class="dropdown-item future-ict" href="">미래ICT</a>
+              <a class="dropdown-item" href="#">소프트웨어융합과</a>
+              <a class="dropdown-item" href="{% url 'buy' %}">스마트IT과</a>
+              <a class="dropdown-item" href="#">빅데이터과</a>
+              <a class="dropdown-item" href="#">AI융합과</a>
+            </div>
+
+            <!-- 융합문화디자인 메뉴 항목 -->
+            <div class="menu-section fusion-design">
+              <a class="dropdown-item design" href="#">융합문화디자인</a>
+              <a class="dropdown-item" href="#">패션디자인과</a>
+              <a class="dropdown-item" href="#">세라믹디자인과</a>
+              <a class="dropdown-item" href="#">니트패션디자인과</a>
+              <a class="dropdown-item" href="#">산업디자인과</a>
+              <a class="dropdown-item" href="#">문예창작과</a>
+              <a class="dropdown-item" href="#">인테리어디자인과</a>
+
+            </div>
+
+            <!-- 휴먼서비스 메뉴 항목 -->
+            <div class="menu-section human-service">
+              <a class="dropdown-item human-service" href="#">휴먼서비스</a>
+              <a class="dropdown-item " href="#">식품영양과</a>
+              <a class="dropdown-item" href="#">스포츠건강관리과</a>
+              <a class="dropdown-item" href="#">유아교육과</a>
+              <a class="dropdown-item" href="#">보건행정과</a>
+
+            </div>
+
+            <!-- 글로벌서비스 메뉴 항목 -->
+            <div class="menu-section global-service">
+              <a class="dropdown-item global-service" href="#">글로벌서비스</a>
+              <a class="dropdown-item" href="#">호텔관광과</a>
+              <a class="dropdown-item" href="#">실무영어과</a>
+              <a class="dropdown-item" href="#">서비스경영과</a>
+              <a class="dropdown-item" href="#">비서인재과</a>
+              <a class="dropdown-item" href="#">실무일본어과</a>
+              <a class="dropdown-item" href="#">실무중국어과</a>
+              <a class="dropdown-item" href="#">외식산업과</a>
+              <a class="dropdown-item" href="#">세무회계과</a>
+              <a class="dropdown-item" href="#">행정실무과</a>
+              <a class="dropdown-item" href="#">항공과</a>
+            </div>
+
+          </div>
+        </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'add' %}">도서 신청</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'used' %}">중고서적</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+{% block content %}
+
+{% endblock %}
+
+    <!-- Footer Starts Here -->
+    <div class="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="footer-menu">
+                <br>
+                <div class="logo">
+                <ul><img src="{% static 'web_app/assets/images/header-logo.png' %}" alt="" width="40px"></ul>
+                <ul>회사명: 미나상</ul>
+                <ul>대표: 우희민</ul>
+                <ul>소재지: 서울특별시 성동구 살곶이길 200</ul>
+                <ul>대표 전화: 1588-0000</ul>
+                <ul>대표 메일: mina@hyw.co.kr</ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-12">
+              <div class="social-icons">
+                <ul>
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Ends Here -->
+  
+  
+      <!-- Sub Footer Starts Here -->
+      <div class="sub-footer">
+        <div class="container">
+          <div class="">
+            <div class="">
+              <div class="copyright-text">
+                <p><a rel="nofollow" href="#">회사소개 </a> | 
+                  <a rel="nofollow" href="#"> 이용약관 </a> |
+                  <a rel="nofollow" href="#"> 개인정보처리방침 </a> |
+                  <a rel="nofollow" href="#"> 고객센터 </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Sub Footer Ends Here -->
+  
+  
+      <!-- Bootstrap core JavaScript -->
+      <!-- <script src="{% static 'web_app/vendor/jquery/jquery.min.js' %}"></script>
+      <script src="{% static 'web_app/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script> -->
+  
+  
+      <!-- Additional Scripts -->
+      <!-- <script src="{% static 'web_app/assets/js/custom.js' %}"></script> -->
+      <!-- <script src="{% static 'web_app/assets/js/owl.js' %}"></script> -->
+  
+  
+      <!-- <script language = "text/Javascript"> 
+        cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+        function clearField(t){                   //declaring the array outside of the
+        if(! cleared[t.id]){                      // function makes it static and global
+            cleared[t.id] = 1;  // you could use true and false, but that's more typing
+            t.value='';         // with more chance of typos
+            t.style.color='#fff';
+            }
+        }
+      </script> -->
+  
+  
+    </body>
+  
+  </html>
+  
