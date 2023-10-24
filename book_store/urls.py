@@ -19,7 +19,6 @@ import book.views
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
-from .views import MyInfoView
 
 # path('', book.views.home, name = 'home'),
 urlpatterns = [
@@ -29,7 +28,5 @@ urlpatterns = [
     path('buy', include("buy_book.urls")),
     path('add', include('add_book.urls')),
     path('used', include('used_book.urls')),
-    path('cart', views.cart_view, name='cart'),
-    path('my_info/', MyInfoView.as_view() , name='my_info'),
-    path('heart', views.heart_view, name='heart'),
+    path('my_info', include('my_info.urls')),
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 # Create your models here.
 class Book(models.Model):
     name = models.CharField(max_length=100)
@@ -13,14 +12,11 @@ class Book(models.Model):
     date = models.DateTimeField(auto_now=True)
     sub_department = models.ForeignKey('SubDepartment', on_delete=models.CASCADE, null=True, default=None)
 
-
 class Department(models.Model):
     name = models.CharField(max_length=100, null=True)
 
     def __str__(self):
         return self.name
-
-
 class SubDepartment(models.Model):
     name = models.CharField(max_length=100)
     department = models.ForeignKey(Department, on_delete=models.CASCADE, related_name='sub_departments')

@@ -112,6 +112,7 @@ form.example::after {
             <p class="card-text"> {{book.desc|truncatechars:70}} </p>
             <p class = "card-text" style = "color: blue;"> {{ book.amount|intcomma }} </p>
             <center>
+
               <a href="#link" class="btn btn-info" role="button">구매하기</a>
             </center>
           </div>
@@ -142,6 +143,9 @@ form.example::after {
             <br>
 
             <center>
+
+              <a href="{% url 'cart'  %}" class="btn btn-success" role="button">장바구니</a>
+
               <a href="#link" class="btn btn-info" role="button">구매하기</a>
             </center>
           </div>

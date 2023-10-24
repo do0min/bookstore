@@ -6,6 +6,7 @@ from django.shortcuts import render
 from django.views import View
 from django.db.models import Q
 
+
 def home(request):
     book = Book.objects.all()
     if request.method == 'POST':
