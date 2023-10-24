@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'buy_book',
     'used_book',
     'add_book',
-    'book_store',
 ]
 
 MIDDLEWARE = [

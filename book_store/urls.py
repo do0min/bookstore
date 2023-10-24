@@ -32,7 +32,5 @@ urlpatterns = [
     path('cart', views.cart_view, name='cart'),
     path('my_info/', MyInfoView.as_view() , name='my_info'),
     path('heart', views.heart_view, name='heart'),
-    path('add_to_cart/<int:book_id>/', views.add_to_cart, name='add_to_cart'),
-    path('cart/', views.cart, name='cart'),
-    path('delete_from_cart/<int:book_id>/', views.delete_from_cart, name='delete_from_cart'),
+
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

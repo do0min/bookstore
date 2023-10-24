@@ -5,8 +5,11 @@ from django.contrib import auth
 from django.shortcuts import render
 from django.views import View
 from django.db.models import Q
+<<<<<<< HEAD
 from .models import Cart
 from django.shortcuts import get_object_or_404
+=======
+>>>>>>> f4ebe818224e47658765983b8c390f51ae5e55a2
 
 def home(request):
     book = Book.objects.all()
@@ -53,6 +56,7 @@ def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         return redirect('home')
+<<<<<<< HEAD
 
 def add_to_cart(request, book_id):
     book = Book.objects.get(id=book_id)
@@ -81,3 +85,5 @@ def add_to_cart(request, book_id):
         cart_item.save()
 
     return redirect('cart')  # 'cart'는 장바구니 페이지의 URL 이름으로 바꿔주세요
+=======
+>>>>>>> f4ebe818224e47658765983b8c390f51ae5e55a2

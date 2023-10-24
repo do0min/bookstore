@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* 드롭다운 메뉴의 너비 조절 */
 .navbar-dark .navbar-nav .nav-link {
   color: #000000; /* 드롭다운 텍스트 색상 */
@@ -35,6 +36,8 @@
   color: #2e3a5e; /* 드롭다운 메뉴 항목 hover나 focus 상태일 때 텍스트 색상 */
 
 }
+=======
+>>>>>>> f4ebe818224e47658765983b8c390f51ae5e55a2
 
 div.menu-section.future-ict a.dropdown-item.future-ict {
   font-size : 20px;
