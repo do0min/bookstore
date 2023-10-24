@@ -29,6 +29,9 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "book.apps.BookConfig", 
     'django.contrib.humanize',
+    'buy_book',
+    'used_book',
+    'add_book',
 ]
 
 MIDDLEWARE = [
