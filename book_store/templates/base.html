@@ -40,7 +40,7 @@
 
            <li class="nav-item">
           <a class="nav-link" href="{% url 'my_info' %}">My Page</a>
-        </li>
+          </li>
 
           <li class="nav-item">
             <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
@@ -87,7 +87,6 @@
           <div class="menu-sections">
             <div class="menu-section future-ict">
               <a class="dropdown-item future-ict" href="{% url 'department_books' department_name='미래ICT' %}">미래ICT</a>
-
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='소프트웨어융합과' %}">소프트웨어융합과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='스마트IT과' %}">스마트IT과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='빅데이터과' %}">빅데이터과</a>
@@ -139,8 +138,10 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'used' %}">중고서적</a>
-
-
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="{% url 'my_info' %}">내 정보</a>
+        </li> -->
       </ul>
     </div>
   </div>
