@@ -135,3 +135,18 @@ text-align: center;
   background-color: rgb(243, 238, 166); 
   padding: 20px; 
 }
+
+.input-container {
+  display: inline-block;
+  margin: 8px;
+  margin-top: 0px;
+  background-color: hsla(225, 93%, 42%, 0.589);
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.form-control {
+  width: 300px; 
+  padding: 10px;
+  border: none;
+}
