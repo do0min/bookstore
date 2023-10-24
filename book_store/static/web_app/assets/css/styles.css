@@ -13,16 +13,20 @@
   background-color: #2e3a5e; /* 토글 버튼 아이콘의 배경색 */
 }
 
-.dropdown-menu {
- max-width: 1900px;
-  min-width : 1900px;
-  width: 100%;
-  left: auto; /* 기본 왼쪽 위치 해제 */
-  right: 50%; /* 가운데 정렬을 위해 오른쪽에 50% 위치시킴 */
-  transform: translateX(55.5%); /* 가운데 정렬을 위해 이동 */
-  background-color: #2e3a5e;
-  }
 
+
+.dropdown-menu {
+  max-width: max-content;
+  min-width: max-content;
+  width: 100%;
+  white-space: nowrap;
+  /* left: auto; */
+  /* right: auto; */
+  overflow-x: auto;
+   /* 화면 가운데로 정렬하기 위해 이동 */
+  background-color: #2e3a5e;
+}
+  
 .dropdown-menu a {
   display: block; /* 가로폭 전체로 확장 */
   padding: 10px 30px; /* 내부 여백 설정 (필요에 따라 조절) */
@@ -36,7 +40,6 @@
   color: #2e3a5e; /* 드롭다운 메뉴 항목 hover나 focus 상태일 때 텍스트 색상 */
 
 }
-
 
 div.menu-section.future-ict a.dropdown-item.future-ict {
   font-size : 20px;
@@ -77,6 +80,7 @@ div.menu-section.global-service a.dropdown-item.global-service {
 .centered-div {
   width: 50%; /* 원하는 가로 너비 설정 */
   margin: 0 auto; /* 가운데 정렬 설정 */
+  background-color: lightgray; /* 배경색 설정 (선택사항) */
   padding: 20px; /* 내용 주위의 여백 (선택사항) */
 }
 

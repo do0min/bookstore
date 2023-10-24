@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'used_book',
     'add_book',
     'my_info',
+    'book_store',
 ]
 
 MIDDLEWARE = [
