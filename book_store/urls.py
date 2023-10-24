@@ -15,11 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-import book.views
+from book.views import *
+from book.models import *
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
-from .views import MyInfoView
+from .views import *
 
 # path('', book.views.home, name = 'home'),
 urlpatterns = [
@@ -32,5 +33,10 @@ urlpatterns = [
     path('cart', views.cart_view, name='cart'),
     path('my_info/', MyInfoView.as_view() , name='my_info'),
     path('heart', views.heart_view, name='heart'),
+
+    # 학과별 책목록
+    path('subdepartment/<str:subdepartment>/', books_sub, name='books_sub'),
+    path('department/<str:department_name>/', department_books, name='department_books'),
+
 
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
