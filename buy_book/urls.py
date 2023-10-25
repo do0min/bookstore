@@ -6,7 +6,4 @@ urlpatterns = [
 
     path('buy_detail/', views.buy_detail, name = 'buy_detail'),
 
-    path('buy_detail/', views.buy_detail, name = 'buy_detail'),
-
-
 ] 

@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'buy_book',
     'used_book',
     'add_book',
+    'my_info',
     'book_store',
 ]
 
