@@ -40,17 +40,29 @@
             <div class="container">
                 <div class="row">
                     {% for book in books %}
-                        <div class="col-lg-4 mb-2">
+                         <div class="col-lg-4 mb-2">
                             <div class="card mx-auto" style="width:18rem;">
-                                <a href="" data-toggle="modal" data-target="#exampleModalLong">
-                                    <img class="card-img-top" src="{{book.image.url}}" alt="Card image cap" width="80px" height="200px">
+                                <a href="" data-toggle="modal" data-target="#exampleModalLong" 
+                                class="building-link" data-name="{{ building.name }}">
+                                    <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap" width="100px" height="250px">
                                 </a>
-                                <div class="card-body">
-                                    <h5 class="card-title">{{book.name}}</h5>
-                                    <p class="card-text">{{book.desc|truncatechars:70}}</p>
-                                    <p class="card-text" style="color: blue;">{{ book.amount|intcomma }}</p>
+                                    <div class="card-body">
+                                        <h5 class="card-title"> 
+                                        {{book.name}} 
+                                    </h5>
+                                    <p class="card-text"> 
+                                        {{book.desc|truncatechars:70}} 
+                                    </p>
+                                    <p class = "card-text" style = "color: blue;"> 
+                                        {{ book.amount }} 
+                                    </p>
+
+                                    <br>
 
                                     <center>
+
+                                        <a href="{% url 'cart'  %}" class="btn btn-success" role="button">장바구니</a>
+
                                         <a href="#link" class="btn btn-info" role="button">구매하기</a>
                                     </center>
                                 </div>
