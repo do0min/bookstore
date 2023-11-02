@@ -4,8 +4,10 @@ from django.views import View
 
 def my_info(request):
     return render(request,'my_info.html')
+
 def cart(request):
     return render(request, 'cart.html')
+
 def heart(request):
     return render(request, 'heart.html')
 

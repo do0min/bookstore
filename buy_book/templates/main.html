@@ -35,14 +35,14 @@
                 <h1>스마트 IT</h1>
               </div>
             </div>
-            <div class="col-md-8 col-sm-12">
+            <!-- <div class="col-md-8 col-sm-12">
               <div id="filters" class="button-group">
                 <button class="btn btn-primary" data-filter="*">전체</button>
                 <button class="btn btn-primary" data-filter=".new">1학년</button>
                 <button class="btn btn-primary" data-filter=".low">2학년</button>
                 <button class="btn btn-primary" data-filter=".high">3학년</button>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -71,14 +71,15 @@
       <div class="col-lg-4 mb-2">
         <div class="card mx-auto" style="width:18rem;">
           <a href="" data-toggle="modal" data-target="#exampleModalLong">
-            <img class="card-img-top" src="{{book.image.url}}" alt="Card image cap" width="80px" height="200px">
+            <img class="card-img-top" src="{{book.image.url}}" alt="Card image cap" width="100px" height="300px">
             </a>
             <div class="card-body">
                 <h5 class="card-title"> {{book.name}} </h5>
                 <p class="card-text"> {{book.desc|truncatechars:70}} </p>
                 <p class = "card-text" style = "color: blue;"> {{ book.amount|intcomma }} </p>
                 <center>
-                  <a href="#link" class="btn btn-info" role="button">구매하기</a>
+                  <a href="{% url 'cart'  %}" class="btn btn-success" role="button">장바구니</a>
+                  <a href="{% url 'detail' book.id %}" class="btn btn-info" role="button">구매하기</a>
                 </center>
               </div>
         </div>
