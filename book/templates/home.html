@@ -103,16 +103,16 @@
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
             <br />
-
+<!-- 
             <div
                 class="container-fluid p-0 m-0 align-items-center justify-content-center d-flex"
                 style="min-height: 100vh"
-            >
+            > -->
                 <!-- Row for the card-->
                 <div class="row w-100 p-0 w-0">
-                    {% if result %}
+                    <!-- {% if result %} -->
                     <!-- 카드 내용 -->
-                    {% for book in result %} {% load humanize %}
+                    <!-- {% for book in result %} {% load humanize %}
                     <div class="col-lg-4 mb-2">
                         <div class="card mx-auto" style="width: 18rem">
                             <a href="" data-toggle="modal" data-target="#exampleModalLong">
@@ -133,11 +133,11 @@
                                 </center>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     {% endfor %} {% else %}
                     <!-- <center><h1>No Data Found</h1></center> -->
 
-                    {% for book in book %}
+                    <!-- {% for book in book %}
                     <div class="col-lg-4 mb-2">
                         <div class="card mx-auto" style="width: 18rem">
                             <a
@@ -169,9 +169,9 @@
                                 </center>
                             </div>
                         </div>
-                    </div>
-
-                    {% endfor %} {% endif %}
+                    </div> -->
+<!-- 
+                    {% endfor %} {% endif %} -->
                 </div>
             </div>
         </div>
@@ -184,8 +184,8 @@
         <div class="info">
             <p>서울 성동구 살곶이길 200<br>
               한양여대 본관 1F 행원스퀘어</p>
-              <br><br>
-            <img src="{% static 'web_app/assets/images/banner1.png' %}" alt="Seoul" />
+              <!-- <br><br> -->
+            <!-- <img src="{% static 'web_app/assets/images/banner1.png' %}" alt="Seoul" /> -->
             
         </div>
       </div>
@@ -237,12 +237,8 @@
                                         <div class="col-md-5">
                                             <fieldset>
                                                 <button type="submit" id="form-submit" class="button">검색</button>
-                                            </fieldset>
-                                            <!--                     
-                    <form method="POST" class="example" action="" style="margin:auto;max-width:350px">
-                      {% csrf_token %}
-                      <input type="text" placeholder="Search.." name="search">
-                      <button type="submit"><i class="fa fa-search"></i></button> -->
+                                            </fieldset>                 
+
                                         </div>
                                     </div>
                                 </form>
@@ -252,32 +248,6 @@
                 </div>
             </div>
         </div>
-        <!-- Subscribe Form Ends Here -->
-
-        <!-- Modal -->
-        <!-- <div
-            class="modal fade"
-            id="exampleModalLong"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLongTitle"
-            aria-hidden="true"
-        >
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="building-name"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">...</div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <script>
