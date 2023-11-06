@@ -2,6 +2,7 @@
 <html lang="en">
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
   <!-- ... (내 정보 페이지의 내용) ... -->
 
   <!-- 장바구니 페이지의 내용 추가 -->
@@ -28,13 +29,16 @@
     </div>
 
     <!-- 장바구니 페이지로 이동하는 버튼 추가 -->
-    <div class="col-md-12 text-center mt-4">
-      <a href="{% url 'cart' %}" class="btn btn-warning">장바구니 페이지로 이동</a>
-    </div>
-    <div class="col-md-12 text-center mt-4">
-      <a href="{% url 'heart' %}" class="btn btn-danger">관심도서 페이지로 이동</a>
-    </div>
-  </div>
+<div class="row row-center">
+    <div class="col-md-6 text-center mt-0 gutter">
+  <a href="{% url 'cart' %}">
+    <img src="{% static 'cart_1.png' %}" alt="장바구니 페이지로 이동">
+  </a></div>
+      <div class="col-md-6 text-center mt-0 gutter">
+  <a href="{% url 'heart' %}">
+    <img src="{% static 'cart_2.png' %}" alt="관심도서 페이지로 이동">
+  </a></div>
+</div></div>
 <br>
   <!-- ... (내 정보 페이지의 내용) ... -->
 {% endblock %}

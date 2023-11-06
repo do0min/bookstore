@@ -61,6 +61,15 @@ div.menu-section.global-service a.dropdown-item.global-service {
     font-weight: bold;
 }
 
+.menu-section.jung a {
+    display: inline-block;
+    margin-right: 10px; /* 각 항목 사이의 간격 조절 */
+    font-size: 20px; /* 글씨 크기 */
+    color: #007bff; /* 글씨 색상 */
+    font-weight: bold;
+}
+
+
 /* 메뉴 섹션 가로배치 */
 .menu-sections {
     display: flex;
