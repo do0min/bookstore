@@ -229,8 +229,8 @@ div.menu-section.global-service a.dropdown-item.global-service {
 .cart {
   width: 100%;
   margin: auto;
-  padding: 30px;
-  background-color: #f7f7f7;
+  /* padding: 30px; */
+  /* background-color: #f7f7f7; */
 }
 
 .cart__information {
@@ -271,7 +271,7 @@ div.menu-section.global-service a.dropdown-item.global-service {
 
 .cart__list th:nth-child(3),
 .cart__list td:nth-child(3) {
-  width: 40%;
+  width: 20%;
 }
 
 .cart__list th:nth-child(4),
@@ -304,7 +304,7 @@ div.menu-section.global-service a.dropdown-item.global-service {
   height: 1px;
   background-color: #e0e0e0;
   left: 0;
-  top: 15px;
+  top: 37px;
   position: absolute;
 }
 
