@@ -38,9 +38,9 @@
         <ul class="navbar-nav ml-auto">
           {% if user.is_authenticated %}
 
-           <li class="nav-item">
+          {% comment %} <li class="nav-item">
           <a class="nav-link" href="{% url 'my_info' %}">My Page</a>
-          </li>
+          </li> {% endcomment %}
 
           <li class="nav-item">
             <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
@@ -51,10 +51,13 @@
           </form>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">Login</a>
+            <a class="nav-link" href="{% url 'login' %}">로그인</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'signup' %}">Sign up</a>
+            <a class="nav-link" href="{% url 'signup' %}">회원가입</a>
+          </li>
+           <li class="nav-item">
+          <a class="nav-link" href="{% url 'my_info' %}">마이페이지</a>
           </li>
           {% endif %}
         </ul>
@@ -135,7 +138,7 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             중고서적
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -196,7 +199,7 @@
             </div>
 
           </div></div>
-        </div>
+
       </ul>
     </div>
   </div>
