@@ -48,13 +48,38 @@
             <div class="book-box">금액: {{ used_book.price }}원</div>
         
             <div class="book-button">
-              <button href="">관심</button>
-              <button>장바구니</button>
+              <button id="add-heart" data-book-id="{{ used_book.id }}">관심</button>
+              <button id="add-cart" data-book-id="{{ used_book.id }}">장바구니</button>
               <button>픽업</button>
               <button>구매하기</button>
             </div>
         
           </div>
+          <script>
+            $(document).ready(function () {
+                $("#add-heart").click(function () {
+                    var bookId = $(this).data("book-id");
+                    $.ajax({
+                        url: "/add_interest/" + bookId + "/",
+                        type: "POST",
+                        success: function (data) {
+                          window.location.href = '/my_info_app_url/'; 
+                        },
+                    });
+                });
+        
+                $("#add-cart").click(function () {
+                    var bookId = $(this).data("book-id");
+                    $.ajax({
+                        url: "/add_to_cart/" + bookId + "/",
+                        type: "POST",
+                        success: function (data) {
+                            // 처리 완료 후에 원하는 동작 수행
+                        },
+                    });
+                });
+            });
+        </script>
     </body>
     {% endblock %}
 </html>

@@ -16,7 +16,6 @@ urlpatterns = [
     path('add', include('add_book.urls')),
     path('used', include('used_book.urls')),
     path('my_info', include('my_info.urls')),
-
     path('subdepartment/<str:subdepartment>/', books_sub, name='books_sub'),
     path('department/<str:department_name>/', department_books, name='department_books'),
 ]+static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -3,7 +3,6 @@ from book.models import *
 from django.views import View
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from .models import UserProfile
 
 
 def my_info(request):
@@ -17,23 +16,59 @@ def heart(request):
 
 
 
+def my_info_view(request):
+    # 여기에서 다른 앱에서 필요한 컨텍스트 데이터를 가져와서 템플릿에 전달
+    # 예: 다른 앱에서의 관심 책 목록 가져오기
 
-# from django.shortcuts import render
-# from django.views import View
-# from book.models import *
+    context = {
+        # 컨텍스트 변수 설정
+    }
+    
+    return render(request, 'heart.html', context)
+
+# from django.shortcuts import render, redirect 
+# from .models import UsedBook
+# from models import Cart, CartItem
+# from django.core.exceptions import ObjectDoesNotExist
 
 
-# class cart(View):
-#     def get(self, request, *args, **kwargs):
-#         # 장바구니 페이지 렌더링 및 필요한 로직 추가
-#         return render(request, 'cart.html')
+# Create your views here.
+# def _cart_id(request):
+#     cart = request.session.session_key
+#     if not cart:
+#         cart = request.session.create()
+#     return cart
 
-# class heart(View):
-#     def get(self, request, *args, **kwargs):
-#         # 관심 상품 페이지 렌더링 및 필요한 로직 추가
-#         return render(request, 'heart.html')
+# def add_cart (request, product_id):
+#     product = UsedBook.objects.get(id=product_id)
+#     try:
+#         cart = Cart.objects.get(cart_id=_cart_id(request))
+#     except Cart. DoesNotExist:
+#         cart = Cart.objects.create(
+#         cart_id = _cart_id(request)
+#         )
+#         cart.save ()
 
-# class my_info(View):
-#     def get(self, request, *args, **kwargs):
-#         # 내 정보 페이지 렌더링 및 필요한 로직 추가
-#         return render(request, 'my_info.html')
+#     try:
+#         cart_item = CartItem.objects.get(product=product, cart=cart)
+#         cart_item.quantity += 1
+#         cart_item.save()
+#     except CartItem. DoesNotExist:
+#         cart_item = CartItem.objects.create(
+#         product = product,
+#         quantity = 1,
+#         cart = cart
+#         )
+#         cart_item.save()
+#     return redirect ('cart:cart detail')
+
+# def cart_detail(request, total=0, counter=0, cart_items = None):
+#     try:
+#         cart = Cart.objects.get(cart_id= _cart_id(request))
+#         cart_items = CartItem.objects.filter (cart=cart, active=True)
+#         for cart_item in cart_items:
+#             total += (cart_item.product.price * cart_item.quantity)
+#             counter += cart_item.quantity
+#     except ObjectDoesNotExist:
+#         pass
+#     return render (request,'cart.html', dict(cart_items = cart_items, total=total, counter = counter))
