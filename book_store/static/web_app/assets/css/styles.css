@@ -1,7 +1,6 @@
 /* 드롭다운 메뉴의 너비 조절 */
 .navbar-dark .navbar-nav .nav-link {
     color: #000000; /* 드롭다운 텍스트 색상 */
-    
 }
 
 .navbar-dark .navbar-nav .nav-link:hover,
@@ -266,9 +265,7 @@ div.menu-section.global-service a.dropdown-item.global-service {
 }
 
 .cart__list thead {
-  /* background-color: rgb(50, 115, 205); */
   background-color: #f5f5f5;
-  /* border-top:2px solid rgb(50, 115, 205); */
 }
 
 .cart__list th,
@@ -276,7 +273,6 @@ div.menu-section.global-service a.dropdown-item.global-service {
   padding: 10px;
   text-align: center;
   border-bottom: 1px solid #e0e0e0;
-  color: #000000;
 }
 
 .cart__list th:first-child,
