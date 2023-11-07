@@ -81,6 +81,10 @@ div.menu-section.global-service a.dropdown-item.global-service {
     margin: 0 auto;
     padding: 20px;
 }
+.center-text{
+  text-align: center;
+  color: #000000;
+}
 
 .centered-container {
     display: flex;
