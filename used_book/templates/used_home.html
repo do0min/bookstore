@@ -4,29 +4,85 @@
 {% block content %}
 {% load static %}
 
+<head>
+<style>
+.buttonwhere{
+    margin: 50px;
+    text-align:center;
+}
+.buttoncute {
+    background-color: #5ba7b6;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.used-books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.used-book {
+    flex: 0 0 calc(33.33% - 50px);
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.book-title {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.book-image {
+    width: 60%;
+    height: auto;
+}
+
+
+.book-actions {
+    margin-top: 7px;
+}
+
+
+
+</style>
+</head>
+
 <br>
 <br>
 <body>
+    <div class="buttonwhere">
     <form method="get" action="{% url 'search' %}">
         {{ form }}
-        <button type="submit">검색</button>
+        <button type="submit"class="buttoncute">검색하기</button>
     </form>
+    <span>혹은</span>
     <a href="{% url 'used_up' %}">
-        <button type="button">업로드</button>
+        <button type="button"class="buttoncute">도서 업로드</button>
+        </div>
     </a>
-    <div>
-        {% for used_book in used_books %}
-            <h2>{{ used_book.title }}</h2>
+    <div class="used-books">
+    {% for used_book in used_books %}
+        <div class="used-book">
+            <h2 class="book-title">{{ used_book.title }}</h2>
             <img src="{{ used_book.image.url }}" class="book-image" alt="{{ used_book.title }} 이미지">
-            <p>{{ used_book.description }}</p>
-            <center>
+            <div class="book-actions">
                 <a href="{% url 'used_detail' used_book.id %}" class="btn btn-info" role="button">구매하기</a>
-            </center>
-        {% empty %}
-            <p>아직 업로드된 중고서적이 없습니다.</p>
-        {% endfor %}
-    </div>
-</body>
+            </div>
+        </div>
+    {% empty %}
+        <p>아직 업로드된 중고서적이 없습니다.</p>
+    {% endfor %}
+</div>
+
 </body>
 {% endblock %}
 </html>
