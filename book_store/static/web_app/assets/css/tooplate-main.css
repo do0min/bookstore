@@ -67,20 +67,25 @@ a {
 	width: 100%;
 	position: relative;
 	padding: 25px 0px;
+	
 }
 .bg-dark {
 	background-color: #fff!important;
-	/* border-bottom: 1px solid #e96c6c; */
+	/* border-botto
+	m: 1px solid #e96c6c; */
 }
+
 #navbarResponsive {
 	z-index: 999;
 	position: absolute;
 	left: 50%;
 	top: 105px;
 	transform: translateX(-50%);
+	
 }
 .navbar-dark .navbar-nav .nav-item {
 	margin: 0px 15px;
+	
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -89,13 +94,16 @@ a {
 	font-weight: 700;
 	color: #1e1e1e;
 	transition: all 0.5s;
+	
 }
+
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .active>.nav-link,
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .nav-link.show,
 .navbar-dark .navbar-nav .show>.nav-link {
 	color: #3a8bcd;
+	
 }
 .navbar:after {
 	width: 100%;
@@ -105,9 +113,11 @@ a {
 	position: absolute;
 	left: 0;
 	bottom: -52px;
+	
 }
 .navbar-dark .navbar-toggler-icon {
 	background-image: none;
+	
 }
 .navbar-dark .navbar-toggler {
 	border-color: #3a8bcd;
@@ -121,7 +131,12 @@ a {
 	font-size: 22px;
 	line-height: 30px;
 	font-family: 'FontAwesome';
+	
 }
+.navbar .navbar-nav .nav-item:nth-child(3) {
+    margin-left: auto;
+}
+
 /* Banner Style */
 .slide {
             margin-top: 50px;
@@ -317,7 +332,7 @@ a {
 	transition: all 0.5s;
 }
 .footer .footer-menu a:hover {
-	color: #3a8bcd;
+	color: #3a3fcd;
 	text-decoration: none;
 }
 .footer .social-icons {
@@ -712,7 +727,10 @@ a {
 	}
 	.navbar:after {
 		display: none;
+		
 	}
+
+
 	#navbarResponsive {
 	    z-index: 99999;
 	    position: absolute;

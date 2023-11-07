@@ -9,13 +9,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-    
+
         <title>교재구매</title>
-    
+
         <!-- Bootstrap core CSS -->
         <link href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    
-    
+
+
         <!-- Additional CSS Files -->
         <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}">
         <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}">
@@ -35,14 +35,14 @@
                 <h1>스마트 IT</h1>
               </div>
             </div>
-            <div class="col-md-8 col-sm-12">
+            <!-- <div class="col-md-8 col-sm-12">
               <div id="filters" class="button-group">
                 <button class="btn btn-primary" data-filter="*">전체</button>
                 <button class="btn btn-primary" data-filter=".new">1학년</button>
                 <button class="btn btn-primary" data-filter=".low">2학년</button>
                 <button class="btn btn-primary" data-filter=".high">3학년</button>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -52,12 +52,12 @@
         <button type="submit"><i class="fa fa-search"></i></button>
       </form>
       <br>
-    
-      <div class="container-fluid p-0 m-0 
-      align-items-center 
+
+      <div class="container-fluid p-0 m-0
+      align-items-center
       justify-content-center d-flex"
     style="min-height: 100vh;">
-    
+
     <!-- Row for the card-->
     <div class="">
         <div class="featured-items">
@@ -67,18 +67,19 @@
       {% if result %}
       <!-- 카드 내용 -->
       {% for book in result  %}
-      {% load humanize %} 
+      {% load humanize %}
       <div class="col-lg-4 mb-2">
         <div class="card mx-auto" style="width:18rem;">
           <a href="" data-toggle="modal" data-target="#exampleModalLong">
-            <img class="card-img-top" src="{{book.image.url}}" alt="Card image cap" width="80px" height="200px">
+            <img class="card-img-top" src="{{book.image.url}}" alt="Card image cap" width="100px" height="300px">
             </a>
             <div class="card-body">
                 <h5 class="card-title"> {{book.name}} </h5>
                 <p class="card-text"> {{book.desc|truncatechars:70}} </p>
                 <p class = "card-text" style = "color: blue;"> {{ book.amount|intcomma }} </p>
                 <center>
-                  <a href="#link" class="btn btn-info" role="button">구매하기</a>
+                  <a href="{% url 'cart'  %}" class="btn btn-success" role="button">장바구니</a>
+                  <a href="{% url 'detail' book.id %}" class="btn btn-info" role="button">구매하기</a>
                 </center>
               </div>
         </div>
@@ -86,38 +87,39 @@
       {% endfor %}
       {% else %}
     <!-- <center><h1>No Data Found</h1></center> -->
-    
+
       {% for book in book %}
       <div class="col-lg-4 mb-2">
         <div class="card mx-auto" style="width:18rem;">
-          <a href="" data-toggle="modal" data-target="#exampleModalLong" 
+          <a href="" data-toggle="modal" data-target="#exampleModalLong"
           class="building-link" data-name="{{ building.name }}">
             <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap" width="100px" height="250px">
           </a>
             <div class="card-body">
-                <h5 class="card-title"> 
-                  {{book.name}} 
+                <h5 class="card-title">
+                  {{book.name}}
                 </h5>
-                <p class="card-text"> 
-                  {{book.desc|truncatechars:70}} 
+                <p class="card-text">
+                  {{book.desc|truncatechars:70}}
                 </p>
-                <p class = "card-text" style = "color: blue;"> 
-                  {{ book.amount }} 
+                <p class = "card-text" style = "color: blue;">
+                  {{ book.amount }}
                 </p>
-    
+
                 <br>
-    
+
                 <center>
-                  <a href="#link" class="btn btn-info" role="button">구매하기</a>
+
+                    <a href="#link" class="btn btn-info" role="button">구매하기</a>
                 </center>
               </div>
         </div>
       </div>
       {% endfor %}
       {% endif %}
-<!--      
+<!--
       <div class="featured container no-gutter">
-  
+
           <div class="row posts">
               <div id="1" class="item new col-md-4">
                 <a href="single-product.html">
@@ -216,7 +218,7 @@
             </div>
           </div>
         </div>
-      </div> 
+      </div>
 
 
 {% endblock %}

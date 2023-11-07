@@ -1,8 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% extends 'base.html' %}
-    {% block content %}
-    {% load static %}
-knknk
-    {% endblock %}
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<br>
+<br>
+<body>
+    <form method="get" action="{% url 'search' %}">
+        {{ form }}
+        <button type="submit">검색</button>
+    </form>
+    <a href="{% url 'used_up' %}">
+        <button type="button">업로드</button>
+    </a>
+    <div>
+        {% for used_book in used_books %}
+            <h2>{{ used_book.title }}</h2>
+            <img src="{{ used_book.image.url }}" class="book-image" alt="{{ used_book.title }} 이미지">
+            <p>{{ used_book.description }}</p>
+            <center>
+                <a href="{% url 'used_detail' used_book.id %}" class="btn btn-info" role="button">구매하기</a>
+            </center>
+        {% empty %}
+            <p>아직 업로드된 중고서적이 없습니다.</p>
+        {% endfor %}
+    </div>
+</body>
+</body>
+{% endblock %}
 </html>

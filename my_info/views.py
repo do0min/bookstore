@@ -1,13 +1,21 @@
 from django.shortcuts import render, redirect
 from book.models import *
 from django.views import View
+from django.http import HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from .models import UserProfile
+
 
 def my_info(request):
     return render(request,'my_info.html')
+
 def cart(request):
     return render(request, 'cart.html')
+
 def heart(request):
     return render(request, 'heart.html')
+
+
 
 
 # from django.shortcuts import render

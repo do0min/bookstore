@@ -1,169 +1,196 @@
-{% extends 'base.html' %}
-{% block content %}
-{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'base.html' %} {% block content %} {% load static %}
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
 
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-<style>
-body {
-  font-family: Arial;
-}
+        <title>book store</title>
 
-* {
-  box-sizing: border-box;
-}
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
 
-form.example input[type=text] {
-  padding: 10px;
-  font-size: 17px;
-  border: 1px solid grey;
-  float: left;
-  width: 80%;
-  background: #f1f1f1;
-}
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
 
-form.example button {
-  float: left;
-  width: 20%;
-  padding: 10px;
-  background: #2196F3;
-  color: white;
-  font-size: 17px;
-  border: 1px solid grey;
-  border-left: none;
-  cursor: pointer;
-}
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
+        <style>
+            body {
+                font-family: Arial;
+            }
 
-form.example button:hover {
-  background: #0b7dda;
-}
+            * {
+                box-sizing: border-box;
+            }
 
-form.example::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+            form.example input[type='text'] {
+                padding: 10px;
+                font-size: 17px;
+                border: 1px solid grey;
+                float: left;
+                width: 80%;
+                background: #f1f1f1;
+            }
 
-</style>
+            form.example button {
+                float: left;
+                width: 20%;
+                padding: 10px;
+                background: #2196f3;
+                color: white;
+                font-size: 17px;
+                border: 1px solid grey;
+                border-left: none;
+                cursor: pointer;
+            }
 
-<div class="banner">
-        <div class="slide">
-                  <img src="../images/banner-bg.jpg" alt="">
-              </div>
-        <div class="slide">
-            <img src="../images/banner1.png" alt="">
+            form.example button:hover {
+                background: #0b7dda;
+            }
+
+            form.example::after {
+                content: '';
+                clear: both;
+                display: table;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="banner">
+            <div class="slide">
+                <img src="../images/banner-bg.jpg" alt="" />
+            </div>
+            <div class="slide">
+                <img src="../images/banner1.png" alt="" />
+            </div>
+            <div class="slide">
+                <img src="../images/banner2.png" alt="" />
+            </div>
         </div>
-        <div class="slide">
-            <img src="../images/banner2.png" alt="">
+
+        <div class="slider-dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
-        
-    </div>
+        <!-- Banner Ends Here -->
 
-    <div class="slider-dots">
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    
-</div>
-<!-- Banner Ends Here -->
-
-<!-- Featured Starts Here --> 
-<div class="featured-items">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <!-- <div class="section-heading">
+        <!-- Featured Starts Here -->
+        <div class="featured-items">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- <div class="section-heading">
           <div class="line-dec"></div>
           <h1>Featured Items</h1>
         </div> -->
+                    </div>
+                    <br /><br />
+                </div>
+            </div>
+            <!-- Featred Ends Here -->
+
+            <!--검색-->
+            <form method="POST" class="example" action="" style="margin: auto; max-width: 350px">
+                {% csrf_token %}
+                <input type="text" placeholder="Search.." name="search" />
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <br />
+<!-- 
+            <div
+                class="container-fluid p-0 m-0 align-items-center justify-content-center d-flex"
+                style="min-height: 100vh"
+            > -->
+                <!-- Row for the card-->
+                <div class="row w-100 p-0 w-0">
+                    <!-- {% if result %} -->
+                    <!-- 카드 내용 -->
+                    <!-- {% for book in result %} {% load humanize %}
+                    <div class="col-lg-4 mb-2">
+                        <div class="card mx-auto" style="width: 18rem">
+                            <a href="" data-toggle="modal" data-target="#exampleModalLong">
+                                <img
+                                    class="card-img-top"
+                                    src="{{book.image.url}}"
+                                    alt="Card image cap"
+                                    width="80px"
+                                    height="200px"
+                                />
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{book.name}}</h5>
+                                <p class="card-text">{{book.desc|truncatechars:70}}</p>
+                                <p class="card-text" style="color: blue">{{ book.amount|intcomma }}</p>
+                                <center>
+                                    <a href="#link" class="btn btn-info" role="button">구매하기</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div> -->
+                    {% endfor %} {% else %}
+                    <!-- <center><h1>No Data Found</h1></center> -->
+
+                    <!-- {% for book in book %}
+                    <div class="col-lg-4 mb-2">
+                        <div class="card mx-auto" style="width: 18rem">
+                            <a
+                                href=""
+                                data-toggle="modal"
+                                data-target="#exampleModalLong"
+                                class="building-link"
+                                data-name="{{ building.name }}"
+                            >
+                                <img
+                                    class="card-img-top"
+                                    src="{{ book.image.url }}"
+                                    alt="Card image cap"
+                                    width="100px"
+                                    height="250px"
+                                />
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">{{book.name}}</h5>
+                                <p class="card-text">{{book.desc|truncatechars:70}}</p>
+                                <p class="card-text" style="color: blue">{{ book.amount }}</p>
+
+                                <br />
+
+                                <center>
+                                    <a href="{% url 'cart'  %}" class="btn btn-success" role="button">장바구니</a>
+
+                                    <a href="#link" class="btn btn-info" role="button">구매하기</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div> -->
+<!-- 
+                    {% endfor %} {% endif %} -->
+                </div>
+            </div>
+        </div>
+        <div class="map">
+        <div class="map-container" align-items="center" text-align="center">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.88762617726!2d127.04381262934571!3d37.5577112561269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca4a55b2f2d93%3A0xffdfb5c8c57860f5!2z7ZWc7JaR7Jes7J6Q64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1694117136465!5m2!1sko!2skr"
+            ></iframe>
+        </div>
+        <div class="info">
+            <p>서울 성동구 살곶이길 200<br>
+              한양여대 본관 1F 행원스퀘어</p>
+              <!-- <br><br> -->
+            <!-- <img src="{% static 'web_app/assets/images/banner1.png' %}" alt="Seoul" /> -->
+            
+        </div>
       </div>
-      <br><br>
-
-    </div>
-  </div>
-  <!-- Featred Ends Here -->
-
-  <!--검색-->
-  <form method="POST" class="example" action="" style="margin:auto;max-width:350px">
-    {% csrf_token %}
-    <input type="text" placeholder="Search.." name="search">
-    <button type="submit"><i class="fa fa-search"></i></button>
-  </form>
-  <br>
-
-  <div class="container-fluid p-0 m-0 
-  align-items-center 
-  justify-content-center d-flex"
-  style="min-height: 100vh;">
-
-<!-- Row for the card-->
-<div class="row w-100 p-0 w-0">
-
-  {% if result %}
-  <!-- 카드 내용 -->
-  {% for book in result  %}
-  {% load humanize %} 
-  <div class="col-lg-4 mb-2">
-    <div class="card mx-auto" style="width:18rem;">
-      <a href="" data-toggle="modal" data-target="#exampleModalLong">
-        <img class="card-img-top" src="{{book.image.url}}" alt="Card image cap" width="80px" height="200px">
-        </a>
-        <div class="card-body">
-            <h5 class="card-title"> {{book.name}} </h5>
-            <p class="card-text"> {{book.desc|truncatechars:70}} </p>
-            <p class = "card-text" style = "color: blue;"> {{ book.amount|intcomma }} </p>
-            <center>
-
-              <a href="#link" class="btn btn-info" role="button">구매하기</a>
-            </center>
-          </div>
-    </div>
-  </div>
-  {% endfor %}
-  {% else %}
-<!-- <center><h1>No Data Found</h1></center> -->
-
-  {% for book in book %}
-  <div class="col-lg-4 mb-2">
-    <div class="card mx-auto" style="width:18rem;">
-      <a href="" data-toggle="modal" data-target="#exampleModalLong" 
-      class="building-link" data-name="{{ building.name }}">
-        <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap" width="100px" height="250px">
-      </a>
-        <div class="card-body">
-            <h5 class="card-title"> 
-              {{book.name}} 
-            </h5>
-            <p class="card-text"> 
-              {{book.desc|truncatechars:70}} 
-            </p>
-            <p class = "card-text" style = "color: blue;"> 
-              {{ book.amount }} 
-            </p>
-
-            <br>
-
-            <center>
-
-              <a href="{% url 'cart'  %}" class="btn btn-success" role="button">장바구니</a>
-
-              <a href="#link" class="btn btn-info" role="button">구매하기</a>
-            </center>
-          </div>
-    </div>
-  </div>
-  {% endfor %}
-  {% endif %}
- 
-<!-- Another column for card -->
-<div class="contact-page">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-         
-        <div id="map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.88762617726!2d127.04381262934571!3d37.5577112561269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca4a55b2f2d93%3A0xffdfb5c8c57860f5!2z7ZWc7JaR7Jes7J6Q64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1694117136465!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
-      </div>
-      <!-- <div class="col-md-6">
+<br><br><br>
+        <!-- <div class="col-md-6">
         <div class="right-content">
           <div class="container">
             <form id="contact" action="" method="post">
@@ -178,122 +205,96 @@ form.example::after {
                 </div>
                 </div>
                 </div> -->
-    </div>
-  </div>
-  </div>
-</div>
-            
 
-  <!-- Subscribe Form Starts Here -->
-  <div class="subscribe-form">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="section-heading">
-            <div class="line-dec"></div>
-            <h1> Q & A</h1>
-          </div>
-        </div>
-        <div class="col-md-8 offset-md-2">
-          <div class="main-content">
+        <!-- Subscribe Form Starts Here -->
+        <div class="subscribe-form">
             <div class="container">
-              <form id="subscribe" action="" method="get">
                 <div class="row">
-                  <div class="col-md-7">
-                    <fieldset>
-                      <input type="text" placeholder="검색하기.." class="form-control"
-                      onfocus="if(this.value == '') { this.value = ''; }" 
-                      onBlur="if(this.value == '') { this.value = '';}"
-                      value="" required="">
-                    </fieldset>
-                  </div>
-                  <div class="col-md-5">
-                    <fieldset>
-                      <button type="submit" id="form-submit" class="button">검색</button>
-                    </fieldset>
-<!--                     
-                    <form method="POST" class="example" action="" style="margin:auto;max-width:350px">
-                      {% csrf_token %}
-                      <input type="text" placeholder="Search.." name="search">
-                      <button type="submit"><i class="fa fa-search"></i></button> -->
-                  </div>
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <div class="line-dec"></div>
+                            <h1>Q & A</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-8 offset-md-2">
+                        <div class="main-content">
+                            <div class="container">
+                                <form id="subscribe" action="" method="get">
+                                    <div class="row">
+                                        <div class="col-md-7">
+                                            <fieldset>
+                                                <input
+                                                    type="text"
+                                                    placeholder="검색하기.."
+                                                    class="form-control"
+                                                    onfocus="if(this.value == '') { this.value = ''; }"
+                                                    onBlur="if(this.value == '') { this.value = '';}"
+                                                    value=""
+                                                    required=""
+                                                />
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <fieldset>
+                                                <button type="submit" id="form-submit" class="button">검색</button>
+                                            </fieldset>                 
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <!-- Subscribe Form Ends Here -->
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="building-name"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script>
+            $('.building-link').click(function () {
+                $('#building-name').html($(this).data('name'));
+                $('#building-description').html($(this).data('description'));
+                $('#building-img').src($(this).data('img'));
+            });
+        </script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script>
-$('.building-link').click(function(){
-    $('#building-name').html($(this).data('name'));
-    $('#building-description').html($(this).data('description'));
-    $('#building-img').src($(this).data('img'));
-});
-</script>
+        <script>
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const slideCount = slides.length;
+            const dots = document.querySelectorAll('.dot');
 
- <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const slideCount = slides.length;
-        const dots = document.querySelectorAll('.dot');
+            function showSlide(n) {
+                slides.forEach((slide) => (slide.style.display = 'none'));
+                slides[n].style.display = 'block';
 
-        function showSlide(n) {
-            slides.forEach(slide => slide.style.display = 'none');
-            slides[n].style.display = 'block';
+                dots.forEach((dot) => dot.classList.remove('active'));
+                dots[n].classList.add('active');
+            }
 
-            dots.forEach(dot => dot.classList.remove('active'));
-            dots[n].classList.add('active');
-        }
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                showSlide(currentSlide);
+            }
 
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                showSlide(currentSlide);
+            }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slideCount;
-            showSlide(currentSlide);
-        }
- 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-            showSlide(currentSlide);
-        }
- 
-        document.addEventListener('DOMContentLoaded', () => {
-            showSlide(currentSlide);
-            setInterval(nextSlide, 5000); // 5초마다 자동 슬라이드
+            document.addEventListener('DOMContentLoaded', () => {
+                showSlide(currentSlide);
+                setInterval(nextSlide, 5000); // 5초마다 자동 슬라이드
 
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        showSlide(index);
+                        currentSlide = index;
+                    });
+                });
+            });
+        </script>
 
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            showSlide(index);
-            currentSlide = index;
-        });
-    });
-});
-    </script>
-{% endblock %}
+        {% endblock %}
+    </body>
+</html>

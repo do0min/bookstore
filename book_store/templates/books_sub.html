@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}">
     <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}">
     <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}">
+    <link href= "{% static 'web_app/assets/css/styles.css' %}" rel="stylesheet">
 </head>
 <body>
     <div class="featured-page">
@@ -32,7 +33,7 @@
             </div>
         </div>
     </div>
-    </form>
+
     <br>
     <div class="container-fluid p-0 m-0 align-items-center justify-content-center d-flex" style="min-height: 100vh;">
         <!-- Row for the card -->
@@ -42,9 +43,8 @@
                     {% for book in books %}
                          <div class="col-lg-4 mb-2">
                             <div class="card mx-auto" style="width:18rem;">
-                                <a href="" data-toggle="modal" data-target="#exampleModalLong" 
-                                class="building-link" data-name="{{ building.name }}">
-                                    <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap" width="100px" height="250px">
+                                <a href="" data-toggle="modal" data-target="#exampleModalLong">
+                                    <img class="card-img-top" src="{{book.image.url}}" alt="Card image cap" width="80px" height="200px">
                                 </a>
                                     <div class="card-body">
                                         <h5 class="card-title"> 
@@ -60,9 +60,6 @@
                                     <br>
 
                                     <center>
-
-                                        <a href="{% url 'cart'  %}" class="btn btn-success" role="button">장바구니</a>
-
                                         <a href="#link" class="btn btn-info" role="button">구매하기</a>
                                     </center>
                                 </div>
