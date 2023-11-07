@@ -375,3 +375,12 @@ div.menu-section.global-service a.dropdown-item.global-service {
 }
 
 
+.my_info {
+  text-align: center; /* 가운데 정렬 */
+}
+
+.my_info .my_info_cart,
+.my_info .my_info_heart {
+  display: inline-block;
+  margin: 0 10px;
+}
