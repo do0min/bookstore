@@ -6,3 +6,4 @@ class BookRequestForm(forms.ModelForm):
         model = BookAdd
         fields = ['bookName', 'author','publisher','publicationYear','volume','remarks','price','isbn']
 
+
