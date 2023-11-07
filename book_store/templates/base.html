@@ -43,7 +43,7 @@
           </li> {% endcomment %}
 
           <li class="nav-item">
-            <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+            <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
           </li>
           
           <form id="logout" method="POST" action="{% url 'logout' %}">
@@ -81,14 +81,14 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             구매하기
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <!-- 미래ICT 메뉴 항목 -->
           <div class="menu-sections">
             <div class="menu-section future-ict">
-              <a class="dropdown-item future-ict" href="{% url 'department_books' department_name='미래ICT' %}">미래ICT</a>
+              <a class="dropdown-item future-ict">미래ICT</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='소프트웨어융합과' %}">소프트웨어융합과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='스마트IT과' %}">스마트IT과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='빅데이터과' %}">빅데이터과</a>
@@ -97,7 +97,7 @@
 
             <!-- 융합문화디자인 메뉴 항목 -->
             <div class="menu-section fusion-design">
-              <a class="dropdown-item design" href="{% url 'department_books' department_name='융합문화디자인' %}">융합문화디자인</a>
+              <a class="dropdown-item design">융합문화디자인</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='패션디자인과' %}">패션디자인과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='세라믹디자인과' %}">세라믹디자인과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='니트패션디자인과' %}">니트패션디자인과</a>
@@ -109,7 +109,7 @@
 
             <!-- 휴먼서비스 메뉴 항목 -->
             <div class="menu-section human-service">
-              <a class="dropdown-item human-service" href="{% url 'department_books' department_name='휴먼서비스' %}">휴먼서비스</a>
+              <a class="dropdown-item human-service">휴먼서비스</a>
               <a class="dropdown-item " href="{% url 'books_sub' subdepartment='식품영양과' %}">식품영양과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='스포츠건강관리과' %}">스포츠건강관리과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='유아교육과' %}">유아교육과</a>
@@ -119,7 +119,7 @@
 
             <!-- 글로벌서비스 메뉴 항목 -->
             <div class="menu-section global-service">
-              <a class="dropdown-item global-service" href="{% url 'department_books' department_name='글로벌서비스' %}">글로벌서비스</a>
+              <a class="dropdown-item global-service">글로벌서비스</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='호텔관광과' %}">호텔관광과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='실무영어과' %}">실무영어과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='서비스경영과' %}">서비스경영과</a>
@@ -141,7 +141,7 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             중고서적
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -150,14 +150,14 @@
              <div class="menu-section jung">
              <div style="display: flex; flex-direction: row;">
 
-            <a class="dropdown-item" href="{% url 'books_sub' subdepartment='중고1' %}">중고 팔기</a>
-            <a class="dropdown-item" href="{% url 'books_sub' subdepartment='중고2' %}">중고책 나눔</a>
-            <a class="dropdown-item" href="{% url 'books_sub' subdepartment='중고3' %}">중고 FAQ</a>
+            <a class="dropdown-item" href="{% url 'books_sub' subdepartment='중고팔기' %}">중고 팔기</a>
+            <a class="dropdown-item" href="{% url 'books_sub' subdepartment='중고책나눔' %}">중고책 나눔</a>
+            <a class="dropdown-item" href="{% url 'books_sub' subdepartment='중고FAQ' %}">중고 FAQ</a>
             </div></div>
             <!-- 미래ICT 메뉴 항목 -->
           <div class="menu-sections">
             <div class="menu-section future-ict">
-              <a class="dropdown-item future-ict" href="{% url 'department_books' department_name='미래ICT' %}">미래ICT</a>
+              <a class="dropdown-item future-ict">미래ICT</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='소프트웨어융합과' %}">소프트웨어융합과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='스마트IT과' %}">스마트IT과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='빅데이터과' %}">빅데이터과</a>
@@ -166,7 +166,7 @@
 
             <!-- 융합문화디자인 메뉴 항목 -->
             <div class="menu-section fusion-design">
-              <a class="dropdown-item design" href="{% url 'department_books' department_name='융합문화디자인' %}">융합문화디자인</a>
+              <a class="dropdown-item design">융합문화디자인</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='패션디자인과' %}">패션디자인과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='세라믹디자인과' %}">세라믹디자인과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='니트패션디자인과' %}">니트패션디자인과</a>
@@ -178,7 +178,7 @@
 
             <!-- 휴먼서비스 메뉴 항목 -->
             <div class="menu-section human-service">
-              <a class="dropdown-item human-service" href="{% url 'department_books' department_name='휴먼서비스' %}">휴먼서비스</a>
+              <a class="dropdown-item human-service">휴먼서비스</a>
               <a class="dropdown-item " href="{% url 'books_sub' subdepartment='식품영양과' %}">식품영양과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='스포츠건강관리과' %}">스포츠건강관리과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='유아교육과' %}">유아교육과</a>
@@ -188,7 +188,7 @@
 
             <!-- 글로벌서비스 메뉴 항목 -->
             <div class="menu-section global-service">
-              <a class="dropdown-item global-service" href="{% url 'department_books' department_name='글로벌서비스' %}">글로벌서비스</a>
+              <a class="dropdown-item global-service">글로벌서비스</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='호텔관광과' %}">호텔관광과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='실무영어과' %}">실무영어과</a>
               <a class="dropdown-item" href="{% url 'books_sub' subdepartment='서비스경영과' %}">서비스경영과</a>
