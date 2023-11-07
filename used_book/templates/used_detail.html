@@ -3,31 +3,37 @@
     {% extends 'base.html' %}
     {% block content %}
     {% load static %}
-
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
     <br>
     <br>
-    <body>
+    <style>
+      .bookimg{
+        width: 30%;
+      }
+      .book-description{
+        margin-left: 15%;
+      }
+    </style>
 
         <div class="container">
             <div class="row">
               <div class="col-md-12">
                 <div class="centered-container">
                   <div class="centered-div">
-                    <h3>{{ used_book.title }}</h3>
+                    <h3  class="center-text">{{ used_book.title }}</h3>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        
+          <div class="book-main">
           <div class="book-container">
-        
             <div class="book-description">
               <h6>저자: {{ used_book.author }}</h6>
             </div>
         
             <img class="book-image">
-            <img src="{{ used_book.image.url }}" class="book-image" alt="{{ used_book.title }} 이미지">
+            <img src="{{ used_book.image.url }}" class="bookimg" alt="{{ used_book.title }} 이미지">
         </div>
         
             <div class="book-details">
@@ -39,7 +45,9 @@
             </div>
         
           </div>
+          
           <br><hr><br>
+          
           <p class="card-text"> {{ used_book.description }} </p>
         
         

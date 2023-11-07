@@ -4,29 +4,101 @@
 {% block content %}
 {% load static %}
 
-<br>
-<br>
-<body>
+<head>
+<style>
+.buttonwhere{
+    display: flex; 
+    align-items: center;
+    margin: 50px;
+    margin-left: 64%;
+    text-align:center;
+}
+
+.buttoncute {
+    background-color: #62903E;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.used-books {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.used-book {
+    flex: 0 0 calc(33.33% - 50px);
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.book-title {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.book-image {
+    width: 60%;
+    height: auto;
+}
+
+
+.book-actions {
+    margin-top: 7px;
+}
+
+
+
+
+</style>
+</head>
+
+<div class="contact-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h1>중고서적</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+<div class="buttonwhere">
+    <div class="search-btn">
     <form method="get" action="{% url 'search' %}">
         {{ form }}
-        <button type="submit">검색</button>
+        <button type="submit"class="buttoncute">검색하기</button>
     </form>
-    <a href="{% url 'used_up' %}">
-        <button type="button">업로드</button>
-    </a>
-    <div>
-        {% for used_book in used_books %}
-            <h2>{{ used_book.title }}</h2>
-            <img src="{{ used_book.image.url }}" class="book-image" alt="{{ used_book.title }} 이미지">
-            <p>{{ used_book.description }}</p>
-            <center>
-                <a href="{% url 'used_detail' used_book.id %}" class="btn btn-info" role="button">구매하기</a>
-            </center>
-        {% empty %}
-            <p>아직 업로드된 중고서적이 없습니다.</p>
-        {% endfor %}
     </div>
-</body>
+    <div class="up-btn">
+        <button type="button"class="buttoncute">도서 업로드</button>
+    </div>
+</div>
+    <div class="used-books">
+    {% for used_book in used_books %}
+        <div class="used-book">
+            <h2 class="book-title">{{ used_book.title }}</h2>
+            <img src="{{ used_book.image.url }}" class="book-image" alt="{{ used_book.title }} 이미지">
+            <div class="book-actions">
+                <a href="{% url 'used_detail' used_book.id %}" class="btn btn-info" role="button">구매하기</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>아직 업로드된 중고서적이 없습니다.</p>
+    {% endfor %}
+</div>
+
 </body>
 {% endblock %}
 </html>

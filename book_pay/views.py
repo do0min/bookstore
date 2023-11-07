@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 import requests
 # import json
 # from django.template import loader
@@ -23,19 +23,26 @@ def pay(request):
             "approval_url": "paySuccess",
             "cancel_url": "payCancel",
             "fail_url": "payFail",
+            "tid": request.session['tid'],
         }
-
         res = requests.post(URL, headers=headers, params=params)
-        request.session['tid'] = res.json()['tid']      # 결제 승인시 사용할 tid를 세션에 저장
-        next_url = res.json()['next_redirect_pc_url']   # 결제 페이지로 넘어갈 url을 저장
-        return redirect(next_url)
+        print(res.json())
+        try:
+            request.session['tid'] = res.json()['tid']
+            next_url = res.json()['next_redirect_pc_url']
+            return redirect(next_url)
+        except KeyError as e:
+        # KeyError 예외 처리
+            print(f"KeyError: {e}")
+            # 또는 다른 대체 동작을 정의
+        return HttpResponse("알 수 없는 오류가 발생했습니다.")
 
     return render(request, 'pay.html')
 
 def approval(request):
     URL = 'https://kapi.kakao.com/v1/payment/approve'
     headers = {
-        "Authorization": "KakaoAK " + "자신의 admin key 넣기",
+        "Authorization": "KakaoAK " + "0b0173fdc32de47031ed49883752941f",
         "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
     }
     params = {
@@ -53,8 +60,7 @@ def approval(request):
         'res': res,
         'amount': amount,
     }
-    return render(request, 'approval.html', context)
-
+    return render(request, 'kakaopay/approval.html', context)
 def kakaoPay(request):
     return render(request, 'kakaopay.html')
 
@@ -68,10 +74,9 @@ def kakaoPayLogic(request):
         'cid': 'TC0ONETIME',
         'partner_order_id':'partner_order_id',
         'partner_user_id':'partner_user_id',
-        'item_name':'초코파이',
+        'item_name':'책',
         'quantity':'1',
-        'total_amount':'2200',
-        'vat_amount':'200',
+        'total_amount':'22000',
         'tax_free_amount':'0',
         # 내 애플리케이션 -> 앱설정 / 플랫폼 - WEB 사이트 도메인에 등록된 정보만 가능합니다
         # * 등록 : http://IP:8000 
@@ -93,7 +98,7 @@ def paySuccess(request):
     _data = {
         'cid':'TC0ONETIME',
         'tid': request.session['tid'],
-        'partner_order_id':'partner_order_id',
+        'amount':'partner_order_id',
         'partner_user_id':'partner_user_id',
         'pg_token': request.GET['pg_token']
     }

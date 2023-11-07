@@ -62,12 +62,6 @@ a {
 }
 
 /* Header Style */
-.navbar {
-   	 /* border: 1px solid #e0e0e0; */
-	/* background-color: rgba(224, 224, 224, 0.5); */
-	padding: 1px 0;
-	color: #000;
-}
 .navbar .navbar-brand {
 	text-align: center;
 	width: 100%;
@@ -237,7 +231,7 @@ a {
 
 /* Subscribe Style */
 .subscribe-form {
-	background-color: #3a8bcd;
+	background-color: #C6E7FA;
 	width: 100%;
 	padding: 80px 0px;
 	text-align: center;
@@ -285,7 +279,7 @@ a {
 	border-radius: 5px;
 	padding: 10px 15px;
 	display: inline-block;
-	color: #3a8bcd;
+	color: #C6E7FA;
 	font-size: 14px;
 	text-transform: uppercase;
 	font-weight: 300;

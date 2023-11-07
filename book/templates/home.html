@@ -28,24 +28,27 @@
                 box-sizing: border-box;
             }
 
+            .example {
+                display: flex; 
+                align-items: center;
+            }
+
             form.example input[type='text'] {
                 padding: 10px;
                 font-size: 17px;
-                border: 1px solid grey;
+                border: 1px solid rgb(61, 61, 61);
                 float: left;
                 width: 80%;
-                background: #f1f1f1;
+                background: #f7f6f6;
             }
 
             form.example button {
-                float: left;
                 width: 20%;
                 padding: 10px;
-                background: #2196f3;
-                color: white;
+                background: #DAF4CA;
+                color: #3c4537;
                 font-size: 17px;
-                border: 1px solid grey;
-                border-left: none;
+                border: 1px solid #3c4537;
                 cursor: pointer;
             }
 
@@ -60,8 +63,6 @@
             }
         </style>
     </head>
-
-    <body>
         <div class="banner">
             <div class="slide">
                 <img src="../images/banner-bg.jpg" alt="" />
@@ -81,35 +82,23 @@
         </div>
         <!-- Banner Ends Here -->
 
-        <!-- Featured Starts Here -->
-        <div class="featured-items">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <!-- <div class="section-heading">
-          <div class="line-dec"></div>
-          <h1>Featured Items</h1>
-        </div> -->
-                    </div>
-                    <br /><br />
-                </div>
-            </div>
-            <!-- Featred Ends Here -->
-
             <!--검색-->
+            <br><br><br>
+            <div class="search">
             <form method="POST" class="example" action="" style="margin: auto; max-width: 350px">
                 {% csrf_token %}
                 <input type="text" placeholder="Search.." name="search" />
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
+        </div>
             <br />
-<!-- 
+            <!-- 
             <div
                 class="container-fluid p-0 m-0 align-items-center justify-content-center d-flex"
                 style="min-height: 100vh"
             > -->
                 <!-- Row for the card-->
-                <div class="row w-100 p-0 w-0">
+                <!-- <div class="row w-100 p-0 w-0"> -->
                     <!-- {% if result %} -->
                     <!-- 카드 내용 -->
                     <!-- {% for book in result %} {% load humanize %}
@@ -169,12 +158,12 @@
                                 </center>
                             </div>
                         </div>
-                    </div> -->
-<!-- 
-                    {% endfor %} {% endif %} -->
+                    </div>
+
+                    {% endfor %} {% endif %}    
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="map">
         <div class="map-container" align-items="center" text-align="center">
             <iframe
@@ -209,43 +198,17 @@
         <!-- Subscribe Form Starts Here -->
         <div class="subscribe-form">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section-heading">
-                            <div class="line-dec"></div>
-                            <h1>Q & A</h1>
-                        </div>
-                    </div>
-                    <div class="col-md-8 offset-md-2">
-                        <div class="main-content">
-                            <div class="container">
-                                <form id="subscribe" action="" method="get">
-                                    <div class="row">
-                                        <div class="col-md-7">
-                                            <fieldset>
-                                                <input
-                                                    type="text"
-                                                    placeholder="검색하기.."
-                                                    class="form-control"
-                                                    onfocus="if(this.value == '') { this.value = ''; }"
-                                                    onBlur="if(this.value == '') { this.value = '';}"
-                                                    value=""
-                                                    required=""
-                                                />
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <fieldset>
-                                                <button type="submit" id="form-submit" class="button">검색</button>
-                                            </fieldset>                 
-
-                                        </div>
-                                    </div>
-                                </form>
+                    <div class="container">
+                            <img src="{% static 'web_app/assets/images/header-logo.png' %}" width="40px">
+                            <br><br>
+                            <p>회사명: 미나상</p>
+                            <p>대표: 우희민</p>
+                            <p>소재지: 서울특별시 성동구 살곶이길 200</p>
+                            <p>대표 전화: 1588-0000</p>
+                            <p>대표 메일: mina@hyw.co.kr</p>
                             </div>
+                          </div>
                         </div>
-                    </div>
-                </div>
             </div>
         </div>
 

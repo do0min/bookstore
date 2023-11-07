@@ -140,11 +140,10 @@
           <a class="nav-link" href="{% url 'add' %}">도서 신청</a>
         </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            중고서적
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li class="nav-item">
+            <a class="nav-link"  href="{% url 'used' %}">중고서적</a>
+          </li>
+          <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
 
              <div class="menu-section jung">
@@ -153,7 +152,7 @@
             <a class="dropdown-item" href="{% url 'used' %}">중고 팔기</a>
             <a class="dropdown-item" href="{% url 'books_sub' subdepartment='중고책나눔' %}">중고책 나눔</a>
             <a class="dropdown-item" href="{% url 'books_sub' subdepartment='중고FAQ' %}">중고 FAQ</a>
-            </div></div>
+            </div></div> -->
             <!-- 미래ICT 메뉴 항목 -->
           <!-- <div class="menu-sections">
             <div class="menu-section future-ict">
@@ -216,20 +215,7 @@
     <!-- Footer Starts Here -->
     <div class="footer">
         <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="footer-menu">
-                <br>
-                <div class="logo">
-                <ul><img src="{% static 'web_app/assets/images/header-logo.png' %}" href="" alt="" width="40px"></ul>
-                <ul>회사명: 미나상</ul>
-                <ul>대표: 우희민</ul>
-                <ul>소재지: 서울특별시 성동구 살곶이길 200</ul>
-                <ul>대표 전화: 1588-0000</ul>
-                <ul>대표 메일: mina@hyw.co.kr</ul>
-                </div>
-              </div>
-            </div>
+
             
             
           </div>
