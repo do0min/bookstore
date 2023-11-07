@@ -45,10 +45,14 @@
           <li class="nav-item">
             <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
           </li>
+          
           <form id="logout" method="POST" action="{% url 'logout' %}">
             {% csrf_token %}
             <input type="hidden">
           </form>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'my_info' %}">마이페이지</a>
+          </li>
           {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">로그인</a>
