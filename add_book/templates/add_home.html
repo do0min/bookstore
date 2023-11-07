@@ -35,12 +35,19 @@
               <div class="section-heading">
                 <div class="line-dec"></div>
                 <h1>도서 신청</h1>
+                    <div class="add_notice">
+                     <p> ＊본교 재학생 및 교직원이 도서관에 소장하여 이용을 원하는 도서를 구입 신청하는 서비스입니다.</p>
+                    <p> ＊도서 신청시 하단에 항목들을 정확히 기입하여 주시길 바랍니다. </p>
+                 </div>
               </div>
             </div>
           </div>
         </div>
          <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
+
+
+
     <style>
     table {
         width: 50%;
@@ -162,7 +169,11 @@
       function showSuccessPopup() {
     alert('저장되었습니다'); // 팝업 메시지
 }
+
     </script>
+
+
     {% endblock %}
          </form></div></body>
+
 </html>
