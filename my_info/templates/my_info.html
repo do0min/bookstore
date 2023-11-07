@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-{% extends 'base.html' %}
-{% block content %}
-{% load static %}
-  <!-- ... (내 정보 페이지의 내용) ... -->
-
-<body>
-
-<h1>마이페이지</h1>
-
+    {% extends 'base.html' %} {% block content %} {% load static %}
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}">
 
 
   <!-- 장바구니 페이지의 내용 추가 -->
@@ -28,11 +21,6 @@
                   <!-- ... (기존 코드) ... -->
                 {% endfor %}
               {% endif %}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- 장바구니 페이지로 이동하는 버튼 추가 -->
 <div class="row row-center">
@@ -44,9 +32,28 @@
   <a href="{% url 'heart' %}">
     <img src="{% static 'cart_2.png' %}" alt="관심도서 페이지로 이동">
   </a></div>
-</div></div>
+</div></div></div>
 <br>
   <!-- ... (내 정보 페이지의 내용) ... -->
 {% endblock %}
 </body>
+
+        <!-- 장바구니 페이지로 이동하는 버튼 추가 -->
+        <div class="my_info">
+            <div class="my_info_cart">
+                <a href="{% url 'cart' %}">
+                    <img src="{% static 'cart_1.png' %}" alt="장바구니 페이지로 이동" />
+                </a>
+            </div>
+            <div class="my_info_heart">
+                <a href="{% url 'heart' %}">
+                    <img src="{% static 'cart_2.png' %}" alt="관심도서 페이지로 이동" />
+                </a>
+            </div>
+        </div>
+    </div>
+    <br />  </div></div>
+    <!-- ... (내 정보 페이지의 내용) ... -->
+    {% endblock %}
+        </div></div>
 </html>
