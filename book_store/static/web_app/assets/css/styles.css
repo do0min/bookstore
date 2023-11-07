@@ -90,9 +90,15 @@ div.menu-section.global-service a.dropdown-item.global-service {
 .centered-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    /* align-items: center; */
+    /* text-align: center; */
     /* min-height: 100vh; */
+}
+.add_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 /*  */
 .book-container {
@@ -157,11 +163,17 @@ div.menu-section.global-service a.dropdown-item.global-service {
 /* add css */
 .input-container {
     display: inline-block;
-    margin: 8px;
+    margin: 100px;
     margin-top: 0px;
     background-color: #18288d;
     padding: 4px;
     border-radius: 6px;
+}
+.centered-container p {
+  color: #fff;
+  padding-right: 60px;
+  /* margin-left: 0;
+  margin-right: 70%; */
 }
 
 .form-control {
