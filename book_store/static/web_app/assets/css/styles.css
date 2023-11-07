@@ -8,17 +8,12 @@
     color: #ffc107; /* 드롭다운 텍스트 색상 - hover나 focus 상태일 때 */
 }
 
-.navbar-dark .navbar-toggler-icon {
-    background-color: #2e3a5e; /* 토글 버튼 아이콘의 배경색 */
-}
 
 .dropdown-menu {
     max-width: max-content;
     min-width: max-content;
     width: 100%;
     white-space: nowrap;
-    /* left: auto; */
-    /* right: auto; */
     overflow-x: auto;
     /* 화면 가운데로 정렬하기 위해 이동 */
     background-color: #2e3a5e;
