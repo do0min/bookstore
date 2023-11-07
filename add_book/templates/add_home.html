@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
     {% extends 'base.html' %}
     {% block content %}
     {% load static %}
     <head>
 
-        <meta charset="utf-8">
+         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -38,75 +39,130 @@
             </div>
           </div>
         </div>
-          <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="centered-container">
-              <div class="input-container" id="form-submit">
-                <p>도서명</p>
+         <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <style>
+    table {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    label {
+
+
+         padding: 5px; /* 원하는 여백을 설정하세요 */
+
+    }
+
+
+
+    th, td {
+        padding: 20px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+     input, select, textarea {
+        width: 60%; /* 폼 필드의 가로 크기를 100%로 설정합니다 */
+        height: 35px;
+        border: 1px solid lightgray;
+    }
+
+</style>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table>
+        <tr>
+             <td class="label-cell">
+              <label>도서명</label>
+            </td>
+            <td>
                 {{ form.bookName }}
-              </div>
-              <div class="input-container" id="form-submit">
-                <p>저자</p>
+            </td>
+        </tr>
+        <tr>
+             <td class="label-cell">
+                 <label>작가</label>
+
+            </td>
+            <td>
                 {{ form.author }}
-                </div>
-            </div>
-            <div class="centered-container">
-            <div class="input-container" id="form-submit">
-              <!-- 출판사 -->
-              <p>출판사</p>
-              {{ form.publisher }}
-            </div>
-            <div class="input-container" id="form-submit">
-              <!-- 출판년도 -->
-              <p>출판년도</p>
-              {{ form.publicationYear }}
-            </div>
-          </div>
-          <div class="centered-container">
-          <div class="input-container" id="form-submit">
-            <!-- 권수 -->
-            <p>권수</p>
-            {{ form.volume }}
-          </div>
-          <div class="input-container" id="form-submit">
-            <!-- 비고 -->
-            <p>비교</p>
-            {{ form.remarks }}
-          </div>
-          </div>
-          <div class="centered-container">
-            <div class="input-container" id="form-submit">
-              <p>가격</p>
-              {{ form.price }}
-            </div>
-            <div class="input-container" id="form-submit">
-              <p>ISBN</p>
-              {{ form.isbn }}
-              
-            </div>
-            </div>
-            <div class="add_btn">
-            <button type="submit"  class="btn btn-warning" onclick="showSuccessPopup()">저장</button>
-            </div>
-          </form>
+            </td>
+        </tr>
+        <tr>
+             <td class="label-cell">
+                <label>출판사</label>
+            </td>
+            <td>
+                {{ form.publisher }}
+            </td>
+        </tr>
+        <tr>
+             <td class="label-cell">
+                <label>출판년도</label>
+            </td>
+            <td>
+                {{ form.publicationYear }}
+            </td>
+        </tr>
+        <tr>
+             <td class="label-cell">
+                <label>권수</label>
+            </td>
+            <td>
+                {{ form.volume }}
+            </td>
+        </tr>
+        <tr>
+             <td class="label-cell">
+                <label>비교</label>
+            </td>
+            <td>
+                {{ form.remarks }}
+            </td>
+        </tr>
+        <tr>
+             <td class="label-cell">
+                <label>가격</label>
+            </td>
+            <td>
+                {{ form.price }}
+            </td>
+        </tr>
+        <tr>
+             <td class="label-cell">
+                <label>ISBN</label>
+            </td>
+            <td>
+                {{ form.isbn }}
+            </td>
+        </tr>
+    </table>
+
+    </form>
+
+    <div class="add_btn">
+        <button type="submit" class="btn btn-primary" onclick="showSuccessPopup()">저장</button>
     </div>
+
 
         
         
         {% if messages %}
   <ul class="messages">
     {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
   </ul>
 {% endif %}
         <hr>
-    </div>
+
     <script>
       function showSuccessPopup() {
     alert('저장되었습니다'); // 팝업 메시지
 }
     </script>
     {% endblock %}
-    </body>
+         </form></div></body>
 </html>
