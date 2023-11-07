@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% extends 'base.html' %}
+    {% block content %}
+    {% load static %}
+
+    <br>
+    
+    <body>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">업로드</button>
+        </form>
+    </body>
+    {% endblock %}
+</html>

@@ -26,7 +26,7 @@
 
 
     </head>
-
+<body>
     <div class="contact-page">
         <div class="container">
           <div class="row">
@@ -38,53 +38,75 @@
             </div>
           </div>
         </div>
-        <div class="centered-container">
-          <form id="contact" action="" method="post">
-            <div class="input-container">
-              <input name="name" type="text" class="form-control" id="name" placeholder="도서명" required="">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="centered-container">
+              <div class="input-container" id="form-submit">
+                <p>도서명</p>
+                {{ form.bookName }}
+              </div>
+              <div class="input-container" id="form-submit">
+                <p>저자</p>
+                {{ form.author }}
+                </div>
             </div>
-            <div class="input-container">
-              <input name="email" type="text" class="form-control" id="email" placeholder="저자" required="">
+            <div class="centered-container">
+            <div class="input-container" id="form-submit">
+              <!-- 출판사 -->
+              <p>출판사</p>
+              {{ form.publisher }}
+            </div>
+            <div class="input-container" id="form-submit">
+              <!-- 출판년도 -->
+              <p>출판년도</p>
+              {{ form.publicationYear }}
+            </div>
+          </div>
+          <div class="centered-container">
+          <div class="input-container" id="form-submit">
+            <!-- 권수 -->
+            <p>권수</p>
+            {{ form.volume }}
+          </div>
+          <div class="input-container" id="form-submit">
+            <!-- 비고 -->
+            <p>비교</p>
+            {{ form.remarks }}
+          </div>
+          </div>
+          <div class="centered-container">
+            <div class="input-container" id="form-submit">
+              <p>가격</p>
+              {{ form.price }}
+            </div>
+            <div class="input-container" id="form-submit">
+              <p>ISBN</p>
+              {{ form.isbn }}
+              
+            </div>
+            </div>
+            <div class="add_btn">
+            <button type="submit"  class="btn btn-warning" onclick="showSuccessPopup()">저장</button>
             </div>
           </form>
-        </div>
-        <div class="centered-container">
-          <form id="contact" action="" method="post">
-            <div class="input-container">
-              <input name="subject" type="text" class="form-control" id="subject" placeholder="출판사" required="">
-            </div>
-            <div class="input-container">
-              <input name="subject" type="text" class="form-control" id="subject" placeholder="출판년도" required="">
-            </div>
-          </form>
-        </div>
-        <div class="centered-container">
-          <form id="contact" action="" method="post">
-            <div class="input-container">
-              <input name="subject" type="text" class="form-control" id="subject" placeholder="권수" required="">
-            </div>
-            <div class="input-container">
-              <input name="subject" type="text" class="form-control" id="subject" placeholder="비고" required="">
-            </div>
-          </form>
-        </div>
-        <div class="centered-container">
-          <form id="contact" action="" method="post">
-            <div class="input-container">
-              <input name="subject" type="text" class="form-control" id="subject" placeholder="가격" required="">
-            </div>
-            <div class="input-container">
-              <input name="subject" type="text" class="form-control" id="subject" placeholder="ISBN" required="">
-            </div>
-          </form>
-        </div>
-        <br>        
-        <div class="centered-container">
-            <button type="submit" id="form-submit" class="btn btn-warning">저장</button>
-        </div>
-        <br>
-        <hr>
     </div>
 
+        
+        
+        {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+        <hr>
+    </div>
+    <script>
+      function showSuccessPopup() {
+    alert('저장되었습니다'); // 팝업 메시지
+}
+    </script>
     {% endblock %}
+    </body>
 </html>
