@@ -62,6 +62,12 @@ a {
 }
 
 /* Header Style */
+.navbar {
+   	 /* border: 1px solid #e0e0e0; */
+	/* background-color: rgba(224, 224, 224, 0.5); */
+	padding: 1px 0;
+	color: #000;
+}
 .navbar .navbar-brand {
 	text-align: center;
 	width: 100%;

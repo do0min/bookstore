@@ -1,32 +1,48 @@
-
 {% extends 'base.html' %}
 
 {% load static %}
 
-{% block title %}관심도서{% endblock %}
-
-{% block content %}
+{% block title %}찜한 상품{% endblock %}
 <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}">
 
-<br><br><br>
+{% block content %}
 <div class="book-container">
   <div class="book-description">
-  <h1>찜하기</h1>
+<br><br><br>
+					 <section class="wishlist">
+        <h2>찜한 상품</h2>
+        <div class="wishlist__information">
+          <ul>
+            <li>찜한 상품 목록입니다.</li>
+            <li>상품 정보가 변경될 수 있으니 주문 시 다시 확인해 주세요.</li>
+          </ul>
+        </div>
+					 <table class="list-table">
+				      <thead>
+				          <tr>
+				              <th >상품</th>
+				              <th>상품명</th>
+				              <th >상품 설명</th>
+				              <th>상품 가격</th>
+				              <th>삭제</th>
+				           </tr>
+				        </thead>
+				       
+				        <tbody>
+				         <tr class="cart__list__detail">
+                <td><img src="{% static 'web_app/assets/images/header-logo.png' %}" alt="" height="50px" ></td>
+   
 
-  <!-- 장바구니 이미지 -->
-  <img src="{% static 'web_app/heart.png' %}" alt="찜하기 아이콘" width="50" height="50">
-
-  <!-- 여기에 장바구니 아이템 목록 등을 표시하는 내용 추가 -->
-  <!-- 예시로 임의의 텍스트를 사용하였습니다. 실제로는 장바구니 아이템을 동적으로 표시해야 합니다. -->
-
-  <div>
-    <h2>관심 있는 책 목록</h2>
-    <ul>
-        {% for heat in user_hearts %}
-            <li>{{ heat.title }}</li>
-        {% endfor %}
-    </ul>
-  </div>
-  </div>
-  </div>
+    <td><a href="#">항공서비스 실무중국어</a><span class="cart__list__smartstore"> </span>
+        <p>항공과</p>
+        
+    </td>
+    <td>설명</td>
+    <td><span class="price">17,000</span></td>
+    <td><button class="delete-button">X</button></td>
+    
+				 
+				    </table>
+				</div>
+			</div>
 {% endblock %}

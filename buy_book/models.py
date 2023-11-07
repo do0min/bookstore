@@ -11,10 +11,19 @@ class Book(models.Model):
     stock = models.PositiveIntegerField()  # 재고 정보 추가
     delivery_info = models.CharField(max_length=100)  # 배송 정보 추가
 
+
     def __str__(self):
         return self.name
 
 class buy_detail():
     
     def __str__(self) :
+        return self.name
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True)
+
+    def __str__(self):
         return self.name
