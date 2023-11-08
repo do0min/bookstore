@@ -119,9 +119,9 @@ div.menu-section.global-service a.dropdown-item.global-service {
 }
 
 .book-description {
-    /* width: 55% */
-    /* display: flex; */
-    /* justify-content: center;  */
+    width: 55%;
+    display: flex;
+    justify-content: center; 
     width: 300px;
     padding-left: 4em;
 }
