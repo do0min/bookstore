@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UsedBookForm, SearchForm
 from .models import UsedBook  # 모델 임포트 필요
 from django.db.models import Q
+from django.http import JsonResponse, HttpResponse
+from django.contrib.auth.decorators import login_required
 
 def search(request):
     form = SearchForm(request.GET)
@@ -44,4 +46,23 @@ def used_detail(request, used_id):
     return render(request, 'used_detail.html', {'used_book': used_book})
 
 
-  
+
+@login_required  # 사용자 로그인이 필요한 경우
+def add_heart(request, book_id):
+    book = get_object_or_404(UsedBook, id=book_id)
+    user_hearts = request.user.profile.hearts.all()
+    context = {
+        "book": book,
+        "user_hearts": user_hearts,
+    }
+    if request.is_ajax():
+        return JsonResponse({"message": "책을 관심 목록에 추가했습니다."})
+    else:
+        # 사용자가 브라우저에서 요청을 보낸 경우, 다른 앱의 템플릿을 렌더링하고 context 변수를 전달
+        return render(request, 'heart.html', context)
+
+@login_required
+def add_cart(request, book_id):
+    book = get_object_or_404(UsedBook, id=book_id)
+    # 여기에서 장바구니에 책을 추가하는 로직을 구현
+    return JsonResponse({"message": "책을 장바구니에 추가했습니다."})

@@ -25,7 +25,34 @@
 
                 <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}">
 
-
+                <style>
+                    table {
+                        width: 50%;
+                        margin: 0 auto;
+                    }
+                
+                    label {
+                
+                
+                         padding: 5px; /* 원하는 여백을 설정하세요 */
+                
+                    }
+                
+                
+                
+                    th, td {
+                        padding: 20px;
+                        text-align: left;
+                        border: 1px solid #ddd;
+                    }
+                
+                     input, select, textarea {
+                        width: 60%; /* 폼 필드의 가로 크기를 100%로 설정합니다 */
+                        height: 35px;
+                        border: 1px solid lightgray;
+                    }
+                
+                </style>
     </head>
 <body>
     <div class="contact-page">
@@ -46,39 +73,6 @@
          <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
-
-
-    <style>
-    table {
-        width: 50%;
-        margin: 0 auto;
-    }
-
-    label {
-
-
-         padding: 5px; /* 원하는 여백을 설정하세요 */
-
-    }
-
-
-
-    th, td {
-        padding: 20px;
-        text-align: left;
-        border: 1px solid #ddd;
-    }
-
-     input, select, textarea {
-        width: 60%; /* 폼 필드의 가로 크기를 100%로 설정합니다 */
-        height: 35px;
-        border: 1px solid lightgray;
-    }
-
-</style>
-
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
     <table>
         <tr>
              <td class="label-cell">
@@ -147,13 +141,13 @@
         </tr>
     </table>
 
-    </form>
+    
 
     <div class="add_btn">
         <button type="submit" class="btn btn-primary" onclick="showSuccessPopup()">저장</button>
     </div>
 
-
+</form>
         
         
         {% if messages %}

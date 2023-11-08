@@ -1,5 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User 
+# from .models import UsedBook
+
 
 # Create your models here.
 class Book(models.Model):
@@ -25,9 +27,9 @@ class SubDepartment(models.Model):
         return self.name
 
 
-class Cart(models.Model):
-    book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(default=1)
+# class Cart(models.Model):
+#     book = models.ForeignKey(Book, on_delete=models.CASCADE)
+#     quantity = models.PositiveIntegerField(default=1)
 
 
 class BookCart(models.Model):
@@ -39,6 +41,23 @@ class BookCart(models.Model):
         return f"{self.user.username} - {self.book.name}"
 
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    face = models.ImageField(upload_to='faces/', blank=True, null=True)
+# class Cart(models .Model) :
+#     cart_id = models.CharField(max_Length=250, blank=True)
+#     date_added = models.DateField(auto_now_add=True)
+#     class Meta:
+#         db_table = "Cart"
+#         ordering = ['date added']
+#     def _str (self):
+#         return self.cart_id 
+    
+# class CartItem(models .Model):
+#     product = models. ForeignKey (UsedBook, on_deLete=models.CASCADE)
+#     cart = models. ForeignKey (Cart, on_delete=models.CASCADE)
+#     quantity = models.IntegerField()
+#     active = models. BooleanField (default=True)
+#     class Meta:
+#         db_table = 'CartItem'
+#         def sub_total(self):
+#             return self.product.price * self.quantity
+#     def _str (self):
+#         return self.product

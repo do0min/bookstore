@@ -101,11 +101,11 @@
         <button href="">관심</button>
         <button>장바구니</button>
         <button>픽업</button>
-        <button>구매하기</button>
-        </div>
+        <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button>결제</button></a>
+      </div>
       </div>
     </div>
-  </body>
+ </body>
   <!-- <body>
     <h1>{{ book.name }}</h1>
     <p>저자: {{ book.author }}</p>

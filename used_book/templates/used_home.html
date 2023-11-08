@@ -7,11 +7,15 @@
 <head>
 <style>
 .buttonwhere{
+    display: flex; 
+    align-items: center;
     margin: 50px;
+    margin-left: 64%;
     text-align:center;
 }
+
 .buttoncute {
-    background-color: #5ba7b6;
+    background-color: #62903E;
     color: #fff;
     border: none;
     padding: 8px 20px;
@@ -53,22 +57,34 @@
 
 
 
+
 </style>
 </head>
 
-<br>
-<br>
-<body>
-    <div class="buttonwhere">
+<div class="contact-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="section-heading">
+            <div class="line-dec"></div>
+            <h1>중고서적</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    
+<div class="buttonwhere">
+    <div class="search-btn">
     <form method="get" action="{% url 'search' %}">
         {{ form }}
         <button type="submit"class="buttoncute">검색하기</button>
     </form>
-    <span>혹은</span>
-    <a href="{% url 'used_up' %}">
+    </div>
+    <div class="up-btn">
         <button type="button"class="buttoncute">도서 업로드</button>
-        </div>
-    </a>
+    </div>
+</div>
     <div class="used-books">
     {% for used_book in used_books %}
         <div class="used-book">
