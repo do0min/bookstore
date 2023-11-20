@@ -72,11 +72,25 @@ WSGI_APPLICATION = "book_store.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
+    'ms': {
+        'ENGINE': 'django.db.backends.mysql', #1
+        'NAME': 'newschema', #2
+        'USER': 'root', #3                      
+        'PASSWORD': '',  #4              
+        'HOST': '34.68.236.192',   #5                
+        'PORT': '3306', #6
+    },
+    'default':{
         "ENGINE": "django.db.backends.sqlite3",
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+
+# import my_settings
+
+# DATABASES = my_settings.DATABASES
+# SECRET_KEY = my_settings.SECRET_KEY
 
 
 # Password validation
