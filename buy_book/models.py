@@ -19,3 +19,10 @@ class buy_detail():
     
     def __str__(self) :
         return self.name
+
+class Heart(models.Model):
+    name = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='hearted_books')
+    author = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='hearted_users')
+
+    def __str__(self):
+        return f"Hearted by {self.name.name} for {self.author.author}"

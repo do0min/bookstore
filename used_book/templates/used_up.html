@@ -68,9 +68,8 @@
                 </div>
               </div>
             </div>
-             <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <!-- {{ form.as_p }} -->
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <table>
                     <tr>
                         <td class="label-cell">
@@ -93,7 +92,7 @@
                             <label>책 상태</label>
                         </td>
                         <td>
-                            {{ form.description}}
+                            {{ form.description }}
                         </td>
                     </tr>
                     <tr>
@@ -101,7 +100,15 @@
                             <label>가격</label>
                         </td>
                         <td>
-                            {{ form.price}}
+                            {{ form.price }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">
+                            <label>학과</label>
+                        </td>
+                        <td>
+                            {{ form.category }}
                         </td>
                     </tr>
                     <tr>
@@ -112,28 +119,30 @@
                             {{ form.image }}
                         </td>
                     </tr>
-
-
                 </table>
-            <div class="add_btn">
-                <button type="submit" class="btn btn-primary" onclick="showSuccessPopup()">업로드</button>
-            </div>
-            <!-- <button type="submit">업로드</button> -->
+            
+                <div class="add_btn">
+                    <a href="{% url 'used'%}"><button type="submit" class="btn btn-primary" onclick="showSuccessPopup()">업로드</button></a>
+                </div>
+            </form>
 
-    {% if messages %}
-    <ul class="messages">
-      {% for message in messages %}
-        <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  {% endif %}
-          <hr>
-  
-      <script>
-        function showSuccessPopup() {
-      alert('저장되었습니다'); // 팝업 메시지
-  }
-      </script>
-      {% endblock %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <hr>
+
+            <script>
+                function showSuccessPopup() {
+                    alert('저장되었습니다'); // 팝업 메시지
+                }
+            </script>
+        </div>
+    </body>
+    {% endblock %}
            </form></div></body>
 </html>

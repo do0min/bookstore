@@ -68,7 +68,7 @@ def delete_book(request, used_id):
         used_book.delete()
         return redirect('used')  # Redirect to the desired page after deletion
 
-    return render(request, 'delete_book.html', {'used_book': used_book})
+    return render(request, 'used_home.html', {'used_book': used_book})
 
 @login_required  # 사용자 로그인이 필요한 경우
 def add_heart(request, book_id):

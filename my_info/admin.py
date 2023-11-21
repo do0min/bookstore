@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import BookCart
+# from .models import Heart
 
-admin.site.register(BookCart)
+# admin.site.register(Heart)

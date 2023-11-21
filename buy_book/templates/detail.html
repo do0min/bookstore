@@ -97,13 +97,34 @@
 
       <div class="book-button">
         <div class="button">
-        <button href="">관심</button>
+          <form method="post" action="{% url 'add_to_favorites' book.id %}">
+            {% csrf_token %}
+            <button type="submit">관심</button>
+        </form>
         <button>장바구니</button>
         <a  href="{% url 'pick_up' book.id %}"><button>픽업</button>
         <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button>결제</button></a>
       </div>
       </div>
     </div>
+    <!-- <script>
+      $(document).ready(function () {
+          $(".add-to-favorites").click(function () {
+              var bookId = $(this).data("book-id");
+              $.ajax({
+                  url: "/add_to_favorites/" + bookId + "/",
+                  type: "POST",
+                  success: function (data) {
+                      alert('관심도서에 추가되었습니다.');
+                  },
+                  error: function (error) {
+                      alert('오류가 발생했습니다. 다시 시도해주세요.');
+                  }
+              });
+          });
+      });
+      </script> -->
  </body>
+ 
   {% endblock %}
 </html>

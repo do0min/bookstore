@@ -6,43 +6,44 @@
 <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}">
 
 {% block content %}
-<div class="book-container">
-  <div class="book-description">
-<br><br><br>
-					 <section class="wishlist">
-        <h2>찜한 상품</h2>
-        <div class="wishlist__information">
-          <ul>
-            <li>찜한 상품 목록입니다.</li>
-            <li>상품 정보가 변경될 수 있으니 주문 시 다시 확인해 주세요.</li>
-          </ul>
-        </div>
-					 <table class="list-table">
-				      <thead>
-				          <tr>
-				              <th >상품</th>
-				              <th>상품명</th>
-				              <th >상품 설명</th>
-				              <th>상품 가격</th>
-				              <th>삭제</th>
-				           </tr>
-				        </thead>
-				       
-				        <tbody>
-				         <tr class="cart__list__detail">
-                <td><img src="{% static 'web_app/assets/images/header-logo.png' %}" alt="" height="50px" ></td>
-   
-
-    <td><a href="#">항공서비스 실무중국어</a><span class="cart__list__smartstore"> </span>
-        <p>항공과</p>
-        
-    </td>
-    <td>설명</td>
-    <td><span class="price">17,000</span></td>
-    <td><button class="delete-button">X</button></td>
-    
-				 
-				    </table>
+<div class="contact-page">
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-12">
+		  <div class="section-heading">
+			<div class="line-dec"></div>
+			<h1>관심도서</h1>
+				<div class="add_notice">
+					<p> ＊관심도서 상품 목록입니다.</p>
+					<p> ＊상품 정보가 변경될 수 있으니 주문 시 다시 확인해 주세요. </p>
 				</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+
+	{% for favorited_book in favorited_books %}
+    <div>
+        <img src="{{ favorited_book.book.image.url }}" alt="{{ favorited_book.book.name }}" height="50px">
+        <p>{{ favorited_book.book.name }}</p>
+        <p>{{ favorited_book.book.author }}</p>
+        <form method="post" action="{% url 'remove_from_favorites' favorited_book.book.id %}">
+            {% csrf_token %}
+            <button type="submit">삭제</button>
+        </form>
+    </div>
+	
+		</div>
+		</div>
+		<div class="book-container">
+			<div class="button"><buttion>삭제</buttion></div>
+			<div>
+				<img src="{{ book.image.url }}" alt="" height="50px" >
+				<br>
+				<a>{{book.name}}</a>
+				<a>{{book.author}}</a>
 			</div>
+</div>
+
 {% endblock %}
+

@@ -38,11 +38,14 @@
     <div class="book-details">
         <p class="price_left">저자: {{ used_book.author }}</p> <br>
         <hr class="d-hr">
+        <h6 class="price_left">학과: {{used_book.category }}</h6> <br>
+        <hr class="d-hr">
         <b class="price_left">{{ used_book.price }}원</b> <br>
         <hr class="d-hr">
         <p class="price_left">재고: 권</p> <br>
         <hr class="d-hr">
         <h6 class="price_left">배송안내: </h6> <br>
+
     </div>
 </div>
 <button class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">Delete</button>
