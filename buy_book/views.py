@@ -15,6 +15,20 @@ def detail(request, book_id):
 
 def buy(request):
     book = Book.objects.all()
+    book_list = Book.objects.all()
+    # 페이지당 보여줄 항목 수
+    items_per_page = 10
+    paginator = Paginator(book_list, items_per_page)
+
+    page = request.GET.get('page')
+    try:
+        book = paginator.page(page)
+    except PageNotAnInteger:
+        # 페이지 번호가 정수가 아닌 경우, 첫 번째 페이지로 이동
+        book = paginator.page(1)
+    except EmptyPage:
+        # 페이지 범위를 초과하는 경우, 마지막 페이지로 이동
+        book = paginator.page(paginator.num_pages)
     if request.method == 'POST':
         search = request.POST.get('search')
         results = Book.objects.filter(Q(name__icontains=search))
@@ -28,6 +42,8 @@ def buy(request):
         'book':book,
     }
     return render(request, 'main.html', context)
+
+
 
 
 def books_sub(request, subdepartment): 

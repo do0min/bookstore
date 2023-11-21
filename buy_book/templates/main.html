@@ -192,7 +192,22 @@
                       </div>
                   </div>
 
-                  {% endfor %} {% endif %}    
+                  {% endfor %} {% endif %}  
+                  {% if books.has_previous %}
+                  <a href="?page=1">first</a>
+                  <a href="?page={{ books.previous_page_number }}">previous</a>
+              {% endif %}
+              
+              <!-- 페이지 번호 표시 -->
+              <span class="current">
+                  Page {{ books.number }} of {{ books.paginator.num_pages }}.
+              </span>
+              
+              <!-- 다음 페이지 링크 -->
+              {% if books.has_next %}
+                  <a href="?page={{ books.next_page_number }}">next</a>
+                  <a href="?page={{ books.paginator.num_pages }}">last</a>
+              {% endif %}  
               </div>
           </div>
       </div>
