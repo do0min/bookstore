@@ -24,6 +24,11 @@
         <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}">
         <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}">
         <style>
+                /* 특정 페이지에서 검색창 숨기기 */
+            .page-specific .search {
+                display: none;
+            }
+            
             table {
                 width: 50%;
                 margin: 0 auto;
@@ -54,6 +59,7 @@
     <br><br><br>
     
     <body>
+        <body class="page-specific">
         <div class="contact-page">
             <div class="container">
               <div class="row">

@@ -74,7 +74,7 @@ WSGI_APPLICATION = "book_store.wsgi.application"
 DATABASES = {
     'ms': {
         'ENGINE': 'django.db.backends.mysql', #1
-        'NAME': 'newschema', #2
+        'NAME': 'BOB', #2
         'USER': 'root', #3                      
         'PASSWORD': '',  #4              
         'HOST': '34.68.236.192',   #5                

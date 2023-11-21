@@ -4,8 +4,15 @@
 {% block content %}
 {% load static %}
 
+
+
 <head>
 <style>
+    /* 특정 페이지에서 검색창 숨기기 */
+.page-specific .search {
+    display: none;
+}
+
 .buttonwhere{
     display: flex; 
     align-items: center;
@@ -27,7 +34,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 20px;
+    margin-left: 110px;
+    margin-right: 110px;
+    margin-bottom: 50px;
 }
 
 .used-book {
@@ -35,6 +44,7 @@
     background-color: #f5f5f5;
     padding: 20px;
     margin: 10px;
+    margin-bottom: 35px;
     border: 1px solid #e0e0e0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -42,17 +52,19 @@
 
 .book-title {
     font-size: 18px;
-    margin: 10px 0;
+    margin: 2px 0;
 }
 
 .book-image {
     width: 60%;
     height: auto;
+
 }
 
 
 .book-actions {
-    margin-top: 7px;
+    margin-top: 20px;
+
 }
 
 
@@ -61,6 +73,8 @@
 </style>
 </head>
 <body>
+    <body class="page-specific">
+
 <div class="contact-page">
     <div class="container">
       <div class="row">
@@ -98,6 +112,7 @@
         <div class="used-book">
             <h2 class="book-title">{{ used_book.title }}</h2>
             <img src="{{ used_book.image.url }}" class="book-image" alt="{{ used_book.title }} 이미지">
+            <p>{{ used_book.description|truncatechars:60 }}</p>
             <div class="book-actions">
                 <a href="{% url 'used_detail' used_book.id %}" class="btn btn-info" role="button">구매하기</a>
             </div>
