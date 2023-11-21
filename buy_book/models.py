@@ -7,14 +7,28 @@ class Book(models.Model):
     publisher = models.CharField(max_length=100)  # 출판사 정보 추가
     date = models.DateField()  # 출판일 정보 추가
     image = models.ImageField(upload_to='image')
-    amount = models.DecimalField(max_digits=10, decimal_places=2)  # 가격 정보 추가
+    amount = models.IntegerField()  # 가격 정보 추가
     stock = models.PositiveIntegerField()  # 재고 정보 추가
     delivery_info = models.CharField(max_length=100)  # 배송 정보 추가
 
 
     def __str__(self):
         return self.name
+    
+class Department(models.Model):
+    name = models.CharField(max_length=100, null=True)
 
+    def __str__(self):
+        return self.name
+    
+class SubDepartment(models.Model):
+    name = models.CharField(max_length=100)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    booklist = models.ManyToManyField(Book, related_name='booklist', blank=True)
+    
+    def __str__(self):
+        return self.name
+    
 class buy_detail():
     
     def __str__(self) :
