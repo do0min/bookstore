@@ -97,10 +97,7 @@
 
       <div class="book-button">
         <div class="button">
-          <form method="post" action="{% url 'add_to_favorites' book.id %}">
-            {% csrf_token %}
-            <button type="submit">관심</button>
-        </form>
+          <button type="submit">관심</button>
         <button>장바구니</button>
         <a  href="{% url 'pick_up' book.id %}"><button>픽업</button>
         <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button>결제</button></a>
