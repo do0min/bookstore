@@ -1,11 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import *
+from django.contrib.auth.decorators import login_required
+from .models import Book
 from django.contrib.auth.models import User
 from django.contrib import auth
-from django.shortcuts import render
 from django.views import View
 from django.db.models import Q
-
 
 def home(request):
     book = Book.objects.all()
@@ -24,16 +23,18 @@ def home(request):
     return render(request, 'home.html', context)
 
 
+
 def login(request):
-    if request.method=="POST":
+    if request.method == "POST":
         user = auth.authenticate(username=request.POST['username'], password=request.POST['password'])
         if user is not None:
             auth.login(request, user)
-            return redirect('home')   
+            return redirect('home')
         else:
-            return render(request, 'login.html',{'error':'Username or password is incorrect!'}) 
+            return render(request, 'login.html', {'error': 'Username or password is incorrect!'})
     else:
-        return render(request, 'login.html')
+        return render(request, 'login.html', {'user': request.user})  # Pass the user object to the template
+
 
 def signup(request):
     if request.method == 'POST':
@@ -48,6 +49,7 @@ def signup(request):
 
     return render(request,'signup.html')
 
+@login_required
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)

@@ -36,13 +36,12 @@
         <div class="col-md-12">
           <div class="centered-div">
             <div class="center-text">
-              <br /><br /><br />
-              <h1>스마트IT과</h1>
-              <p>미래ICT > 스마트IT과</p>
+              <br /><br />
+              <p>{{ department.name }} > {{ subdepartment.name }}</p>
               <div class="centered-container"></div>
             </div>
           </div>
-          <hr class="custom-hr" />
+          <!-- <hr class="custom-hr" /> -->
         </div>
       </div>
     </div>
@@ -98,23 +97,34 @@
 
       <div class="book-button">
         <div class="button">
-        <button href="">관심</button>
+          <form method="post" action="{% url 'add_to_favorites' book.id %}">
+            {% csrf_token %}
+            <button type="submit">관심</button>
+        </form>
         <button>장바구니</button>
-        <button>픽업</button>
+        <a  href="{% url 'pick_up' book.id %}"><button>픽업</button>
         <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button>결제</button></a>
       </div>
       </div>
     </div>
+    <!-- <script>
+      $(document).ready(function () {
+          $(".add-to-favorites").click(function () {
+              var bookId = $(this).data("book-id");
+              $.ajax({
+                  url: "/add_to_favorites/" + bookId + "/",
+                  type: "POST",
+                  success: function (data) {
+                      alert('관심도서에 추가되었습니다.');
+                  },
+                  error: function (error) {
+                      alert('오류가 발생했습니다. 다시 시도해주세요.');
+                  }
+              });
+          });
+      });
+      </script> -->
  </body>
-  <!-- <body>
-    <h1>{{ book.name }}</h1>
-    <p>저자: {{ book.author }}</p>
-    <p>출판사: {{ book.publisher }}</p>
-    <p>출판일: {{ book.date }}</p>
-    <p>가격: {{ book.amount }}원</p>
-    <p>재고: {{ book.stock }}권</p>
-    <p>배송안내: {{ book.delivery_info }}</p>
-    <img src="{{ book.image.url }}" alt="도서 이미지">
-</body> -->
+ 
   {% endblock %}
 </html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>    
+    {% extends 'base.html' %} {% block content %} {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pick_Up</title>
+    <style>
+        /* Add this to your existing CSS or create a new style block */
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 200px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe; /* Keep the white background color */
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+    <div class="featured-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h1>픽업 주문</h1>
+                        <div class="add_notice">
+                           <p> ＊바로 픽업이 필요할 때, 더 빠른 배송이 필요할 때 픽업 서비스를 이용해보세요. </p>
+                        </div>
+                        <!-- <h1>{{ department.name }} </h1> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div>
+    <p>장소: 한양여자대학교 서점</p>
+    <p>픽업 서비스</p>
+    <p>주문 내역:</p>
+    <p>{{ book.name }}</p>
+</div>
+<div>
+    <p>상품 가격 : {{ book.amount }} 원</p>
+</div>
+<div>
+    <button id="pickupButton">픽업 주문 (1)</button>
+</div>
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>안내</p>
+        <p>8시 30분부터 수령 가능</p>
+        <p>픽업 존에서 준비된 상품 받기</p>
+        <p>1개의 상품을 준비합니다.</p>
+        <a><button id="cancelBtn">취소</button></a>
+        <a href="{% url 'pick_up_buy' book.id %}"><button id="confirmBtn">확인</button></a>
+    </div>
+</div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the modal
+        var modal = document.getElementById("myModal");
+    
+        // Get the button that opens the modal
+        var pickupButton = document.getElementById("pickupButton");
+    
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+    
+        // Get the cancel and confirm buttons
+        var cancelBtn = document.getElementById("cancelBtn");
+        var confirmBtn = document.getElementById("confirmBtn");
+    
+        // When the user clicks the button, open the modal
+        pickupButton.onclick = function() {
+            modal.style.display = "block";
+        }
+    
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    
+        // When the user clicks cancel, close the modal
+        cancelBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+    
+        // When the user clicks confirm, navigate to another page
+        confirmBtn.onclick = function() {
+            // Add your logic to navigate to another page here
+            // For example, you can use window.location.href
+            window.location.href = "/your/other/page";
+        }
+    
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+    </script>
+{% endblock %}
+</html>

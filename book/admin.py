@@ -5,5 +5,5 @@ class BookAdmin(admin.ModelAdmin):
     filter_horizontal = ('booklist',)
 
 admin.site.register(Book)
-admin.site.register(Department)
-admin.site.register(SubDepartment,BookAdmin)
+# admin.site.register(Department)
+# admin.site.register(SubDepartment,BookAdmin)

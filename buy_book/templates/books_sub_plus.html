@@ -11,14 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>{{ subdepartment.name }} 책 목록</title>
+    <title>{{ department.name }} 책 목록 </title>
     <!-- Bootstrap core CSS -->
     <link href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}">
     <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}">
     <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}">
-    <link href= "{% static 'web_app/assets/css/styles.css' %}" rel="stylesheet">
 </head>
 <body>
     <div class="featured-page">
@@ -27,14 +26,15 @@
                 <div class="col-md-4 col-sm-12">
                     <div class="section-heading">
                         <div class="line-dec"></div>
-                        <h1>{{ subdepartment.name }} </h1>
+                        <h1>{{ department.name }} </h1>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
+    </form>
     <br>
+    
     <div class="container-fluid p-0 m-0 align-items-center justify-content-center d-flex" style="min-height: 100vh;">
         <!-- Row for the card -->
         <div class="featured-items">
@@ -43,8 +43,8 @@
                     {% for book in books %}
                         <div class="col-lg-4 mb-2">
                             <div class="card mx-auto" style="width:18rem;">
-                                <a href="{% url 'detail' book.id %}">
-                                <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap" width="80px" height="200px">
+                                <a href="" data-toggle="modal" data-target="#exampleModalLong">
+                                    <img class="card-img-top" src="{{book.image.url}}" alt="Card image cap" width="80px" height="200px">
                                 </a>
                                 <div class="card-body">
                                     <h5 class="card-title">{{book.name}}</h5>
@@ -52,8 +52,7 @@
                                     <p class="card-text" style="color: blue;">{{ book.amount|intcomma }}</p>
 
                                     <center>
-                                        <a href="{% url 'detail' book.id %}" class="btn btn-info" role="button">구매하기</a>
-                                        <a href="{% url 'cart'  %}" class="btn btn-success" role="button">장바구니</a>
+                                        <a href="#link" class="btn btn-info" role="button">구매하기</a>
                                     </center>
                                 </div>
                             </div>

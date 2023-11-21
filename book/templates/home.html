@@ -80,90 +80,9 @@
             <span class="dot"></span>
             <span class="dot"></span>
         </div>
-        <!-- Banner Ends Here -->
 
-            <!--검색-->
-            <br><br><br>
-            <div class="search">
-            <form method="POST" class="example" action="" style="margin: auto; max-width: 350px">
-                {% csrf_token %}
-                <input type="text" placeholder="Search.." name="search" />
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
             <br />
-            <!-- 
-            <div
-                class="container-fluid p-0 m-0 align-items-center justify-content-center d-flex"
-                style="min-height: 100vh"
-            > -->
-                <!-- Row for the card-->
-                <!-- <div class="row w-100 p-0 w-0"> -->
-                    <!-- {% if result %} -->
-                    <!-- 카드 내용 -->
-                    <!-- {% for book in result %} {% load humanize %}
-                    <div class="col-lg-4 mb-2">
-                        <div class="card mx-auto" style="width: 18rem">
-                            <a href="" data-toggle="modal" data-target="#exampleModalLong">
-                                <img
-                                    class="card-img-top"
-                                    src="{{book.image.url}}"
-                                    alt="Card image cap"
-                                    width="80px"
-                                    height="200px"
-                                />
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">{{book.name}}</h5>
-                                <p class="card-text">{{book.desc|truncatechars:70}}</p>
-                                <p class="card-text" style="color: blue">{{ book.amount|intcomma }}</p>
-                                <center>
-                                    <a href="#link" class="btn btn-info" role="button">구매하기</a>
-                                </center>
-                            </div>
-                        </div>
-                    </div> -->
-                    {% endfor %} {% else %}
-                    <!-- <center><h1>No Data Found</h1></center> -->
-
-                    <!-- {% for book in book %}
-                    <div class="col-lg-4 mb-2">
-                        <div class="card mx-auto" style="width: 18rem">
-                            <a
-                                href=""
-                                data-toggle="modal"
-                                data-target="#exampleModalLong"
-                                class="building-link"
-                                data-name="{{ building.name }}"
-                            >
-                                <img
-                                    class="card-img-top"
-                                    src="{{ book.image.url }}"
-                                    alt="Card image cap"
-                                    width="100px"
-                                    height="250px"
-                                />
-                            </a>
-                            <div class="card-body">
-                                <h5 class="card-title">{{book.name}}</h5>
-                                <p class="card-text">{{book.desc|truncatechars:70}}</p>
-                                <p class="card-text" style="color: blue">{{ book.amount }}</p>
-
-                                <br />
-
-                                <center>
-                                    <a href="{% url 'cart'  %}" class="btn btn-success" role="button">장바구니</a>
-
-                                    <a href="#link" class="btn btn-info" role="button">구매하기</a>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-
-                    {% endfor %} {% endif %}    
-                </div>
-            </div>
-        </div> -->
+            
         <div class="map">
         <div class="map-container" align-items="center" text-align="center">
             <iframe
@@ -179,23 +98,6 @@
         </div>
       </div>
 <br><br><br>
-        <!-- <div class="col-md-6">
-        <div class="right-content">
-          <div class="container">
-            <form id="contact" action="" method="post">
-              <div class="row">
-                <div class="col-md-6">
-                  <fieldset>
-                    <input name="name" type="text" class="form-control" id="name" placeholder="도서명" required="">
-                  </fieldset>
-                </div>
-                </div>
-                </form>
-                </div>
-                </div>
-                </div> -->
-
-        <!-- Subscribe Form Starts Here -->
         <div class="subscribe-form">
             <div class="container">
                     <div class="container">
