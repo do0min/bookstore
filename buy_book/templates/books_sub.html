@@ -38,7 +38,7 @@
                         </div>
                         <div class="col-md-8 col-sm-12">
                             <div id="filters" class="button-group">
-                                <a href="{% url 'buy' %}"><button class="btn btn-primary" data-toggle="collapse" data-target="#allBooks" aria-expanded="false" aria-controls="allBooks">전체</button></a>
+                                <a href="#><button class="btn btn-primary" data-toggle="collapse" data-target="#allBooks" aria-expanded="false" aria-controls="allBooks">전체</button></a>
                                 <button class="btn btn-primary" data-toggle="collapse" data-target="#futureICT" aria-expanded="false" aria-controls="futureICT">미래ICT</button>
                                 <button class="btn btn-primary" data-toggle="collapse" data-target="#fusionDesign" aria-expanded="false" aria-controls="fusionDesign">융합문화디자인</button>
                                 <button class="btn btn-primary" data-toggle="collapse" data-target="#humanService" aria-expanded="false" aria-controls="humanService">휴먼서비스</button>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="collapse menu-sections" id="allBooks">
                             <div class="menu-section allBooks">
-                                <a class="dropdown-item" href="{% url 'buy' %}">전체</a>
+                                <a class="dropdown-item" href="{% url 'books_sub' subdepartment='전체' %}">전체</a>
                             </div>
                         </div>
                         <!-- 미래ICT 드롭다운 메뉴 -->

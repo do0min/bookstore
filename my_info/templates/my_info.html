@@ -16,7 +16,7 @@
                             <!-- 카드 내용 -->
                             {% for book in result %}
                             <!-- ... (기존 코드) ... -->
-                            {% endfor %} {% else %} {% for book in book %}
+                            {% endfor %} {% else %} {% for book in books %}
                             <!-- ... (기존 코드) ... -->
                             {% endfor %} {% endif %}
                         </div>
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <!— 장바구니 페이지로 이동하는 버튼 추가 —>
+         <!-- 장바구니 페이지로 이동하는 버튼 추가 -->
         <div class="my_info">
             <div class="my_info_cart">
                 <a href="{% url 'cart' %}">
@@ -40,6 +40,5 @@
         </div>
     </div>
     <br />
-    <!— … (내 정보 페이지의 내용) … —>
     {% endblock %}
 </html>
