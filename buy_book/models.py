@@ -19,11 +19,3 @@ class buy_detail():
     
     def __str__(self) :
         return self.name
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
-
-    def __str__(self):
-        return self.name

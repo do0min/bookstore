@@ -1,94 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% extends 'base.html' %}
-    {% block content %}
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
-    <br>
-    <br>
-    <style>
-      .bookimg{
-        width: 30%;
-      }
-      .book-description{
-        margin-left: 15%;
-      }
-    </style>
 
-        <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="centered-container">
-                  <div class="centered-div">
-                    <h3  class="center-text">{{ used_book.title }}</h3>
-                  </div>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
+<br>
+<br>
+<style>
+    .bookimg {
+        width: 30%;
+    }
+
+    .book-description {
+        margin-left: 15%;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="centered-container">
+                <div class="centered-div">
+                    <h3 class="center-text">{{ used_book.title }}</h3>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="book-main">
-          <div class="book-container">
-            <div class="book-description">
-              <h6>저자: {{ used_book.author }}</h6>
-            </div>
-        
-            <img class="book-image">
-            <img src="{{ used_book.image.url }}" class="bookimg" alt="{{ used_book.title }} 이미지">
-        </div>
-        
-            <div class="book-details">
-              <b class="price_left">{{ used_book.price }}원</b> <br>
-              <hr class="d-hr">
-              <p class="price_left">재고: 권</p> <br>
-              <hr class="d-hr">
-              <h6 class="price_left">배송안내: </h6> <br>
-            </div>
-        
-          </div>
-          
-          <br><hr><br>
-          
-          <p class="card-text"> {{ used_book.description }} </p>
-        
-        
-          <div class="clearfix">
-        
-            <div class="book-box">금액: {{ used_book.price }}원</div>
-        
-            <div class="book-button">
-              <button id="add-heart" data-book-id="{{ used_book.id }}">관심</button>
-              <button id="add-cart" data-book-id="{{ used_book.id }}">장바구니</button>
-              <button>픽업</button>
-              <button>구매하기</button>
             </div>
         </div>
-        
-          </div>
-          <script>
-            $(document).ready(function () {
-                $("#add-heart").click(function () {
-                    var bookId = $(this).data("book-id");
-                    $.ajax({
-                        url: "/add_interest/" + bookId + "/",
-                        type: "POST",
-                        success: function (data) {
-                          window.location.href = '/my_info_app_url/'; 
-                        },
-                    });
-                });
-        
-                $("#add-cart").click(function () {
-                    var bookId = $(this).data("book-id");
-                    $.ajax({
-                        url: "/add_to_cart/" + bookId + "/",
-                        type: "POST",
-                        success: function (data) {
-                            // 처리 완료 후에 원하는 동작 수행
-                        },
-                    });
-                });
+    </div>
+</div>
+
+<div class="book-main">
+    <div class="book-container">
+        <img class="book-image">
+        <img src="{{ used_book.image.url }}" class="bookimg" alt="{{ used_book.title }} 이미지">
+    </div>
+
+    <div class="book-details">
+        <p class="price_left">저자: {{ used_book.author }}</p> <br>
+        <hr class="d-hr">
+        <b class="price_left">{{ used_book.price }}원</b> <br>
+        <hr class="d-hr">
+        <p class="price_left">재고: 권</p> <br>
+        <hr class="d-hr">
+        <h6 class="price_left">배송안내: </h6> <br>
+    </div>
+</div>
+<button class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">Delete</button>
+<form method="post" action="{% url 'edit_book' used_book.id %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="btn">
+        <button type="submit" class="btn btn-primary" onclick="showSuccessPopup()">수정</button>
+    </div>
+</form>
+<br><hr><br>
+
+<p class="card-text"> {{ used_book.description }} </p>
+
+<div class="clearfix">
+    <div class="book-box">금액: {{ used_book.price }}원</div>
+
+    <div class="book-button">
+        <button id="add-heart" data-book-id="{{ used_book.id }}">관심</button>
+        <button id="add-cart" data-book-id="{{ used_book.id }}">장바구니</button>
+        <button>구매하기</button>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete Book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>'{{ used_book.title }}'을(를) 정말 삭제하시겠습니까?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form method="post" action="{% url 'delete_book' used_book.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#add-heart").click(function () {
+            var bookId = $(this).data("used-id");
+            $.ajax({
+                url: "/add_interest/" + bookId + "/",
+                type: "POST",
+                success: function (data) {
+                    window.location.href = '/my_info_app_url/';
+                },
             });
-        </script>
-    </body>
-    {% endblock %}
+        });
+
+        $("#add-cart").click(function () {
+            var bookId = $(this).data("book-id");
+            $.ajax({
+                url: "/add_to_cart/" + bookId + "/",
+                type: "POST",
+                success: function (data) {
+                    // 처리 완료 후에 원하는 동작 수행
+                },
+            });
+        });
+    });
+</script>
+</body>
+{% endblock %}
+
 </html>

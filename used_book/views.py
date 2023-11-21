@@ -5,6 +5,8 @@ from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.decorators import login_required
 
+
+
 def search(request):
     form = SearchForm(request.GET)
     used_books = UsedBook.objects.all()
@@ -46,6 +48,27 @@ def used_detail(request, used_id):
     return render(request, 'used_detail.html', {'used_book': used_book})
 
 
+def edit_book(request, used_id):
+    used_book = get_object_or_404(UsedBook, pk=used_id)
+
+    if request.method == 'POST':
+        form = UsedBookForm(request.POST, request.FILES, instance=used_book)
+        if form.is_valid():
+            form.save()
+            # Redirect or add additional logic as needed
+    else:
+        form = UsedBookForm(instance=used_book)
+
+    return render(request, 'used_up.html', {'form': form, 'used_book': used_book})
+
+def delete_book(request, used_id):
+    used_book = get_object_or_404(UsedBook, pk=used_id)
+    
+    if request.method == 'POST':
+        used_book.delete()
+        return redirect('used')  # Redirect to the desired page after deletion
+
+    return render(request, 'delete_book.html', {'used_book': used_book})
 
 @login_required  # 사용자 로그인이 필요한 경우
 def add_heart(request, book_id):
