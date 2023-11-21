@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}찜한 상품{% endblock %}
+{% block title %}관심도서{% endblock %}
 <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}">
 
 {% block content %}
@@ -45,5 +45,6 @@
 			</div>
 </div>
 
-{% endblock %}
 
+{% endfor%}
+{% endblock %}
