@@ -15,20 +15,6 @@ def detail(request, book_id):
 
 def buy(request):
     book = Book.objects.all()
-    book_list = Book.objects.all()
-    # 페이지당 보여줄 항목 수
-    items_per_page = 10
-    paginator = Paginator(book_list, items_per_page)
-
-    page = request.GET.get('page')
-    try:
-        book = paginator.page(page)
-    except PageNotAnInteger:
-        # 페이지 번호가 정수가 아닌 경우, 첫 번째 페이지로 이동
-        book = paginator.page(1)
-    except EmptyPage:
-        # 페이지 범위를 초과하는 경우, 마지막 페이지로 이동
-        book = paginator.page(paginator.num_pages)
     if request.method == 'POST':
         search = request.POST.get('search')
         results = Book.objects.filter(Q(name__icontains=search))
@@ -50,12 +36,28 @@ def books_sub(request, subdepartment):
     # 문자열 값을 사용하여 SubDepartment 객체 검색
     subdepartment = SubDepartment.objects.get(name=subdepartment)
     books = subdepartment.booklist.all()
+    # book_list = Book.objects.all()
+
+    # 페이지당 보여줄 항목 수
+    items_per_page = 9
+    paginator = Paginator(books, items_per_page)
+
+    page = request.GET.get('page')
+    try:
+        books = paginator.page(page)
+    except PageNotAnInteger:
+        # 페이지 번호가 정수가 아닌 경우, 첫 번째 페이지로 이동
+        books = paginator.page(1)
+    except EmptyPage:
+        # 페이지 범위를 초과하는 경우, 마지막 페이지로 이동
+        books = paginator.page(paginator.num_pages)
 
     context = {
         'subdepartment': subdepartment,
         'books': books,
     }
     return render(request, 'books_sub.html', context)
+
 
 
 def department_books(request, department_name):

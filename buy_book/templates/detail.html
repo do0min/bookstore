@@ -49,19 +49,14 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <div class="centered-container">
-            <div class="centered-div">
               <h3 class="center-text">{{ book.name }}</h3>
-            </div>
-          </div>
+              </div>
         </div>
-      </div>
     </div>
 
     <div class="book-main">
     <div class="book-container">
       <div class="book-description">
-
         <p>
           저자: {{ book.author }}<br />
           출판사: {{ book.publisher }} <br />
@@ -79,31 +74,34 @@
         <p class="price_left">재고: {{ book.stock }}권</p>
         <br />
         <hr class="d-hr" />
-        <h6 class="price_left">배송안내: {{ book.delivery_info }}</h6>
+        <h6 class="price_left">배송안내: 무료배송{{ book.delivery_info }}</h6>
         <br />
       </div>
     </div>
     </div>
+  
     <br />
     <hr />
     <br />
     <p class="card-text">{{book.desc}}</p>
+    <br><br><br>
 
     <div class="clearfix">
       <div class="book-box">
         <div class="clearfix-text">
-        금액: {{ book.amount }}원
+        <h5>
+        금액: <b>{{ book.amount }}</b>원
         </div>
+      </h5>
       </div>
 
-      <div class="book-button">
-        <div class="button">
-          <button type="submit">관심</button>
-        <button>장바구니</button>
-        <a  href="{% url 'pick_up' book.id %}"><button>픽업</button>
-        <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button>결제</button></a>
+        <div >
+          <!-- <button type="submit" class="btn btn-primary">관심</button>
+        <button class="btn btn-primary">장바구니</button> -->
+        <a  href="{% url 'pick_up' book.id %}" ><button class="btn btn-primary" style="background-color: rgb(98, 128, 247)">픽업</button>
+        <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button class="btn btn-primary" style="background-color: rgb(255, 200, 0);">결제</button></a>
       </div>
-      </div>
+
     </div>
     <!-- <script>
       $(document).ready(function () {

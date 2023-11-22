@@ -1,3 +1,45 @@
+body {
+    font-family: Arial;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.example {
+    display: flex; 
+    align-items: center;
+}
+
+form.example input[type='text'] {
+    align-items: center;
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid rgb(61, 61, 61);
+    width: 400px;
+    background: #f7f6f6;
+}
+
+/* 검색 */
+form.example button {
+    width: 20%;
+    padding: 10px;
+    background: #DAF4CA;
+    color: #3c4537;
+    font-size: 17px;
+    border: 1px solid #3c4537;
+    cursor: pointer;
+}
+
+form.example button:hover {
+    background: #0b7dda;
+}
+
+form.example::after {
+    content: '';
+    clear: both;
+    display: table;
+}
 /* 드롭다운 메뉴의 너비 조절 */
 .navbar-dark .navbar-nav .nav-link {
     color: #000000; /* 드롭다운 텍스트 색상 */
@@ -91,13 +133,7 @@ div.menu-section.global-service a.dropdown-item.global-service {
     text-align: center;
     min-height: 100vh; */
 }
-.add_btn {
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    /* text-align: center; */
-    /* min-height: 100vh; */
-}
+
 .add_btn {
     display: flex;
     justify-content: center;

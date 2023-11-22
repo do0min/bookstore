@@ -64,9 +64,9 @@
     <div class="book-box">금액: {{ used_book.price }}원</div>
 
     <div class="book-button">
-        <button id="add-heart" data-book-id="{{ used_book.id }}">관심</button>
-        <button id="add-cart" data-book-id="{{ used_book.id }}">장바구니</button>
-        <button>구매하기</button>
+        <button id="add-heart" class="btn btn-primary" data-book-id="{{ used_book.id }}">관심</button>
+        <button id="add-cart" data-book-id="{{ used_book.id }}" class="btn btn-primary" >장바구니</button>
+        <button class="btn btn-primary">구매하기</button>
     </div>
 </div>
 
