@@ -37,11 +37,11 @@
           <div class="centered-div">
             <div class="center-text">
               <br /><br />
-              <p>{{ department.name }} > {{ subdepartment.name }}</p>
+              <p>{{ department.name }}  {{ subdepartment.name }}</p>
               <div class="centered-container"></div>
             </div>
           </div>
-          <!-- <hr class="custom-hr" /> -->
+
         </div>
       </div>
     </div>
@@ -102,7 +102,7 @@
         <button>장바구니</button>
         <a  href="{% url 'pick_up' book.id %}"><button>픽업</button>
         <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button>결제</button></a>
-      </div>
+      </a></div>
       </div>
     </div>
     <!-- <script>
