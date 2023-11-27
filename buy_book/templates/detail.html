@@ -139,30 +139,6 @@
         <br />
       </div> -->
 
-      </div>
-    </div>
-    </div>
-    <br />
-    <hr />
-    <br />
-    <p class="card-text">{{book.desc}}</p>
-
-    <div class="clearfix">
-      <div class="book-box">
-        <div class="clearfix-text">
-        금액: {{ book.amount }}원
-        </div>
-      </div>
-
-      <div class="book-button">
-        <div class="button">
-          <button type="submit">관심</button>
-        <button>장바구니</button>
-        <a  href="{% url 'pick_up' book.id %}"><button>픽업</button>
-        <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button>결제</button></a>
-      </a></div>
-      </div>
-    </div>
     <!-- <script>
       $(document).ready(function () {
           $(".add-to-favorites").click(function () {
