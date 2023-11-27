@@ -4,7 +4,7 @@ class UsedBook(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
     description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.IntegerField()
     image = models.ImageField(upload_to='books/')
     category = models.CharField(max_length=50, choices=[
         ('소프트웨어융합과', '소프트웨어융합과'),
@@ -31,8 +31,6 @@ class UsedBook(models.Model):
         ('세무회계과', '세무회계과'),
         ('행정실무과', '행정실무과'),
         ('항공과', '항공과'),
-
-        # Add more choices as needed
     ])
     
     def __str__(self):

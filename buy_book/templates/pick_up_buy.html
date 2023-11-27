@@ -23,34 +23,46 @@
         </div>
     </div>
     <br>
-    <p>픽업 장소: 한양여자대학교 서점</p>
-    <p>선택 서비스: <b>픽업 존에서 준비</b></p>
-    <p>받는 분 정보: 사용자 이름 / 전화번호 </p>
-    <p>주문상품</p>
-    <p>{{book.image.url}} / {{book.name}} / 1개 / {{book.amount}}</p>
-    <p>가능일정 : 시간 </p>
+    <div "featured-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <p>픽업 장소: 한양여자대학교 서점</p>
+                    <p>선택 서비스: <b>픽업 존에서 준비</b></p>
+                    <p>받는 분 정보: 미나상 / 010-0000-0000 </p>
+                    <p>주문상품</p>
+                    <p>책 제목: {{book.name}} / 수량: 1개 <br> 가격: {{book.amount}}</p>
+                    <p>픽업 시간 : 10시 이후 가능 </p>
+                    <div class="section-heading">
+                        </div>
+                        </div>
+                        </div>
+<br>
+                        <div>
+                            <p>결제 수단</p>
+                            * 카카오페이
+                        </div>
 
-    <div>
-        <p>결제 수단</p>
-        * 네이버페이
-        * 카카오페이
+                        <div>
+                            상품금액: {{book.amount}}원
+                            배송비: 0원
+                            <hr>
+                            최종결제금액: {{book.amount}}원
+                    
+                            <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button class="btn btn-primary" style="background-color: rgb(245, 233, 101);">결제하기</button></a>
+                        </div>
+                    
     </div>
 
-    <div>
-        상품금액: {{book.amount}}원
-        배송비: 0원
-        <hr>
-        최종결제금액: {{book.amount}}원
 
-        <button>결제하기</button>
-    </div>
+<!-- 
     <div>
         위 주문내용을 확인하였으며, 결제에 동의합니다.
         주문 상품 정보 동의
         주문할 상품의 상품명, 가격, 배송정보 등을 최종 확인하였으며, 구매에 동의하십니까? (전자상거래법 제 8조 2항)
-    </div>
+    </div> -->
         <br />
-        <hr />
+        <!-- <hr /> -->
         <br />    
 
 

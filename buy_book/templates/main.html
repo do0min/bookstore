@@ -17,8 +17,6 @@
         <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}" />
         <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}" />
         <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
-
-        <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
         <style>
             body {
                 font-family: Arial;
@@ -61,86 +59,88 @@
                 clear: both;
                 display: table;
             }
+
         </style>
 
-        <div class="col-md-4 col-sm-12">
-          <div class="section-heading">
-            <div class="line-dec"></div>
-            <h1>전체</h1>
-          </div>
-        </div>
+        
+</head>
+<body>
 
-        <div class="featured-page text-center">
-          <div class="container mx-auto">
-              <div class="row">
-                  <div class="col-md-4 col-sm-12">
-                      <!-- 기존 내용 유지 -->
-                  </div>
-                  <div class="col-md-8 col-sm-12">
-                      <div id="filters" class="button-group">
-                          <a href="{% url 'buy' %}"><button class="btn btn-primary" data-toggle="collapse" data-target="#allBooks" aria-expanded="false" aria-controls="allBooks">전체</button></a>
-                          <button class="btn btn-primary" data-toggle="collapse" data-target="#futureICT" aria-expanded="false" aria-controls="futureICT">미래ICT</button>
-                          <button class="btn btn-primary" data-toggle="collapse" data-target="#fusionDesign" aria-expanded="false" aria-controls="fusionDesign">융합문화디자인</button>
-                          <button class="btn btn-primary" data-toggle="collapse" data-target="#humanService" aria-expanded="false" aria-controls="humanService">휴먼서비스</button>
-                          <button class="btn btn-primary" data-toggle="collapse" data-target="#globalService" aria-expanded="false" aria-controls="globalService">글로벌서비스</button>
-                      </div>
-                  </div>
-                  <!-- 미래ICT 드롭다운 메뉴 -->
-                  <div class="collapse menu-sections" id="futureICT">
-                      <div class="menu-section future-ict">
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='소프트웨어융합과' %}">소프트웨어융합과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='스마트IT과' %}">스마트IT과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='빅데이터과' %}">빅데이터과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='AI융합과' %}">AI융합과</a>
-                      </div>
-                  </div>
-                  <!-- 융합문화디자인 드롭다운 메뉴 -->
-                  <div class="collapse menu-sections" id="fusionDesign">
-                      <div class="menu-section fusion-design">
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='패션디자인과' %}">패션디자인과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='세라믹디자인과' %}">세라믹디자인과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='니트패션디자인과' %}">니트패션디자인과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='산업디자인과' %}">산업디자인과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='문예창작과' %}">문예창작과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='인테리어디자인과' %}">인테리어디자인과</a>
-                      </div>
-                  </div>
-                  <!-- 휴먼서비스 드롭다운 메뉴 -->
-                  <div class="collapse menu-sections" id="humanService">
-                      <div class="menu-section human-service">
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='식품영양과' %}">식품영양과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='스포츠건강관리과' %}">스포츠건강관리과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='유아교육과' %}">유아교육과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='보건행정과' %}">보건행정과</a>
-                      </div>
-                  </div>
-                  <!-- 글로벌서비스 드롭다운 메뉴 -->
-                  <div class="collapse menu-sections" id="globalService">
-                      <div class="">
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='호텔관광과' %}">호텔관광과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='실무영어과' %}">실무영어과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='서비스경영과' %}">서비스경영과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='비서인재과' %}">비서인재과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='실무일본어과' %}">실무일본어과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='실무중국어과' %}">실무중국어과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='외식산업과' %}">외식산업과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='세무회계과' %}">세무회계과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='행정실무과' %}">행정실무과</a>
-                          <a class="dropdown-item" href="{% url 'books_sub' subdepartment='항공과' %}">항공과</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+                      <br>
+                      <div class="container">
+                              <div class="col-md-4 col-sm-12">
+                                  <div class="section-heading">
+                                      <div class="line-dec"></div>
+                                      <h1>검색결과</h1>
+                            </div>
+                          </div>
+                          </div>
+              
+                                  <div class="row">
+                                      <div class="col-md-4 col-sm-12">
+                                          <!-- 기존 내용 유지 -->
+                                      </div>
+                                      <div class="col-md-8  col-sm-12">
+                                          <div id="filters" class="button-group">
+                                              <a href="{% url 'books_sub' subdepartment='전체' %}"><button class="btn btn-primary" data-target="#allBooks" aria-expanded="false" aria-controls="allBooks">전체</button></a>
+                                              <button class="btn btn-primary" data-toggle="collapse" data-target="#futureICT" aria-expanded="false" aria-controls="futureICT">미래ICT</button>
+                                              <button class="btn btn-primary" data-toggle="collapse" data-target="#fusionDesign" aria-expanded="false" aria-controls="fusionDesign">융합문화디자인</button>
+                                              <button class="btn btn-primary" data-toggle="collapse" data-target="#humanService" aria-expanded="false" aria-controls="humanService">휴먼서비스</button>
+                                              <button class="btn btn-primary" data-toggle="collapse" data-target="#globalService" aria-expanded="false" aria-controls="globalService">글로벌서비스</button>
+                                          </div>
+                                      </div>
+                                  </div>
+                                      <!-- 미래ICT 드롭다운 메뉴 -->
+                                      <!-- <div class="col-md-8 col-sm-12"> -->
+                                      <div class="collapse menu-sections" id="futureICT">
+                                          <div class="menu-section future-ict d-flex">
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='소프트웨어융합과' %}">소프트웨어융합과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='스마트IT과' %}">스마트IT과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='빅데이터과' %}">빅데이터과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='AI융합과' %}">AI융합과</a>
+                                          </div>
+                                      </div>
+                                      
+                                      <!-- 융합문화디자인 드롭다운 메뉴 -->
+                                      <div class="collapse menu-sections" id="fusionDesign">
+                                          <div class="menu-section fusion-design d-flex">
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='패션디자인과' %}">패션디자인과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='세라믹디자인과' %}">세라믹디자인과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='니트패션디자인과' %}">니트패션디자인과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='산업디자인과' %}">산업디자인과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='문예창작과' %}">문예창작과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='인테리어디자인과' %}">인테리어디자인과</a>
+                                          </div>
+                                      </div>
+                                      <!-- 휴먼서비스 드롭다운 메뉴 -->
+                                      <div class="collapse menu-sections" id="humanService">
+                                          <div class="menu-section human-service d-flex">
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='식품영양과' %}">식품영양과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='스포츠건강관리과' %}">스포츠건강관리과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='유아교육과' %}">유아교육과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='보건행정과' %}">보건행정과</a>
+                                          </div>
+                                      </div>
+                                      <!-- 글로벌서비스 드롭다운 메뉴 -->
+                                      <div class="collapse menu-sections" id="globalService">
+                                          <div class="menu-section globalService d-flex">
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='호텔관광과' %}">호텔관광과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='실무영어과' %}">실무영어과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='서비스경영과' %}">서비스경영과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='비서인재과' %}">비서인재과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='실무일본어과' %}">실무일본어과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='실무중국어과' %}">실무중국어과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='외식산업과' %}">외식산업과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='세무회계과' %}">세무회계과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='행정실무과' %}">행정실무과</a>
+                                              <a class="dropdown-item" href="{% url 'books_sub' subdepartment='항공과' %}">항공과</a>
+                                          </div>
+                                      </div>
+              
+                                  </div>
+                              </div>
 
 
-<script>
-    // JavaScript to handle collapse events
-    $('#filters button').on('click', function () {
-        // Hide other menu-sections when a button is clicked
-        $('.menu-sections').not($(this).data('target')).collapse('hide');
-    });
-</script>
             <!--검색-->
             <!-- <br><br><br>
             <div class="search">
@@ -151,12 +151,10 @@
             </form>
         </div> -->
             <br />
-            
-            <div
-                class="container-fluid p-0 m-0 align-items-center justify-content-center d-flex"
-                style="min-height: 100vh">
-            
-                <div class="row w-100 p-0 w-0">
+            <div class="container-fluid p-0 m-0 align-items-center justify-content-center d-flex" style="min-height: 100vh;">
+                <div class="featured-items">
+                    <div class="container">
+                        <div class="row">
                   {% if result %}
                   <!-- 카드 내용 -->
                   {% for book in result %} {% load humanize %}
@@ -176,7 +174,7 @@
                       </div>
                   </div>
                   {% endfor %} {% else %}
-                  <!-- <center><h1>No Data Found</h1></center> -->
+                  <center><h1>No Data Found</h1></center>
 
                   {% for book in book %}
                   <div class="col-lg-4 mb-2">
@@ -202,10 +200,16 @@
 
                   {% endfor %} {% endif %}    
               </div>
-            
+              </div>
           </div>
       </div>
-
+      <script>
+        // JavaScript to handle collapse events
+        $('#filters button').on('click', function () {
+            // Hide other menu-sections when a button is clicked
+            $('.menu-sections').not($(this).data('target')).collapse('hide');
+        });
+    </script>
       {% endblock %}
     </body>
 </html>

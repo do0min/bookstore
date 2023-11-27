@@ -4,17 +4,17 @@
     {% extends 'base.html' %} {% block content %} {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
+
     <title>Pick_Up</title>
     <style>
-        /* Add this to your existing CSS or create a new style block */
-/* The Modal (background) */
+
 .modal {
     display: none;
     position: fixed;
     z-index: 1;
     left: 0;
     top: 0;
-
     width: 100%;
     height: 100%;
     overflow: auto;
@@ -46,38 +46,58 @@
     text-decoration: none;
     cursor: pointer;
 }
-
     </style>
 </head>
-    <div class="featured-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-12">
-                    <div class="section-heading">
-                        <div class="line-dec"></div>
-                        <h1>픽업 주문</h1>
-                        <div class="add_notice">
-                           <p> ＊바로 픽업이 필요할 때, 더 빠른 배송이 필요할 때 픽업 서비스를 이용해보세요. </p>
-                        </div>
-                        <!-- <h1>{{ department.name }} </h1> -->
+<body>
+    <br>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h1>픽업 주문</h1>
+                  <div class="add_notice">
+                      <p> ＊바로 픽업이 필요할 때, 더 빠른 배송이 필요할 때 픽업 서비스를 이용해보세요.</p>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="pick_place">
+            <p>장소: 한양여자대학교 서점</p>
+        </div>
+            <h2>픽업 서비스</h2>
+
+        <div class="row">
+            <div class="col-md-6">
+                <p>주문 가능: {{ book.name }}</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img class="book_img" src="{{ book.image.url }}" style="width: 40%;">
                     </div>
+                    </div>
+
+            </div>
+                <hr>
+                <div class="col-md-6">
+                    <p>상품 가격 : {{ book.amount }} 원</p>
+                    <button id="pickupButton" class="btn btn-primary">픽업 주문 (1)</button>
                 </div>
             </div>
         </div>
     </div>
+    
+        <!-- <div>
+            <p>상품 가격 : {{ book.amount }} 원</p>
+        </div>
+        <div>
+            <button id="pickupButton">픽업 주문 (1)</button>
+        </div> -->
+
     <br>
-    <div>
-    <p>장소: 한양여자대학교 서점</p>
-    <p>픽업 서비스</p>
-    <p>주문 내역:</p>
-    <p>{{ book.name }}</p>
-</div>
-<div>
-    <p>상품 가격 : {{ book.amount }} 원</p>
-</div>
-<div>
-    <button id="pickupButton">픽업 주문 (1)</button>
-</div>
+    
 <div id="myModal" class="modal">
     <!-- Modal content -->
     <div class="modal-content">
