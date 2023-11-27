@@ -89,3 +89,8 @@ def add_cart(request, book_id):
     book = get_object_or_404(UsedBook, id=book_id)
     # 여기에서 장바구니에 책을 추가하는 로직을 구현
     return JsonResponse({"message": "책을 장바구니에 추가했습니다."})
+
+
+def u_books(request, category):
+    u_books = UsedBook.objects.filter(category=category)
+    return render(request, 'used_home.html', {'u_books': u_books, 'category': category})

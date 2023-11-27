@@ -1,36 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  {% extends 'base.html' %} {% block content %} {% load static %}
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>교재구매</title>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% load humanize %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{{ subdepartment.name }} 책 목록</title>
     <!-- Bootstrap core CSS -->
-    <link
-      href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}"
-      rel="stylesheet"
-    />
+
+    <link href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <!-- Additional CSS Files -->
-    <link
-      rel="stylesheet"
-      href="{% static 'web_app/assets/css/fontawesome.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static 'web_app/assets/css/tooplate-main.css' %}"
-    />
-    <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}" />
-    <link
-      rel="stylesheet"
-      href="{% static 'web_app/assets/css/styles.css' %}"
-    />
-    <div></div>
-  </head>
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}">
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}">
+    <link href= "{% static 'web_app/assets/css/styles.css' %}" rel="stylesheet">
+</head>
   <body>
     <div class="container">
       <div class="row">
@@ -38,7 +27,7 @@
           <div class="centered-div">
             <div class="center-text">
               <br /><br />
-              <p>{{ department.name }} > {{ subdepartment.name }}</p>
+
               <div class="centered-container"></div>
             </div>
           </div>
@@ -46,7 +35,6 @@
         </div>
       </div>
     </div>
-
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -68,8 +56,79 @@
       <div class="book-image">
         <img src="{{ book.image.url }}" class="bookimg" />
       </div>
-
       <div class="book-details">
+      {% if book.stock == 0 %}
+      <!-- <span style="color: red;">품절</span> -->
+      <b class="price_left" >{{ book.amount }}원</b> <br />
+      <hr class="d-hr" />
+      <p class="price_left">재고: {{ book.stock }}권</p>
+      <br />
+      <hr class="d-hr" />
+      <h6 class="price_left" style="color: red;">품절되었습니다.</h6>
+      <br />
+    </div>
+  </div>
+</div>
+
+<br />
+<hr />
+<br />
+<p class="card-text">{{book.desc}}</p>
+<br><br><br>
+
+<div class="clearfix">
+  <div class="book-box">
+    <div class="clearfix-text">
+    <h5>
+    품절되었습니다.
+    </div>
+  </h5>
+  </div>
+
+    <div >
+      <!-- <button type="submit" class="btn btn-primary">관심</button>
+    <button class="btn btn-primary">장바구니</button> -->
+    <a href="#"><button class="all-btn" style="background-color: rgb(255, 200, 0);">재입고 알림</button></a>
+  </div>
+
+</div>
+      {% else %}
+      <b class="price_left">{{ book.amount }}원</b> <br />
+      <hr class="d-hr" />
+      <p class="price_left">재고: {{ book.stock }}권</p>
+      <br />
+      <hr class="d-hr" />
+      <h6 class="price_left">배송안내: 무료배송{{ book.delivery_info }}</h6>
+      <br />
+    </div>
+  </div>
+</div>
+
+<br />
+<hr />
+<br />
+<p class="card-text">{{book.desc}}</p>
+<br><br><br>
+
+<div class="clearfix">
+  <div class="book-box">
+    <div class="clearfix-text">
+    <h5>
+    금액: <b>{{ book.amount }}</b>원
+    </div>
+  </h5>
+  </div>
+
+    <div >
+      <!-- <button type="submit" class="btn btn-primary">관심</button>
+    <button class="btn btn-primary">장바구니</button> -->
+    <a  href="{% url 'pick_up' book.id %}" ><button class="all-btn" style="background-color: rgb(98, 128, 247)">픽업</button>
+    <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button class="all-btn" style="background-color: rgb(255, 200, 0);">결제</button></a>
+  </div>
+
+</div>
+      {% endif %}
+      <!-- <div class="book-details">
         <b class="price_left">{{ book.amount }}원</b> <br />
         <hr class="d-hr" />
         <p class="price_left">재고: {{ book.stock }}권</p>
@@ -77,33 +136,7 @@
         <hr class="d-hr" />
         <h6 class="price_left">배송안내: 무료배송{{ book.delivery_info }}</h6>
         <br />
-      </div>
-    </div>
-    </div>
-  
-    <br />
-    <hr />
-    <br />
-    <p class="card-text">{{book.desc}}</p>
-    <br><br><br>
-
-    <div class="clearfix">
-      <div class="book-box">
-        <div class="clearfix-text">
-        <h5>
-        금액: <b>{{ book.amount }}</b>원
-        </div>
-      </h5>
-      </div>
-
-        <div >
-          <!-- <button type="submit" class="btn btn-primary">관심</button>
-        <button class="btn btn-primary">장바구니</button> -->
-        <a  href="{% url 'pick_up' book.id %}" ><button class="btn btn-primary" style="background-color: rgb(98, 128, 247)">픽업</button>
-        <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button class="btn btn-primary" style="background-color: rgb(255, 200, 0);">결제</button></a>
-      </div>
-
-    </div>
+      </div> -->
     <!-- <script>
       $(document).ready(function () {
           $(".add-to-favorites").click(function () {

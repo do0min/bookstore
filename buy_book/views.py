@@ -10,7 +10,10 @@ from django.db.models import Q
 
 def detail(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
-    return render(request, 'detail.html', {'book': book})
+    context = {
+        'book': book,
+    }
+    return render(request, 'detail.html', context)
 
 
 def buy(request):
@@ -36,20 +39,17 @@ def books_sub(request, subdepartment):
     # 문자열 값을 사용하여 SubDepartment 객체 검색
     subdepartment = SubDepartment.objects.get(name=subdepartment)
     books = subdepartment.booklist.all()
-    # book_list = Book.objects.all()
 
     # 페이지당 보여줄 항목 수
-    items_per_page = 9
+    items_per_page = 12
     paginator = Paginator(books, items_per_page)
 
     page = request.GET.get('page')
     try:
         books = paginator.page(page)
     except PageNotAnInteger:
-        # 페이지 번호가 정수가 아닌 경우, 첫 번째 페이지로 이동
         books = paginator.page(1)
     except EmptyPage:
-        # 페이지 범위를 초과하는 경우, 마지막 페이지로 이동
         books = paginator.page(paginator.num_pages)
 
     context = {

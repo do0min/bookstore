@@ -13,6 +13,7 @@
     <meta name="author" content="">
     <title>{{ subdepartment.name }} 책 목록</title>
     <!-- Bootstrap core CSS -->
+
     <link href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <!-- Additional CSS Files -->
     <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}">
@@ -20,43 +21,56 @@
     <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}">
     <link href= "{% static 'web_app/assets/css/styles.css' %}" rel="stylesheet">
 </head>
+<style>
+    .menu-sections {
+  display: none;
+}
+
+.menu-sections.show {
+  display: block;
+}
+</style>
 <body>
 <br>
-        <div class="container">
-                <div class="col-md-4 col-sm-12">
-                    <div class="section-heading">
-                        <div class="line-dec"></div>
+<div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-heading">
+            <div class="line-dec"></div>
                         <h1>{{ subdepartment.name }} </h1>
               </div>
             </div>
             </div>
-
-                    <div class="row">
-                        <div class="col-md-4 col-sm-12">
-                            <!-- 기존 내용 유지 -->
-                        </div>
-                        <div class="col-md-8 col-sm-12">
-                            <div id="filters" class="button-group">
-                                <a href="{% url 'books_sub' subdepartment='전체' %}"><button class="btn btn-primary" data-target="#allBooks" aria-expanded="false" aria-controls="allBooks">전체</button></a>
-                                <button class="btn btn-primary" data-toggle="collapse" data-target="#futureICT" aria-expanded="false" aria-controls="futureICT">미래ICT</button>
-                                <button class="btn btn-primary" data-toggle="collapse" data-target="#fusionDesign" aria-expanded="false" aria-controls="fusionDesign">융합문화디자인</button>
-                                <button class="btn btn-primary" data-toggle="collapse" data-target="#humanService" aria-expanded="false" aria-controls="humanService">휴먼서비스</button>
-                                <button class="btn btn-primary" data-toggle="collapse" data-target="#globalService" aria-expanded="false" aria-controls="globalService">글로벌서비스</button>
-                            </div>
-                        </div>
-
-                        <!-- 미래ICT 드롭다운 메뉴 -->
-                        <div class="collapse menu-sections" id="futureICT">
-                            <div class="menu-section future-ict">
-                                <a class="dropdown-item" href="{% url 'books_sub' subdepartment='소프트웨어융합과' %}">소프트웨어융합과</a>
-                                <a class="dropdown-item" href="{% url 'books_sub' subdepartment='스마트IT과' %}">스마트IT과</a>
-                                <a class="dropdown-item" href="{% url 'books_sub' subdepartment='빅데이터과' %}">빅데이터과</a>
-                                <a class="dropdown-item" href="{% url 'books_sub' subdepartment='AI융합과' %}">AI융합과</a>
-                            </div>
-                        </div>
+            
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <!-- 기존 내용 유지 -->
+                </div>
+                <div class="col-md-8 col-sm-12">
+                    <div id="filters" class="button-group">
+                        <a href="{% url 'books_sub' subdepartment='전체' %}"><button class="btn btn-primary" data-target="#allBooks" aria-expanded="false" aria-controls="allBooks">전체</button></a>
+                        <button class="btn btn-primary" data-toggle="collapse" data-target="#futureICT" aria-expanded="false" aria-controls="futureICT">미래ICT</button>
+                        <button class="btn btn-primary" data-toggle="collapse" data-target="#fusionDesign" aria-expanded="false" aria-controls="fusionDesign">융합문화디자인</button>
+                        <button class="btn btn-primary" data-toggle="collapse" data-target="#humanService" aria-expanded="false" aria-controls="humanService">휴먼서비스</button>
+                        <button class="btn btn-primary" data-toggle="collapse" data-target="#globalService" aria-expanded="false" aria-controls="globalService">글로벌서비스</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 미래ICT 드롭다운 메뉴 -->
+            
+                <div class="collapse menu-sections" id="futureICT">
+                    <div class="menu-section future-ict d-flex">
+                        <a class="dropdown-item" href="{% url 'books_sub' subdepartment='소프트웨어융합과' %}">소프트웨어융합과</a>
+                        <a class="dropdown-item" href="{% url 'books_sub' subdepartment='스마트IT과' %}">스마트IT과</a>
+                        <a class="dropdown-item" href="{% url 'books_sub' subdepartment='빅데이터과' %}">빅데이터과</a>
+                        <a class="dropdown-item" href="{% url 'books_sub' subdepartment='AI융합과' %}">AI융합과</a>
+                    </div>
+                </div>
+                        
                         <!-- 융합문화디자인 드롭다운 메뉴 -->
                         <div class="collapse menu-sections" id="fusionDesign">
-                            <div class="menu-section fusion-design">
+                            <div class="menu-section fusion-design d-flex">
                                 <a class="dropdown-item" href="{% url 'books_sub' subdepartment='패션디자인과' %}">패션디자인과</a>
                                 <a class="dropdown-item" href="{% url 'books_sub' subdepartment='세라믹디자인과' %}">세라믹디자인과</a>
                                 <a class="dropdown-item" href="{% url 'books_sub' subdepartment='니트패션디자인과' %}">니트패션디자인과</a>
@@ -67,7 +81,7 @@
                         </div>
                         <!-- 휴먼서비스 드롭다운 메뉴 -->
                         <div class="collapse menu-sections" id="humanService">
-                            <div class="menu-section human-service">
+                            <div class="menu-section human-service d-flex">
                                 <a class="dropdown-item" href="{% url 'books_sub' subdepartment='식품영양과' %}">식품영양과</a>
                                 <a class="dropdown-item" href="{% url 'books_sub' subdepartment='스포츠건강관리과' %}">스포츠건강관리과</a>
                                 <a class="dropdown-item" href="{% url 'books_sub' subdepartment='유아교육과' %}">유아교육과</a>
@@ -76,7 +90,7 @@
                         </div>
                         <!-- 글로벌서비스 드롭다운 메뉴 -->
                         <div class="collapse menu-sections" id="globalService">
-                            <div class="">
+                            <div class="menu-section globalService d-flex">
                                 <a class="dropdown-item" href="{% url 'books_sub' subdepartment='호텔관광과' %}">호텔관광과</a>
                                 <a class="dropdown-item" href="{% url 'books_sub' subdepartment='실무영어과' %}">실무영어과</a>
                                 <a class="dropdown-item" href="{% url 'books_sub' subdepartment='서비스경영과' %}">서비스경영과</a>
@@ -89,58 +103,74 @@
                                 <a class="dropdown-item" href="{% url 'books_sub' subdepartment='항공과' %}">항공과</a>
                             </div>
                         </div>
+
                     </div>
                 </div>
-            </div>
+
+            <script>
+                // JavaScript to handle collapse events
+                $('#filters button').on('click', function () {
+                    $('.menu-sections').not($(this).data('target')).collapse('hide');
+                });
+            </script>
+
 
     <br>
-    <div class="container-fluid p-0 m-0 align-items-center justify-content-center d-flex" style="min-height: 100vh;">
-        <!-- Row for the card -->
-        <div class="featured-items">
-            <div class="container">
-                <div class="row">
-                    {% for book in books %}
-                        <div class="col-lg-4 mb-2">
-                            <div class="card mx-auto" style="width:18rem;">
-                                <a href="{% url 'detail' book.id %}">
-                                <img class="card-img-top" src="{{ book.image.url }}" alt="Card image cap" width="80px" height="200px">
-                                </a>
-                                <div class="card-body">
-                                    <h5 class="card-title">{{book.name}}</h5>
-                                    <p class="card-title" style="color: rgb(54, 54, 220); text-align: right;"><b>{{ book.amount|intcomma }}</b></p>
-                                    <p class="card-text">{{book.desc|truncatechars:70}}</p>
-
-                                    <center>
-                                        <a href="{% url 'detail' book.id %}" class="btn btn-success" style="background-color: rgb(255, 200, 0);" role="button">자세히보기</a>
-                                        <a href="{% url 'kakaopay:kakaoPayLogic' %}" class="btn btn-info" role="button">구매하기</a>
-                                    </center>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                    </div>
-                    <br>
-                <div class="pagination" style="text-align: center;">
-                    <span class="step-links">
-                        {% if books.has_previous %}
-                            <a href="?page=1">&laquo;&laquo;처음</a>
-                            <a href="?page={{ books.previous_page_number }}">&laquo;이전</a>
-                        {% endif %}
-                
-                        <span class="current">
-                            {{ books.number }}
-                        </span>
-                
-                        {% if books.has_next %}
-                            <a href="?page={{ books.next_page_number }}"> 다음&raquo;</a>
-
-                            <a href="?page={{ books.paginator.num_pages }}"> 마지막&raquo;&raquo;</a>
-                        {% endif %}
-                    </span>
+    <div class="book_card">
+        {% for book in books %}
+        <a href="{% url 'detail' book.id %}">
+        <div class="book_card_back">
+            {% if book.stock == 0 %}
+            <img class="book_img" src="{{ book.image.url }}" style="width:9rem; filter: grayscale(90%); opacity: 0.7;">
+            <div class="book-card">
+                <h5 class="book-title">{{ book.name }}</h5>
+                <!-- <p class="book-amount" style="color: rgb(54, 54, 220);"><b>{{ book.amount|intcomma }}</b></p> -->
+                <p style="color: red;"><b>품절상태입니다.</b></p>
+                <p class="book-desc">{{ book.desc|truncatechars:50 }}</p>
             </div>
+            {% else %}
+            <img class="book_img" src="{{ book.image.url }}" style="width:9rem;">
+            <div class="book-card">
+                <h5 class="book-title">{{ book.name }}</h5>
+                <p class="book-amount" style="color: rgb(54, 54, 220);"><b>{{ book.amount|intcomma }}</b></p>
+                <p class="book-desc">{{ book.desc|truncatechars:50 }}</p>
             </div>
+            {% endif %}
+            <br>
+            <a href="{% url 'detail' book.id %}" class="all-btn" style="background-color: rgb(255, 200, 0);" role="button">자세히보기</a>
+            <a href="{% url 'kakaopay:kakaoPayLogic' %}" class="all-btn" role="button">구매하기</a>
+        </div>
+    </a>
+        {% endfor %}
+    </div>
+    <br>
+    <div class="container-fluid align-items-center justify-content-center d-flex">
+        <div class="pagination" style="text-align: center;">
+            <span class="step-links">
+                {% if books.has_previous %}
+                    <!-- <a href="?page=1">&laquo;&laquo;처음</a> -->
+                    <a href="?page={{ books.previous_page_number }}"><button class="btn-r_l"><</button></a>
+                {% endif %}
+    
+                {% for i in books.paginator.page_range %}
+                {% if i == 1 or i == books.paginator.num_pages or i > books.number|add:'-3' and i < books.number|add:'3' %}
+                    {% if books.number == i %}
+                        <span class="current"><button class="btn-num">{{ i }}</button></span>
+                    {% else %}
+                        <a href="?page={{ i }}"><button class="btn-unnum">{{ i }}</button></a>
+                    {% endif %}
+                {% elif i == books.number|add:'-3' or i == books.number|add:'3' %}
+                    <span class="ellipsis">···</span>
+                {% endif %}
+            {% endfor %}
+                {% if books.has_next %}
+                    <a href="?page={{ books.next_page_number }}"><button class="btn-r_l"> > </button></a>
+                    <!-- <a href="?page={{ books.paginator.num_pages }}"> 마지막&raquo;&raquo;</a> -->
+                {% endif %}
+            </span>
         </div>
     </div>
+    <br>
     {% endblock %}
 
 </body>

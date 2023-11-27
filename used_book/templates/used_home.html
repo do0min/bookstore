@@ -4,16 +4,27 @@
 {% block content %}
 {% load static %}
 
-
-
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+
+    <link href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}">
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}">
+    <link href= "{% static 'web_app/assets/css/styles.css' %}" rel="stylesheet">
+
 <style>
     /* 특정 페이지에서 검색창 숨기기 */
 .page-specific .search {
     display: none;
 }
 
-.buttonwhere{
+/* .buttonwhere{
     display: flex; 
     align-items: center;
     margin: 50px;
@@ -29,7 +40,8 @@
     margin-bottom: 10px;
     cursor: pointer;
     font-size: 16px;
-}
+} */
+
 .used-books {
     display: flex;
     flex-wrap: wrap;
@@ -71,6 +83,7 @@
 
 
 </style>
+
 </head>
 <body>
     <body class="page-specific">   
@@ -84,38 +97,50 @@
             * 가치 있는 책을 저렴한 가격에 만날 수 있는 기회! 지식과 즐거움을 함께 채워보세요.
           </div>
         </div>
+        </div>
+        </div>
     <div class="buttonwhere">
-    <div class="search-btn">
+        <div class="up-btn">
+            <a href="{% url 'used_up' %}">
+                <button type="button" class="all-btn" style="background-color: #62903E;">도서 업로드</button>
+            </a>
+        </div>
+        <div class="search-btn">
     <form method="get" action="{% url 'search' %}">
         {{ form }}
-        <button type="submit"class="buttoncute">검색하기</button>
+        <button type="submit" class="all-btn" style="background-color: #62903E;">검색하기</button>
     </form>
-    <!-- <form method="POST" class="example" action="" style="margin: auto; max-width: 350px">
+</div>
+    </div>
+    
+    <!-- <form method="get" class="example" action="{% url 'search' %}" style="margin: auto; max-width: 350px">
         {% csrf_token %}
         <input type="text" placeholder="Search.." name="search" />
+        <select name="category">
+            {{ form }}
+            <option value="" selected>All Categories</option>
+            {% for category, label in used_book.category.choices %}
+                <option value="{{ category }}">{{ label }}</option>
+            {% endfor %}
+        </select>
         <button type="submit"><i class="fa fa-search"></i></button>
     </form> -->
-    </div>
-    <div class="up-btn">
-        <a href="{% url 'used_up' %}">
-            <button type="button" class="buttoncute">도서 업로드</button>
-        </a>
-    </div>
-</div>
-    <div class="used-books">
+    <div class="book_card">
     {% for used_book in used_books %}
-        <div class="used-book">
+        <div class="book_card_back">
             <h2 class="book-title">{{ used_book.title }}</h2>
+            <p style="color: #484848;">학과: {{used_book.category}}</p>
             <img src="{{ used_book.image.url }}" class="book-image" alt="{{ used_book.title }} 이미지">
             <p>{{ used_book.description|truncatechars:60 }}</p>
+            
             <div class="book-actions">
-                <a href="{% url 'used_detail' used_book.id %}" class="btn btn-info" role="button">구매하기</a>
+                <a href="{% url 'used_detail' used_book.id %}" class="all-btn" role="button">상세보기</a>
             </div>
         </div>
     {% empty %}
         <p>아직 업로드된 중고서적이 없습니다.</p>
     {% endfor %}
-</div>
+    </div>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
     $(document).ready(function () {

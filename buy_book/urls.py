@@ -9,7 +9,7 @@ from .views import *
 
 urlpatterns = [
     path('', views.buy, name='buy'),
-    path('/detail/<int:book_id>/', views.detail, name='detail'),
+    path('buy/detail/<int:book_id>', views.detail , name='detail'),
     path('/subdepartment/<str:subdepartment>/', books_sub, name='books_sub'),
     path('department/<str:department_name>/', department_books, name='department_books'),
     path('pick_up/<int:book_id>', views.pick_up, name='pick_up'),
