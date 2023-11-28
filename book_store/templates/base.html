@@ -81,9 +81,9 @@
         <!-- <span class="navbar-toggler-icon"></span> -->
       </button>
       <div class="search">
-        <form method="POST" class="example" action="{% url 'buy' %}" style="margin: auto; max-width: 350px">
+        <form method="POST" class="example" action="{% url 'buy' %}" style="margin: auto; max-width: 350px;  top: 0; right: 0; ">
             {% csrf_token %}
-            <input type="text" placeholder="도서 검색..." name="search" />
+            <input type="text" placeholder="도서 검색..." name="search" id="search1"/>
           <button type="submit" style="border: none; background: none; cursor: pointer; font-size: 20px;">
     &#128269; <!-- 돋보기 아이콘의 유니코드 -->
 </button>
@@ -107,16 +107,14 @@
 
     }
 
-    input[type="text"] {
-        border: none;
-        height: 30px;
-        width: 80%;
-        border-radius: 20px; /* 검색창만 둥글게 된 테두리 추가 */
-        background-color: white;
-        padding: 5px; /* 내부 여백 추가 */
-
-
-    }
+    #search1 {
+    border: 2px solid #ccc; /* 임의의 색상과 두께를 설정할 수 있습니다. */
+    height: 30px;
+    width: 80%;
+    border-radius: 20px;
+    background-color: white;
+    padding: 5px;
+}
 
 </style>
     <div class="collapse navbar-collapse" id="navbarResponsive">
