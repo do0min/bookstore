@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth
 from django.views import View
 from django.db.models import Q
+from django.shortcuts import render
 
 def home(request):
     book = Book.objects.all()
@@ -54,3 +55,4 @@ def logout(request):
     if request.method == 'POST':
         auth.logout(request)
         return redirect('home')
+

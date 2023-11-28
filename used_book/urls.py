@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.urls import path
+
 
 urlpatterns = [
     path('', views.used, name='used'),
@@ -12,5 +14,6 @@ urlpatterns = [
     path('add_heart/<int:book_id>/', views.add_heart, name='add_heart'),
     path('add_cart/<int:book_id>/', views.add_cart, name='add_cart'),
     path('/category/<str:category>/', views.u_books, name='books_by_category'),
+
 
 ]

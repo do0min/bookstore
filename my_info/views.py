@@ -4,6 +4,7 @@ from django.views import View
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
 
 
@@ -27,3 +28,8 @@ def my_info_view(request):
     }
     
     return render(request, 'heart.html', context)
+
+
+def my_info(request):
+    print(request.user)
+    return render(request, 'my_info.html', {'user': request.user})
