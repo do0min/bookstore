@@ -1,59 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>    
-    {% extends 'base.html' %} {% block content %} {% load static %}
+    {% extends 'base.html' %} {% block content %} {% load static %} {% load humanize %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
     <title>주문</title>
 </head>
-    <div class="featured-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-12">
-                    <div class="section-heading">
-                        <div class="line-dec"></div>
-                        <h1>주문/결제</h1>
-                        <div class="add_notice">
-                           <p> ＊바로 픽업이 필요할 때, 더 빠른 배송이 필요할 때 픽업 서비스를 이용해보세요. </p>
-                        </div>
-                        <!-- <h1>{{ department.name }} </h1> -->
+
+<body>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h1>주문/결제</h1>
+                    <div class="add_notice">
+                        <p>＊바로 픽업이 필요할 때, 더 빠른 배송이 필요할 때 픽업 서비스를 이용해보세요.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <br>
-    <div "featured-page">
-        <div class="container">
+        <div class="pick-buy-container">
             <div class="row">
-                <div class="col-md-4 col-sm-12">
-                    <p>픽업 장소: 한양여자대학교 서점</p>
-                    <p>선택 서비스: <b>픽업 존에서 준비</b></p>
-                    <p>받는 분 정보: 미나상 / 010-0000-0000 </p>
+                <div class="col-md-6">
+                    <div class="pick_buy">
+                        <p>픽업 장소: 한양여자대학교 서점</p>
+                        <p>선택 서비스: <b>픽업 존에서 준비</b></p>
+                    </div>
+                    <div class="pick_buy">
+                        <p>받는 분 정보: 미나상 / 010-0000-0000 </p>
+                    </div>
+                    <div class="pick_buy">
                     <p>주문상품</p>
                     <p>책 제목: {{book.name}} / 수량: 1개 <br> 가격: {{book.amount}}</p>
                     <p>픽업 시간 : 10시 이후 가능 </p>
-                    <div class="section-heading">
+                    </div>
+                    <!-- <div class="section-heading"> -->
+                    
+                    <div class="pick_buy">
+                        <p>결제 수단</p>
+                        * 카카오페이
+                    </div>
+            </div>
+            <div class="col-md-6">
+                <div class="pb_box">
+                    <div class="pb_box_won">
+                        <div class="won_box">
+                            <p>상품금액</p>
+                            <p>{{book.amount|intcomma}}원</p>
                         </div>
+                        <div class="won_box">
+                            <p>배송비</p>
+                            <p>0원</p>
                         </div>
-                        </div>
-<br>
-                        <div>
-                            <p>결제 수단</p>
-                            * 카카오페이
-                        </div>
-
-                        <div>
-                            상품금액: {{book.amount}}원
-                            배송비: 0원
                             <hr>
-                            최종결제금액: {{book.amount}}원
-                    
-                            <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button class="btn btn-primary" style="background-color: rgb(245, 233, 101);">결제하기</button></a>
+                        <div class="won_box">
+                            <p>최종결제금액</p>
+                            <p>{{book.amount|intcomma}}원</p>
                         </div>
-                    
-    </div>
-
+                        <br>
+                        <div class="buy-btn">
+                            <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button class="all-btn">결제하기</button></a>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+        </div>
 
 <!-- 
     <div>
