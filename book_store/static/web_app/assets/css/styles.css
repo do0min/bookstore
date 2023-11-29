@@ -627,10 +627,164 @@ margin-right: 70%; */
 .list-table th:nth-child(5) {
     width: 5%; /* Set the desired width for the fourth th element */
 }
-
+/* 픽업 구매 */
+.pick-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15%;
+}
 .pick_place {
-    padding: 30px 30px;
-    border-radius: 30%;
-    border: 1px solid #ccc;
+    align-items: center;
+    width: 110%;
+    height: 15%;
+    margin: 0 20px 20px 20px;
+    padding: 2% 5%;
+    border-radius: 20px;
+    border: 3px solid #18288dbb;
+    flex: 2;
+}
+.pick_place p {
+    font-size: 20px ;
+}
+.pick-info{
+    margin: 25px;
+    padding: 0 20px;
+}
+.bag-container{
+    padding: 5px 0 0 10%;
+}
+.pick-hr {
+    width: 110%;
+    margin: 15px 20px;
 }
 
+.pick_buy_box {
+    flex: 1;
+    align-items: center;
+    width: 50%;
+    height: 40%;
+    margin: 10% 20px 20px 15%;
+    /* padding: 25px 30px; */
+    border-radius: 20px;
+    border: 3px solid #18288dbb;
+}
+.pick_buy_box_won {
+    padding: 20px;
+    margin-bottom: 10%;
+}
+
+.won_box{
+    display: flex; 
+    justify-content: space-between; 
+}
+.pick_buy_box_won p {
+    font-size: 16px;
+}
+.pick_buy_box button {
+    width: 100%;
+    color: white;
+    background-color: #18288dbb;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 150px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe; /* Keep the white background color */
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    text-align: center;
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* .modal .modal-content {
+    align-items: center;
+    width: 400px;
+    border-radius: 10px;
+} */
+/* .modal-content {
+} */
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+.button-containe button{
+    padding: 10px 60px;
+}
+
+.modeal_box {
+    text-align: center;
+    padding: 30px 0;
+    background-color: #eeeeee;
+    width: 350px;
+    border-radius: 10px;
+}
+/* .modeal_box b {
+    margin-bottom: 20px;
+} */
+
+.pick-buy-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20%;
+}
+.pick_buy{
+    /* align-items: center; */
+    width: 200%;
+    height: 20%;
+    margin: 0 200% 20px 0%;
+    padding: 10% 20%;
+    border-radius: 20px;
+    border: 3px solid #18288dbb;
+    flex: 2;
+}
+.pb_box {
+    flex: 1;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    margin: 10% 200% 20px 100%;
+    padding: 25px 30px;
+    border-radius: 20px;
+    border: 3px solid #18288dbb;
+}
+.pb_box_won {
+    margin-bottom: 25%;
+    margin-top: 10%;
+}
+.buy-btn button{
+    width: 100%;
+    color: white;
+    background-color: #18288dbb;
+}

@@ -59,6 +59,7 @@
       </div>
       <div class="book-details">
       {% if book.stock == 0 %}
+      <!-- 품절되었을 때 나오는 화면 -->
       <!-- <span style="color: red;">품절</span> -->
       <b class="price_left" >{{ book.amount }}원</b> <br />
       <hr class="d-hr" />
@@ -94,6 +95,7 @@
 
 </div>
       {% else %}
+      <!-- 재고 있을 때 화면 -->
       <b class="price_left">{{ book.amount }}원</b> <br />
       <hr class="d-hr" />
       <p class="price_left">재고: {{ book.stock }}권</p>

@@ -1,160 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>    
-    {% extends 'base.html' %} {% block content %} {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
+    <head>
+        {% extends 'base.html' %} {% block content %} {% load static %}{% load humanize %}
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
 
-    <title>Pick_Up</title>
-    <style>
-
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-    padding-top: 200px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe; /* Keep the white background color */
-    margin: 5% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}
-
-/* Close Button */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-    </style>
-</head>
-<body>
-    <br>
-
-    <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <div class="line-dec"></div>
-              <h1>픽업 주문</h1>
-                  <div class="add_notice">
-                      <p> ＊바로 픽업이 필요할 때, 더 빠른 배송이 필요할 때 픽업 서비스를 이용해보세요.</p>
-                  </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="pick_place">
-            <p>장소: 한양여자대학교 서점</p>
-        </div>
-            <h2>픽업 서비스</h2>
-
-        <div class="row">
-            <div class="col-md-6">
-                <p>주문 가능: {{ book.name }}</p>
-                <div class="row">
-                    <div class="col-md-6">
-                        <img class="book_img" src="{{ book.image.url }}" style="width: 40%;">
+        <title>Pick_Up</title>
+    </head>
+    <body>
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h1>픽업 주문</h1>
+                        <div class="add_notice">
+                            <p>＊바로 픽업이 필요할 때, 더 빠른 배송이 필요할 때 픽업 서비스를 이용해보세요.</p>
+                        </div>
                     </div>
-                    </div>
-
-            </div>
-                <hr>
-                <div class="col-md-6">
-                    <p>상품 가격 : {{ book.amount }} 원</p>
-                    <button id="pickupButton" class="btn btn-primary">픽업 주문 (1)</button>
                 </div>
             </div>
         </div>
-    </div>
-    
-        <!-- <div>
-            <p>상품 가격 : {{ book.amount }} 원</p>
-        </div>
-        <div>
-            <button id="pickupButton">픽업 주문 (1)</button>
-        </div> -->
+        <div class="pick-container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="pick_place">
+                    <!-- <hr class="pick-hr" style="background-color: rgb(65, 105, 216);"> -->
+                        <p>📍 한양여자대학교 서점</p>
+                    </div>
+                    <!-- <hr class="pick-hr" style="background-color: rgb(65, 105, 216);"> -->
+                    <div class="pick-info">
+                        <!-- <h2>픽업 서비스</h2> -->
+                        <!-- <p>주문 가능: {{ book.name }}</p> -->
 
-    <br>
-    
-<div id="myModal" class="modal">
-    <!-- Modal content -->
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>안내</p>
-        <p>8시 30분부터 수령 가능</p>
-        <p>픽업 존에서 준비된 상품 받기</p>
-        <p>1개의 상품을 준비합니다.</p>
-        <a><button id="cancelBtn">취소</button></a>
-        <a href="{% url 'pick_up_buy' book.id %}"><button id="confirmBtn">확인</button></a>
-    </div>
-</div>
-</body>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Get the modal
-        var modal = document.getElementById("myModal");
-    
-        // Get the button that opens the modal
-        var pickupButton = document.getElementById("pickupButton");
-    
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-    
-        // Get the cancel and confirm buttons
-        var cancelBtn = document.getElementById("cancelBtn");
-        var confirmBtn = document.getElementById("confirmBtn");
-    
-        // When the user clicks the button, open the modal
-        pickupButton.onclick = function() {
-            modal.style.display = "block";
-        }
-    
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-    
-        // When the user clicks cancel, close the modal
-        cancelBtn.onclick = function() {
-            modal.style.display = "none";
-        }
-    
-        // When the user clicks confirm, navigate to another page
-        confirmBtn.onclick = function() {
-            // Add your logic to navigate to another page here
-            // For example, you can use window.location.href
-            window.location.href = "/your/other/page";
-        }
-    
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="won_box">
+                                    <img class="book_img" src="{{ book.image.url }}" style="width: 30%" />
+                                    <h6> ✔️ {{ book.name }}</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="pick-hr" style="background-color: black;">
+                    <div class = "bag-container">
+                        <div class="">
+                            <div class="won_box">
+                                <b>봉투</b>
+                                <label>
+                                    <input type="radio" id="not-selected" name="bag" value="not-selected" checked> 선택안함
+                                </label>
+                                <label>
+                                    <input type="radio" id="with-bag" name="bag" value="with-bag"> 봉투(+100원)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="pick-hr">
+                </div>
+
+                <div class="col-md-6">
+                    <div class="pick_buy_box">
+                        <div class="pick_buy_box_won">
+                            <div class="won_box">
+                                <p style="margin-right: 10px">상품 금액</p>
+                                <p><b>{{ book.amount|intcomma }}</b> 원</p>
+                            </div>
+                            <div class="won_box" id="bagBox">
+                                <p style="margin-right: 10px">봉투</p>
+                                <p><l id="bagAmount"></l> 원</p>
+                            </div>
+                            <hr />
+                            <div class="won_box">
+                                <p style="margin-right: 10px">합계</p>
+                                <p><b id="totalAmount">{{ book.amount|intcomma  }} </b> 원</p>
+                            </div>
+                        </div>
+                        <button id="pickupButton" class="all-btn">픽업 주문 (1)</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <br />
+
+        <div id="myModal" class="modal">
+            <di class="modal-content">
+                <div class="won_box">
+                    <h5><b>안내</b></h5>
+                    <span class="close">&times;</span>  
+                </div>
+                <br>
+                <div class="modeal_box">
+                    <b>한양여대서점</b>
+                    <br>
+                    <h6>8시 30분부터 수령 가능</h6>
+                    ---
+                    <br>
+                    <h6>픽업 존에서 준비된 상품 받기</h6>
+                </div>
+                <br>
+                    <h6>1개의 상품을 준비합니다.</h6>
+                <br>
+                <div class="button-containe">
+                    <a><button id="cancelBtn" class="all-btn" style=" background-color: #aaa;">취소</button></a>
+                    <a href="{% url 'pick_up_buy' book.id %}"><button id="confirmBtn" class="all-btn" style="background-color: #18288dbb;">확인</button></a>
+                </div>
+            </div>
+        </div>
+            
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Get the modal
+                var modal = document.getElementById('myModal');
+
+                // Get the button that opens the modal
+                var pickupButton = document.getElementById('pickupButton');
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName('close')[0];
+
+                // Get the cancel and confirm buttons
+                var cancelBtn = document.getElementById('cancelBtn');
+                var confirmBtn = document.getElementById('confirmBtn');
+
+                // When the user clicks the button, open the modal
+                pickupButton.onclick = function () {
+                    modal.style.display = 'block';
+                };
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function () {
+                    modal.style.display = 'none';
+                };
+
+                // When the user clicks cancel, close the modal
+                cancelBtn.onclick = function () {
+                    modal.style.display = 'none';
+                };
+
+                // When the user clicks confirm, navigate to another page
+                confirmBtn.onclick = function () {
+                    // Add your logic to navigate to another page here
+                    // For example, you can use window.location.href
+                    window.location.href = '/your/other/page';
+                };
+
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = 'none';
+                    }
+                };
+            });
+        </script>
+        <script>
+            // 봉투 선택 여부에 따라 가격을 동적으로 업데이트하는 함수
+            function updateTotalAmount() {
+                var bookAmount = parseFloat("{{ book.amount }}");
+                var bagAmount = 0; // Default value is 0 for "선택안함"
+
+                // Check if the "봉투(+100원)" radio button is checked
+                var withBagCheckbox = document.getElementById('with-bag');
+                if (withBagCheckbox.checked) {
+                    bagAmount = 100;
+                }
+
+                // Calculate total amount
+                var totalAmount = bookAmount + bagAmount;
+
+                // Format numbers with Korean currency style
+                var formattedBookAmount = bookAmount.toLocaleString('ko-KR');
+                var formattedBagAmount = bagAmount.toLocaleString('ko-KR');
+                var formattedTotalAmount = totalAmount.toLocaleString('ko-KR');
+
+                // 각 항목의 금액 업데이트
+                document.getElementById('bagAmount').innerText = `+ ${formattedBagAmount} `;
+                document.getElementById('totalAmount').innerText = `${formattedTotalAmount}`;
             }
-        }
-    });
-    </script>
-{% endblock %}
+
+            // 봉투 체크박스의 상태가 변경될 때 업데이트 함수 호출
+            document.getElementById('not-selected').addEventListener('change', updateTotalAmount);
+            document.getElementById('with-bag').addEventListener('change', updateTotalAmount);
+
+            // 초기화면에서도 업데이트 함수 호출
+            updateTotalAmount();
+        </script>
+    </body>
+    {% endblock %}
 </html>
