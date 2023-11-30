@@ -11,4 +11,7 @@ class UsedBookForm(forms.ModelForm):
 class SearchForm(forms.Form):
     search_query = forms.CharField(max_length=100, required=False, label='검색어')
 
-
+class UsedBookCategoryForm(forms.ModelForm):
+    class Meta:
+        model = UsedBook
+        fields = ['category']

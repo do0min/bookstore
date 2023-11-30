@@ -117,16 +117,6 @@
                 });
             </script>
 
-
-
-<script>
-    // JavaScript to handle collapse events
-    $('#filters button').on('click', function () {
-        // Hide other menu-sections when a button is clicked
-        $('.menu-sections').not($(this).data('target')).collapse('hide');
-    });
-</script>
-
     <br>
     <div class="book_card">
         {% for book in books %}

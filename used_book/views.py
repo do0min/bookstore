@@ -1,15 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import UsedBookForm, SearchForm
+from .forms import UsedBookCategoryForm, UsedBookForm, SearchForm
 from .models import UsedBook  # 모델 임포트 필요
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
-
-
-
-
 
 def search(request):
     form = SearchForm(request.GET)
@@ -24,13 +20,41 @@ def search(request):
 
     return render(request, 'used_home.html', {'used_books': used_books, 'form': form})
 
-
 def used(request):
-    if request.method == 'POST':
-        pass
+    category_form = UsedBookCategoryForm(request.POST or None)
+    used_books = UsedBook.objects.all()
 
-    used_books = UsedBook.objects.all()  # 모든 중고 책 가져오기
-    return render(request, 'used_home.html', {'used_books': used_books})
+    if category_form.is_valid():
+        category = category_form.cleaned_data['category']
+        if category:
+            used_books = used_books.filter(category=category)
+
+    return render(request, 'used_home.html', {'used_books': used_books, 'category_form': category_form})
+# def used(request):
+#     if request.method == 'POST':
+#         category_form = UsedBookCategoryForm(request.POST)
+#         if category_form.is_valid():
+#             # Process the form data as needed
+#             category = category_form.cleaned_data['category']
+#             # Save or perform other actions with the category data
+
+#     else:
+#         category_form = UsedBookCategoryForm()
+
+#     used_books = UsedBook.objects.all()
+#     return render(request, 'used_home.html', {'used_books': used_books, 'category_form': category_form})
+
+
+# def used(request):
+#     if request.method == 'POST':
+#         form = UsedBookForm.category(request.POST)
+#         if form.is_valid():
+#             form.save()
+
+#     else:
+#         form = UsedBookForm()
+#     used_books = UsedBook.objects.all() 
+#     return render(request, 'used_home.html', {'used_books': used_books, 'form': form})
 
 def used_up(request):
     if request.method == 'POST':
@@ -97,5 +121,5 @@ def add_cart(request, book_id):
 
 def u_books(request, category):
     u_books = UsedBook.objects.filter(category=category)
+
     return render(request, 'used_home.html', {'u_books': u_books, 'category': category})
-    return render(request, 'used_detail.html', {'used_book': used_book, 'comments': comments})
