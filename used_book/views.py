@@ -6,6 +6,7 @@ from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def search(request):
     form = SearchForm(request.GET)
@@ -29,41 +30,36 @@ def used(request):
         if category:
             used_books = used_books.filter(category=category)
 
-    return render(request, 'used_home.html', {'used_books': used_books, 'category_form': category_form})
-# def used(request):
-#     if request.method == 'POST':
-#         category_form = UsedBookCategoryForm(request.POST)
-#         if category_form.is_valid():
-#             # Process the form data as needed
-#             category = category_form.cleaned_data['category']
-#             # Save or perform other actions with the category data
+    items_per_page = 9
+    paginator = Paginator(used_books, items_per_page)  # Change variable name to `used_books`
 
-#     else:
-#         category_form = UsedBookCategoryForm()
+    page = request.GET.get('page')
+    try:
+        used_books = paginator.page(page)  # Change variable name to `used_books`
+    except PageNotAnInteger:
+        used_books = paginator.page(1)
+    except EmptyPage:
+        used_books = paginator.page(paginator.num_pages)
 
-#     used_books = UsedBook.objects.all()
-#     return render(request, 'used_home.html', {'used_books': used_books, 'category_form': category_form})
+    context = {
+        'used_books': used_books,
+        'category_form': category_form,
+    }
+    return render(request, 'used_home.html', context)
 
-
-# def used(request):
-#     if request.method == 'POST':
-#         form = UsedBookForm.category(request.POST)
-#         if form.is_valid():
-#             form.save()
-
-#     else:
-#         form = UsedBookForm()
-#     used_books = UsedBook.objects.all() 
-#     return render(request, 'used_home.html', {'used_books': used_books, 'form': form})
-
+@login_required
 def used_up(request):
     if request.method == 'POST':
         form = UsedBookForm(request.POST, request.FILES)
         if form.is_valid():
+            # Set the user_id for the new UsedBook instance
+            form.instance.user_id = request.user.id
             form.save()
             return redirect('add_used_book_success')
     else:
         form = UsedBookForm()
+
+    return render(request, 'used_up.html', {'form': form})
     
     return render(request, 'used_up.html', {'form': form})
 
