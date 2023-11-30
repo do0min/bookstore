@@ -69,6 +69,7 @@ def department_books(request, department_name):
 
     context = {
         'department': department,
+        'subdepartments': subdepartments,
         'books': books,
     }
     return render(request, 'books_sub_plus.html', context)

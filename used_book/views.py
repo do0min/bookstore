@@ -4,6 +4,10 @@ from .models import UsedBook  # 모델 임포트 필요
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+
+
 
 
 
@@ -94,3 +98,4 @@ def add_cart(request, book_id):
 def u_books(request, category):
     u_books = UsedBook.objects.filter(category=category)
     return render(request, 'used_home.html', {'u_books': u_books, 'category': category})
+    return render(request, 'used_detail.html', {'used_book': used_book, 'comments': comments})

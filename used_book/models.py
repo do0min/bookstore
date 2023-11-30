@@ -1,5 +1,7 @@
 from django.db import models
 
+
+
 class UsedBook(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
@@ -35,3 +37,4 @@ class UsedBook(models.Model):
     
     def __str__(self):
         return self.title
+

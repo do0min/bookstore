@@ -28,7 +28,7 @@
             <div class="center-text">
               <br /><br />
 
-              <p>{{ department.name }}  {{ subdepartment.name }}</p>
+            <p>{{ department.name }} {% if subdepartment %} {{ subdepartment.name }} {% endif %}</p>
               <div class="centered-container"></div>
             </div>
           </div>
@@ -83,7 +83,7 @@
     <div class="clearfix-text">
     <h5>
     품절되었습니다.
-    </div>
+    </h5></div>
   </h5>
   </div>
 
@@ -118,7 +118,7 @@
     <div class="clearfix-text">
     <h5>
     금액: <b>{{ book.amount }}</b>원
-    </div>
+    </h5></div>
   </h5>
   </div>
 
@@ -127,7 +127,7 @@
     <button class="btn btn-primary">장바구니</button> -->
     <a  href="{% url 'pick_up' book.id %}" ><button class="all-btn" style="background-color: rgb(98, 128, 247)">픽업</button>
     <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button class="all-btn" style="background-color: rgb(255, 200, 0);">결제</button></a>
-  </div>
+  </a></div>
 
 </div>
       {% endif %}
