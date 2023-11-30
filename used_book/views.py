@@ -32,6 +32,10 @@ def used(request):
             used_books = used_books.filter(category=category)
 
     return render(request, 'used_home.html', {'used_books': used_books, 'category_form': category_form})
+
+def expage(request):
+    return render(request, 'used_ex.html')  
+
 # def used(request):
 #     if request.method == 'POST':
 #         category_form = UsedBookCategoryForm(request.POST)

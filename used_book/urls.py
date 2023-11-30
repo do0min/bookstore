@@ -13,6 +13,7 @@ urlpatterns = [
     path('add_heart/<int:book_id>', views.add_heart, name='add_heart'),
     path('add_cart/<int:book_id>', views.add_cart, name='add_cart'),
     path('save_comment/', views.save_comment, name='save_comment'),
+    path('expage',views.expage, name='expage'),
 ]
     # 나머지 URL 패턴들도 슬래시 제거
 
