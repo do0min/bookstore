@@ -6,6 +6,8 @@ from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
+from .models import Comment
+import json
 
 def search(request):
     form = SearchForm(request.GET)
@@ -145,7 +147,15 @@ def add_cart(request, book_id):
     return JsonResponse({"message": "책을 장바구니에 추가했습니다."})
 
 
-def u_books(request, category):
-    u_books = UsedBook.objects.filter(category=category)
+def save_comment(request):
+    if request.method == 'POST' and request.is_ajax():
+        data = json.loads(request.body)
+        userid = data.get('userid', '사용자')
+        content = data.get('content', '')
+        date = data.get('date', '')
 
-    return render(request, 'used_home.html', {'u_books': u_books, 'category': category})
+        # Comment 모델을 사용하여 DB에 저장
+        Comment.objects.create(userid=userid, content=content, date=date)
+
+        return JsonResponse({'success': True})
+    return JsonResponse({'success': False})

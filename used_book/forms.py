@@ -24,3 +24,4 @@ class UsedBookCategoryForm(forms.ModelForm):
     class Meta:
         model = UsedBook
         fields = ['category']
+
