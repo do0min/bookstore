@@ -1,13 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db import models
+class DetailImage(models.Model):
+    image = models.ImageField(upload_to='books/images/')
+    used_book = models.ForeignKey('UsedBook', on_delete=models.CASCADE, related_name='images') 
 
+    def __str__(self):
+        return f"Image {self.pk}"
 class UsedBook(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=100)
     description = models.TextField()
     price = models.IntegerField()
-    image = models.ImageField(upload_to='books/')
+    image = models.ImageField(upload_to='books/', null=True)
+    # detail_image = models.ForeignKey(DetailImage, on_delete=models.CASCADE, related_name='used_books', null=True)
+    detail_images = models.ManyToManyField(DetailImage)
     category = models.CharField(max_length=50, choices=[
         ('소프트웨어융합과', '소프트웨어융합과'),
         ('스마트IT과', '스마트IT과'),

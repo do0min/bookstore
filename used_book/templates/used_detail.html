@@ -21,6 +21,20 @@
     .book-description {
         margin-left: 15%;
     }
+    .detail-images {
+        display: flex;
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center;
+        gap: 10px; 
+        max-width: 80%; 
+        margin: 0 auto;
+    }
+
+    .detailimg{
+        width:40%;
+    }
+
 </style>
 <body class="page-specific">   
     <div class="container">
@@ -66,6 +80,24 @@
 <br><hr><br>
 
 <p class="card-text"> {{ used_book.description }} </p>
+<!-- <div class="detail-images">
+    {% for image in detail_images %}
+        <img src="{{ image.image.url }}"class="detailimg" alt="Detail Image">
+    {% endfor %}
+</div> -->
+<div class="detail-images">
+    {% for image in used_book.detail_images.all %}
+        <img src="{{ image.image.url }}" class="detailimg" alt="Detail Image">
+    {% endfor %}
+</div>
+<!-- <div class="detail-images">
+    {% for image in used_book.detail_images.all %}
+        <img src="{{ image.image.url }}" class="detailimg" alt="Detail Image">
+    {% endfor %}
+</div> -->
+
+
+
 <br><br><br>
 <div class="clearfix">
     <div class="book-box">금액: <b>{{ used_book.price|intcomma }}원</b></div>

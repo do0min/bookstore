@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UsedBookCategoryForm, UsedBookForm, SearchForm
-from .models import UsedBook  # 모델 임포트 필요
+from .models import DetailImage, UsedBook  # 모델 임포트 필요
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -56,24 +56,50 @@ def used(request):
 #     used_books = UsedBook.objects.all() 
 #     return render(request, 'used_home.html', {'used_books': used_books, 'form': form})
 
+# def used_up(request):
+#     if request.method == 'POST':
+#         form = UsedBookForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('add_used_book_success')
+#     else:
+#         form = UsedBookForm()
+    
+#     return render(request, 'used_up.html', {'form': form})
+
+@login_required
 def used_up(request):
     if request.method == 'POST':
         form = UsedBookForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            used_book = form.save(commit=False)
+            used_book.user = request.user  # 현재 로그인된 사용자 설정
+            used_book.save()
+
+            detail_images = request.FILES.getlist('detail_images')
+            for image in detail_images:
+                detail_image = DetailImage.objects.create(image=image, used_book=used_book)  # UsedBook 인스턴스를 지정
+                used_book.detail_images.add(detail_image)
+
             return redirect('add_used_book_success')
     else:
         form = UsedBookForm()
-    
     return render(request, 'used_up.html', {'form': form})
+
+    # return HttpResponse("Form submission failed.")
 
 def add_used_book_success(request):
     return render(request, 'used_home.html')
 
 
+# def used_detail(request, used_id):
+#     used_book = get_object_or_404(UsedBook, pk=used_id)
+#     return render(request, 'used_detail.html', {'used_book': used_book})
 def used_detail(request, used_id):
     used_book = get_object_or_404(UsedBook, pk=used_id)
-    return render(request, 'used_detail.html', {'used_book': used_book})
+    # detail_images = used_book.detail_images.all()  # UsedBook 인스턴스의 모든 이미지 가져오기
+    detail_images = [used_book.detail_images] if used_book.detail_images else []
+    return render(request, 'used_detail.html', {'used_book': used_book, 'detail_images': detail_images})
 
 
 def edit_book(request, used_id):
