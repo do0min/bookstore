@@ -123,8 +123,16 @@
                              </td>
                              <td>
                              {{ form.image }}
-    </td>
-</tr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">
+                            <label>상세 이미지</label>
+                        </td>
+                        <td>
+                            {{ form.detail_images }}
+                        </td>
+                    </tr>
                 </table>
             
                 <div class="add_btn">
@@ -145,6 +153,8 @@
             <script>
                 function showSuccessPopup() {
                     alert('저장되었습니다'); // 팝업 메시지
+                    window.opener.location.reload(); // 부모 창 새로고침
+                    window.close(); // 현재 창 닫기
                 }
             </script>
         </div>

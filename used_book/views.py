@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UsedBookCategoryForm, UsedBookForm, SearchForm
-from .models import UsedBook  # 모델 임포트 필요
+from .models import DetailImage, UsedBook  # 모델 임포트 필요
 from django.db.models import Q
 from django.http import JsonResponse, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .models import Comment
+import json
 
 def search(request):
     form = SearchForm(request.GET)
@@ -32,7 +34,6 @@ def used(request):
 
     items_per_page = 9
     paginator = Paginator(used_books, items_per_page)  # Change variable name to `used_books`
-
     page = request.GET.get('page')
     try:
         used_books = paginator.page(page)  # Change variable name to `used_books`
@@ -47,29 +48,56 @@ def used(request):
     }
     return render(request, 'used_home.html', context)
 
+def expage(request):
+    return render(request, 'used_ex.html')  
+
+# def used(request):
+#     if request.method == 'POST':
+#         category_form = UsedBookCategoryForm(request.POST)
+#         if category_form.is_valid():
+#             # Process the form data as needed
+#             category = category_form.cleaned_data['category']
+#             # Save or perform other actions with the category data
+
+
+
+
 @login_required
 def used_up(request):
+    form = UsedBookForm()  # 미리 초기화
+
     if request.method == 'POST':
         form = UsedBookForm(request.POST, request.FILES)
         if form.is_valid():
-            # Set the user_id for the new UsedBook instance
-            form.instance.user_id = request.user.id
-            form.save()
+            used_book = form.save(commit=False)
+            used_book.user = request.user  # 현재 로그인된 사용자 설정
+            used_book.save()
+
+            detail_images = request.FILES.getlist('detail_images')
+            for image in detail_images:
+                detail_image = DetailImage.objects.create(image=image, used_book=used_book)
+                used_book.detail_images.add(detail_image)
+
             return redirect('add_used_book_success')
-    else:
-        form = UsedBookForm()
 
     return render(request, 'used_up.html', {'form': form})
+
     
-    return render(request, 'used_up.html', {'form': form})
+
+    # return HttpResponse("Form submission failed.")
 
 def add_used_book_success(request):
     return render(request, 'used_home.html')
 
 
+# def used_detail(request, used_id):
+#     used_book = get_object_or_404(UsedBook, pk=used_id)
+#     return render(request, 'used_detail.html', {'used_book': used_book})
 def used_detail(request, used_id):
     used_book = get_object_or_404(UsedBook, pk=used_id)
-    return render(request, 'used_detail.html', {'used_book': used_book})
+    # detail_images = used_book.detail_images.all()  # UsedBook 인스턴스의 모든 이미지 가져오기
+    detail_images = [used_book.detail_images] if used_book.detail_images else []
+    return render(request, 'used_detail.html', {'used_book': used_book, 'detail_images': detail_images})
 
 
 def edit_book(request, used_id):
@@ -84,7 +112,21 @@ def edit_book(request, used_id):
         form = UsedBookForm(instance=used_book)
 
     return render(request, 'used_up.html', {'form': form, 'used_book': used_book})
+# @login_required 
+# def edit_book(request, used_id):
+#     used_book = get_object_or_404(UsedBook, pk=used_id)
 
+#     if request.method == 'POST':
+#         form = UsedBookForm(request.POST, request.FILES, instance=used_book)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('used') 
+#     else:
+#         form = UsedBookForm(instance=used_book)
+
+#     return render(request, 'used_up.html', {'form': form, 'used_book': used_book})
+
+@login_required 
 def delete_book(request, used_id):
     used_book = get_object_or_404(UsedBook, pk=used_id)
     
@@ -115,7 +157,15 @@ def add_cart(request, book_id):
     return JsonResponse({"message": "책을 장바구니에 추가했습니다."})
 
 
-def u_books(request, category):
-    u_books = UsedBook.objects.filter(category=category)
+def save_comment(request):
+    if request.method == 'POST' and request.is_ajax():
+        data = json.loads(request.body)
+        userid = data.get('userid', '사용자')
+        content = data.get('content', '')
+        date = data.get('date', '')
 
-    return render(request, 'used_home.html', {'u_books': u_books, 'category': category})
+        # Comment 모델을 사용하여 DB에 저장
+        Comment.objects.create(userid=userid, content=content, date=date)
+
+        return JsonResponse({'success': True})
+    return JsonResponse({'success': False})
