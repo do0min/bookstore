@@ -41,7 +41,9 @@
               </div>
         </div>
     </div>
-
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
     <div class="d-flex">
       
     <div class="book-container">
@@ -55,7 +57,7 @@
       </div>
 
       <div class="book-image">
-        <img src="{{ book.image.url }}" class="bookimg" />
+        <img src="{{ book.image.url }}" class="bookimg" style="width: 20em;"/>
       </div>
       
       {% if book.stock == 0 %}
@@ -70,16 +72,17 @@
 
       <hr class="d-hr" />
         <a href="#"><button class="all-btn" style="background-color: rgb(255, 200, 0);">재입고 알림</button></a>
-      
-    
+    </div>
+
     </div>
 </div>
-
-<br />
-<hr />
-<br />
-<p class="card-text">{{book.desc}}</p>
-<br><br><br>
+</div>
+</div>
+    <br />
+    <hr />
+    <br />
+    <p class="card-text">{{book.desc}}</p>
+    <br><br><br>
 
 
 
@@ -100,9 +103,10 @@
       <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button class="all-btn" style="background-color: rgb(255, 200, 0);">결제</button></a>
 
     </div>
+</div>
   </div>
 </div>
-
+</div>
 
 <br />
 <hr />
@@ -111,7 +115,6 @@
 <br><br><br>
 
       {% endif %}
-      
 
  </body>
  
