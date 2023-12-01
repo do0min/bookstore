@@ -27,15 +27,13 @@
           <div class="centered-div">
             <div class="center-text">
               <br /><br />
-
-            <p>{{ department.name }} {% if subdepartment %} {{ subdepartment.name }} {% endif %}</p>
-              <div class="centered-container"></div>
+              <!-- <div class="centered-container"></div> -->
             </div>
           </div>
-
         </div>
       </div>
     </div>
+    
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -44,7 +42,8 @@
         </div>
     </div>
 
-    <div class="book-main">
+    <div class="d-flex">
+      
     <div class="book-container">
       <div class="book-description">
         <p>
@@ -53,23 +52,27 @@
           출판일: {{ book.date }}
         </p>
       </div>
+      </div>
 
       <div class="book-image">
         <img src="{{ book.image.url }}" class="bookimg" />
       </div>
-      <div class="book-details">
+      
       {% if book.stock == 0 %}
       <!-- 품절되었을 때 나오는 화면 -->
-      <!-- <span style="color: red;">품절</span> -->
+      <div class="book-details">
       <b class="price_left" >{{ book.amount }}원</b> <br />
       <hr class="d-hr" />
       <p class="price_left">재고: {{ book.stock }}권</p>
-      <br />
+
       <hr class="d-hr" />
       <h6 class="price_left" style="color: red;">품절되었습니다.</h6>
-      <br />
+
+      <hr class="d-hr" />
+        <a href="#"><button class="all-btn" style="background-color: rgb(255, 200, 0);">재입고 알림</button></a>
+      
+    
     </div>
-  </div>
 </div>
 
 <br />
@@ -78,34 +81,28 @@
 <p class="card-text">{{book.desc}}</p>
 <br><br><br>
 
-<div class="clearfix">
-  <div class="book-box">
-    <div class="clearfix-text">
-    <h5>
-    품절되었습니다.
-    </h5></div>
-  </h5>
-  </div>
 
-    <div >
-      <!-- <button type="submit" class="btn btn-primary">관심</button>
-    <button class="btn btn-primary">장바구니</button> -->
-    <a href="#"><button class="all-btn" style="background-color: rgb(255, 200, 0);">재입고 알림</button></a>
-  </div>
 
-</div>
       {% else %}
       <!-- 재고 있을 때 화면 -->
+      <div class="book-details">
       <b class="price_left">{{ book.amount }}원</b> <br />
       <hr class="d-hr" />
       <p class="price_left">재고: {{ book.stock }}권</p>
-      <br />
+
       <hr class="d-hr" />
       <h6 class="price_left">배송안내: 무료배송{{ book.delivery_info }}</h6>
-      <br />
+
+      <hr class="d-hr" />
+        
+
+      <a  href="{% url 'pick_up' book.id %}" ><button class="all-btn" style="background-color: rgb(98, 128, 247)">픽업</button>
+      <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button class="all-btn" style="background-color: rgb(255, 200, 0);">결제</button></a>
+
     </div>
   </div>
 </div>
+
 
 <br />
 <hr />
@@ -113,51 +110,9 @@
 <p class="card-text">{{book.desc}}</p>
 <br><br><br>
 
-<div class="clearfix">
-  <div class="book-box">
-    <div class="clearfix-text">
-    <h5>
-    금액: <b>{{ book.amount }}</b>원
-    </h5></div>
-  </h5>
-  </div>
-
-    <div >
-      <!-- <button type="submit" class="btn btn-primary">관심</button>
-    <button class="btn btn-primary">장바구니</button> -->
-    <a  href="{% url 'pick_up' book.id %}" ><button class="all-btn" style="background-color: rgb(98, 128, 247)">픽업</button>
-    <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button class="all-btn" style="background-color: rgb(255, 200, 0);">결제</button></a>
-  </a></div>
-
-</div>
       {% endif %}
-      <!-- <div class="book-details">
-        <b class="price_left">{{ book.amount }}원</b> <br />
-        <hr class="d-hr" />
-        <p class="price_left">재고: {{ book.stock }}권</p>
-        <br />
-        <hr class="d-hr" />
-        <h6 class="price_left">배송안내: 무료배송{{ book.delivery_info }}</h6>
-        <br />
-      </div> -->
+      
 
-    <!-- <script>
-      $(document).ready(function () {
-          $(".add-to-favorites").click(function () {
-              var bookId = $(this).data("book-id");
-              $.ajax({
-                  url: "/add_to_favorites/" + bookId + "/",
-                  type: "POST",
-                  success: function (data) {
-                      alert('관심도서에 추가되었습니다.');
-                  },
-                  error: function (error) {
-                      alert('오류가 발생했습니다. 다시 시도해주세요.');
-                  }
-              });
-          });
-      });
-      </script> -->
  </body>
  
   {% endblock %}

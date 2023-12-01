@@ -41,27 +41,6 @@
                 text-align: center;
             }
 
-            .book-title {
-                font-size: 18px;
-                margin: 2px 0;
-            }
-
-            .book-image {
-                width: 60%;
-                height: auto;
-            }
-
-            .book-actions {
-                margin-top: 20px;
-            }
-            .won_box{
-                padding-left: 40px;
-                padding-bottom: 20px;
-            }
-            .search-btn2{
-                padding-right: 40px;
-                padding-bottom: 20px;
-            }
             /* .ex-btn {
                 position: fixed;
                 top: 70%;
@@ -76,99 +55,123 @@
                 padding: 10px 20px;
                 cursor: pointer;
             } */
-            .up-btn {
-                display: flex;
-                justify-content: flex-end; /* 버튼을 오른쪽으로 정렬 */
-                align-items: center; /* 버튼을 수직 가운데로 정렬 */
-                margin-top: 20px;
-                margin-bottom: 20px;
-            }
 
-            .up-btn a:first-child {
-                margin-right: 12px; /* 두 번째 버튼과의 간격 조절 */
-            }
+
+
         </style>
-
     </head>
-
-        <body class="page-specific">
-            <br />
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section-heading">
-                            <div class="line-dec"></div>
-                            <h1>중고서적</h1>
-                            * 가치 있는 책을 저렴한 가격에 만날 수 있는 기회! 지식과 즐거움을 함께 채워보세요.
-                        </div>
+    <body class="page-specific">
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h1>중고서적</h1>
+                        * 가치 있는 책을 저렴한 가격에 만날 수 있는 기회! 지식과 즐거움을 함께 채워보세요.
                     </div>
                 </div>
             </div>
-            <!-- <div class="ex-btn">
-                    <a href="{% url 'expage' %}">
-                        <button type="button" class="ex-btn-d" style="background-color: #62903e">업로드 예시 보기!</button>
-                    </a>
-                </div> -->
-            <div class="won_box">
-                <form method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <label for="{{ category_form.category.id_for_label }}">학과 선택:</label>
-                    <select name="{{ category_form.category.name }}" id="{{ category_form.category.id_for_label }}">
-                        {% for value, label in category_form.category.field.choices %}
-                        <option value="{{ value }}">{{ label }}</option>
-                        {% endfor %}
-                    </select>
-                    <button class="all-btn" type="submit">Filter</button>
-                </form>
-                <div class="up-btn">
-                    <a href="{% url 'used_up' %}">
-                        <button type="button" class="all-btn" style="background-color: #62903e">도서 업로드</button>
-                    </a>
-                    <a href="{% url 'expage' %}">
-                        <button type="button" class="all-btn" style="background-color: #62903e">업로드 예시 보기!</button>
-    
-                    </a>
+
+        </div>
+
+        <div class="container">
+                    <div class="d-flex">
+                        <div class="u-cate">
+                            <form method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <label for="{{ category_form.category.id_for_label }}"></label>
+                                <select
+                                    name="{{ category_form.category.name }}"
+                                    id="{{ category_form.category.id_for_label }}"
+                                    style="padding: 8px 15px;"
+                                >
+                                    {% for value, label in category_form.category.field.choices %}
+                                    <option value="{{ value }}">{{ label }}</option>
+                                    {% endfor %}
+                                </select>
+                                <button class="all-btn" type="submit" style="background-color: #62903e;">학과 선택</button>
+                            </form>
+                        </div>
+                            <div class="search-btn2">
+                                <form method="get" action="{% url 'search' %}" >
+                                    {% csrf_token %}
+                                    <input type="text" name="search_query" placeholder="책 제목을 입력하세요..." class="used-search"/>
+                                    <button type="submit" class="all-btn" style="background-color: #62903e">검색</button>
+                                </form>
+                            </div>
+                                <a href="{% url 'used_up' %}" class="up-btn">
+                                    <button type="button" class="all-btn" style="background-color: #62903e">
+                                        도서 업로드
+                                    </button>
+                                </a>
+                                <!-- <a href="{% url 'expage' %}">
+                                    <button type="button" class="all-btn" style="background-color: #62903e">업로드 예시 보기!</button>
+                    
+                                </a> -->
+                        </div>
+                    </div>
                 </div>
-                <div class="search-btn2">
-                    <form method="get" action="{% url 'search' %}">
-                        {% csrf_token %}
-                        <input type="text" name="search_query" placeholder="책 제목을 입력하세요...">
-                        <button type="submit" class="all-btn" style="background-color: #62903E;">검색</button>
-                    </form>
-                </div>
-            </div>
-            <div class="book_card">
-                {% for used_book in used_books %}
-                <a href="{% url 'used_detail' used_book.id %}">
-                    <div class="book_card_back">
-                        <h2 class="book-title">{{ used_book.title }}</h2>
-                        <p style="color: #484848">학과: {{used_book.category}}</p>
-                        <img src="{{ used_book.image.url }}" class="book_image" style="width:9rem;"">
-                        <p class="book-amount" style="color: rgb(54, 54, 220)">
+
+        <br />
+        <div class="book_card">
+            {% for used_book in used_books %}
+            <a href="{% url 'used_detail' used_book.id %}">
+                <div class="book_card_back">
+                    <h2 class="book-title">{{ used_book.title }}</h2>
+                    <p style="color: #484848">학과: {{used_book.category}}</p>
+                    <img src="{{ used_book.image.url }}" class="book_image" style="width:9rem;"">
+                    <p class="book-amount" style="color: rgb(54, 54, 220)">
+                        <b>{{ used_book.price|intcomma }} 원</b>
+                    </p>
+                    <p>작성자: {{used_book.user}}</p>
+                    <!-- <p>상태별점: ⭐️⭐️⭐️⭐️⭐️</p> -->
+                    <p>{{ used_book.description|truncatechars:60 }}</p>
+
+                    <div class="book-actions">
+                        <a href="{% url 'used_detail' used_book.id %}" class="all-btn" role="button">상세보기</a>
+                    </div>
+                    </div>
+            </a>
+            {% empty %}
+            <p>아직 업로드된 중고서적이 없습니다.</p>
+            {% endfor %}
+        </div>
+        <div class="container-fluid align-items-center justify-content-center d-flex">
+            <div class="pagination" style="text-align: center;">
+                <span class="step-links">
+
+                {% if used_books.has_previous %} <!-- Change variable name to `used_books` -->
+                    <!-- ... -->
+                {% endif %}
         
-                            <b>{{ used_book.price|intcomma }} 원</b>
-                        </p>
-                        <p>상태별점: ⭐️⭐️⭐️⭐️⭐️</p>
-                        <p>{{ used_book.description|truncatechars:60 }}</p>
-
-                        <div class="book-actions">
-                            <a href="{% url 'used_detail' used_book.id %}" class="all-btn" role="button">상세보기</a>
-                        </div>
-                    </div>
-                </a>
-                {% empty %}
-                <p>아직 업로드된 중고서적이 없습니다.</p>
+                {% for i in used_books.paginator.page_range %}
+                    {% if i == 1 or i == used_books.paginator.num_pages or i > used_books.number|add:'-3' and i < used_books.number|add:'3' %}
+                        {% if used_books.number == i %}
+                            <span class="current"><button class="btn-num">{{ i }}</button></span>
+                        {% else %}
+                            <a href="?page={{ i }}"><button class="btn-unnum">{{ i }}</button></a>
+                        {% endif %}
+                    {% elif i == used_books.number|add:'-3' or i == used_books.number|add:'3' %}
+                        <span class="ellipsis">···</span>
+                    {% endif %}
                 {% endfor %}
-            </div>
-            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-            <script>
-                $(document).ready(function () {
-                    $('#id_search').on('input', function () {
-                        $('#searchForm').submit();
-                    });
+        
+                {% if used_books.has_next %} <!-- Change variable name to `used_books` -->
+                    <!-- ... -->
+                {% endif %}
+            </span>
+        </div>
+        </div>
+        <br>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('#id_search').on('input', function () {
+                    $('#searchForm').submit();
                 });
-            </script>
-
-        {% endblock %}
+            });
+        </script>
     </body>
+    {% endblock %}
 </html>
