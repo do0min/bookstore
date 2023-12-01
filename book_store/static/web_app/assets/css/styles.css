@@ -615,6 +615,38 @@ margin-right: 70%; */
 .list-table th:nth-child(5) {
     width: 5%; /* Set the desired width for the fourth th element */
 }
+
+.b-info{
+    align-items: center;
+    margin: 1% 4%;
+}
+.b-info .book-image {
+    display: flex;
+    justify-content: center;
+    margin-left: 2%;
+}
+
+.pick-btn button {
+    border: 1.5px solid #18288d;
+    color:#18288d;
+    background-color: white;
+    margin: 5% 10%;
+    width: 120%;
+}
+.book-buy-btn button{
+    border: 1.5px solid #18288d;
+    color:white;
+    background-color: #18288d;
+    margin-left: 10%;
+    width: 120%;
+}
+.recall-btn button{
+    /* border: 1.5px solid #18288d84; */
+    color:white;
+    background-color: rgb(255, 200, 0);;
+    margin-left: 10%;
+    width: 120%;
+}
 /* 픽업 구매 */
 .pick-container {
     display: flex;
@@ -701,6 +733,7 @@ margin-right: 70%; */
 /* Close Button */
 .close {
     color: #aaa;
+    text-align: right;
     float: right;
     font-size: 28px;
     font-weight: bold;
