@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Comment
+from django.contrib import messages
 import json
 
 def search(request):
@@ -62,15 +63,14 @@ def expage(request):
 
 
 
-@login_required
 def used_up(request):
-    form = UsedBookForm()  # 미리 초기화
+    form = UsedBookForm()  # 먼저 form을 정의합니다.
 
     if request.method == 'POST':
         form = UsedBookForm(request.POST, request.FILES)
         if form.is_valid():
             used_book = form.save(commit=False)
-            used_book.user = request.user  # 현재 로그인된 사용자 설정
+            used_book.user = request.user
             used_book.save()
 
             detail_images = request.FILES.getlist('detail_images')
@@ -79,8 +79,9 @@ def used_up(request):
                 used_book.detail_images.add(detail_image)
 
             return redirect('add_used_book_success')
-
+        
     return render(request, 'used_up.html', {'form': form})
+
 
     
 
@@ -100,18 +101,45 @@ def used_detail(request, used_id):
     return render(request, 'used_detail.html', {'used_book': used_book, 'detail_images': detail_images})
 
 
+# def edit_book(request, used_id):
+#     used_book = get_object_or_404(UsedBook, pk=used_id)
+
+#     if request.method == 'POST':
+#         form = UsedBookForm(request.POST, request.FILES, instance=used_book)
+#         if form.is_valid():
+#             form.save()
+#             # Redirect or add additional logic as needed
+#     else:
+#         form = UsedBookForm(instance=used_book)
+
+#     return render(request, 'used_up.html', {'form': form, 'used_book': used_book})
+
+
 def edit_book(request, used_id):
     used_book = get_object_or_404(UsedBook, pk=used_id)
 
     if request.method == 'POST':
         form = UsedBookForm(request.POST, request.FILES, instance=used_book)
         if form.is_valid():
+            form = form.save(commit=False)
+            form.detail_images.clear()  # 기존 이미지 삭제
             form.save()
-            # Redirect or add additional logic as needed
+
+            detail_images = request.FILES.getlist('detail_images')
+            for image in detail_images:
+                detail_image = DetailImage.objects.create(image=image, used_book=form)
+                form.detail_images.add(detail_image)
+
+            # Redirect to the appropriate URL after successful update
+            return redirect('add_used_book_success')
     else:
         form = UsedBookForm(instance=used_book)
 
     return render(request, 'used_up.html', {'form': form, 'used_book': used_book})
+
+
+# mmmmmmmmmmmmm
+
 # @login_required 
 # def edit_book(request, used_id):
 #     used_book = get_object_or_404(UsedBook, pk=used_id)

@@ -130,7 +130,7 @@
                             <label>상세 이미지</label>
                         </td>
                         <td>
-                            {{ form.detail_images }}
+                            <input type="file" name="detail_images" multiple>
                         </td>
                     </tr>
                 </table>
@@ -139,6 +139,12 @@
                     <a href="{% url 'used'%}"><button type="submit" class="btn btn-primary" onclick="showSuccessPopup()">업로드</button></a>
                 </div>
             </form>
+            {% if not request.user.is_authenticated %}
+                <script>
+                    alert('로그인이 필요합니다.'); // 팝업 메시지
+                    window.location.href = "{% url 'used' %}"; // 리디렉션
+                </script>
+            {% endif %}
 
             {% if messages %}
             <ul class="messages">
@@ -156,6 +162,7 @@
                     window.opener.location.reload(); // 부모 창 새로고침
                     window.close(); // 현재 창 닫기
                 }
+
             </script>
         </div>
     </body>
