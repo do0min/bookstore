@@ -25,37 +25,28 @@
       <div class="row">
         <div class="col-md-12">
           <div class="centered-div">
-            <div class="center-text">
-              <br /><br />
-              <!-- <div class="centered-container"></div> -->
-            </div>
-          </div>
         </div>
-      </div>
+
+    <br><br>
+      <!-- <div class="row"> -->
+        <!-- <div class="col-md-12"> -->
+              <h3 class="center-text">{{ book.name }}</h3>
+        </div>
+        </div>
     </div>
     
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-              <h3 class="center-text">{{ book.name }}</h3>
-              </div>
-        </div>
-    </div>
 
-    <div class="d-flex">
-      
-    <div class="book-container">
-      <div class="book-description">
-        <p>
-          저자: {{ book.author }}<br />
-          출판사: {{ book.publisher }} <br />
-          출판일: {{ book.date }}
-        </p>
-      </div>
-      </div>
+      <div class="b-info d-flex">
+        <div class="book-description">
+          <p>
+            저자: {{ book.author }}<br />
+            출판사: {{ book.publisher }} <br />
+            출판일: {{ book.date }}
+          </p>
+        </div>
 
       <div class="book-image">
-        <img src="{{ book.image.url }}" class="bookimg" />
+        <img src="{{ book.image.url }}" class="bookimg" style="width: 20em; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);" />
       </div>
       
       {% if book.stock == 0 %}
@@ -69,17 +60,43 @@
       <h6 class="price_left" style="color: red;">품절되었습니다.</h6>
 
       <hr class="d-hr" />
-        <a href="#"><button class="all-btn" style="background-color: rgb(255, 200, 0);">재입고 알림</button></a>
-      
+        <a class="recall-btn open-popup"><button class="all-btn">재입고 알림</button></a>
+    </div>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>재입고 알림이 등록되었습니다. </p>
+      </div>
+    </div>
     
+    <script>
+    // JavaScript 코드
+    // 모달 열기
+    document.querySelector('.open-popup').addEventListener('click', function() {
+      document.getElementById('myModal').style.display = 'block';
+    });
+    
+    // 모달 닫기
+    document.querySelector('.close').addEventListener('click', function() {
+      document.getElementById('myModal').style.display = 'none';
+    });
+    
+    // 모달 외부 클릭 시 닫기
+    window.addEventListener('click', function(event) {
+      if (event.target == document.getElementById('myModal')) {
+        document.getElementById('myModal').style.display = 'none';
+      }
+    });
+    </script>
     </div>
 </div>
-
-<br />
-<hr />
-<br />
-<p class="card-text">{{book.desc}}</p>
-<br><br><br>
+</div>
+</div>
+    <br />
+    <hr />
+    <br />
+    <p class="card-text">{{book.desc}}</p>
+    <br><br><br>
 
 
 
@@ -95,14 +112,15 @@
 
       <hr class="d-hr" />
         
-
-      <a  href="{% url 'pick_up' book.id %}" ><button class="all-btn" style="background-color: rgb(98, 128, 247)">픽업</button>
-      <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button class="all-btn" style="background-color: rgb(255, 200, 0);">결제</button></a>
-
+        <div class="buy-btn-css">
+      <a  href="{% url 'pick_up' book.id %}" class="pick-btn" ><button class="all-btn">픽업</button>
+      <a href="{% url 'kakaopay:kakaoPayLogic' %}" class="book-buy-btn"><button class="all-btn">결제</button></a>
     </div>
+    </div>
+</div>
   </div>
 </div>
-
+</div>
 
 <br />
 <hr />
@@ -111,7 +129,6 @@
 <br><br><br>
 
       {% endif %}
-      
 
  </body>
  
