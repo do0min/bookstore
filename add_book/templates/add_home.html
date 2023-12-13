@@ -1,177 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    {% extends 'base.html' %}
-    {% block content %}
-    {% load static %}
+    {% extends 'base.html' %} {% block content %} {% load static %}
     <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
 
-         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-    
         <title>교재구매</title>
-    
+
         <!-- Bootstrap core CSS -->
-        <link href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    
-    
+        <link href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+
         <!-- Additional CSS Files -->
-        <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}">
-        <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}">
-        <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}">
-        <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
 
-                <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}">
+        <style>
+            .page-specific .search_base {
+                display: none;
+            }
 
-                <style>
-                    /* 특정 페이지에서 검색창 숨기기 */
-                    .page-specific .search {
-                        display: none;
-                    }
+            table {
+                width: 50%;
+                margin: 0 auto;
+            }
 
-                    table {
-                        width: 50%;
-                        margin: 0 auto;
-                    }
-                
-                    label {
-                
-                
-                         padding: 5px; /* 원하는 여백을 설정하세요 */
-                
-                    }
+            label {
+                padding: 5px; /* 원하는 여백을 설정하세요 */
+            }
 
-                    th, td {
-                        padding: 20px;
-                        text-align: left;
-                        border: 1px solid #ddd;
-                    }
-                
-                     input, select, textarea {
-                        width: 60%; /* 폼 필드의 가로 크기를 100%로 설정합니다 */
-                        height: 35px;
-                        border: 1px solid lightgray;
-                    }
-                
-                </style>
+            th,
+            td {
+                padding: 20px;
+                text-align: left;
+                border: 1px solid #ddd;
+            }
+
+            input,
+            select,
+            textarea {
+                width: 60%; /* 폼 필드의 가로 크기를 100%로 설정합니다 */
+                height: 35px;
+                border: 1px solid lightgray;
+            }
+        </style>
     </head>
-<body>
+
     <body class="page-specific">
-<br>
+        <br />
         <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="section-heading">
-                <div class="line-dec"></div>
-                <h1>도서 신청</h1>
-                    <div class="add_notice">
-                        <p> ＊본교 재학생 및 교직원이 서점 구매를 원하는 도서를 신청하는 서비스입니다.</p>
-                        <p> ＊도서 신청시 하단에 항목들을 정확히 기입하여 주시길 바랍니다. </p>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h1>도서 신청</h1>
+                        <div class="add_notice">
+                            <p>＊본교 재학생 및 교직원이 서점 구매를 원하는 도서를 신청하는 서비스입니다.</p>
+                            <p>＊도서 신청시 하단에 항목들을 정확히 기입하여 주시길 바랍니다.</p>
+                        </div>
                     </div>
-              </div>
+                </div>
             </div>
-          </div>
         </div>
-         <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
 
-    <table>
-        <tr>
-             <td class="label-cell">
-              <label>도서명</label>
-            </td>
-            <td>
-                {{ form.bookName }}
-            </td>
-        </tr>
-        <tr>
-             <td class="label-cell">
-                 <label>작가</label>
+            <table>
+                <tr>
+                    <td class="label-cell">
+                        <label>도서명</label>
+                    </td>
+                    <td>{{ form.bookName }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        <label>작가</label>
+                    </td>
+                    <td>{{ form.author }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        <label>출판사</label>
+                    </td>
+                    <td>{{ form.publisher }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        <label>출판년도</label>
+                    </td>
+                    <td>{{ form.publicationYear }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        <label>권수</label>
+                    </td>
+                    <td>{{ form.volume }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        <label>비교</label>
+                    </td>
+                    <td>{{ form.remarks }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        <label>가격</label>
+                    </td>
+                    <td>{{ form.price }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        <label>ISBN</label>
+                    </td>
+                    <td>{{ form.isbn }}</td>
+                </tr>
+            </table>
 
-            </td>
-            <td>
-                {{ form.author }}
-            </td>
-        </tr>
-        <tr>
-             <td class="label-cell">
-                <label>출판사</label>
-            </td>
-            <td>
-                {{ form.publisher }}
-            </td>
-        </tr>
-        <tr>
-             <td class="label-cell">
-                <label>출판년도</label>
-            </td>
-            <td>
-                {{ form.publicationYear }}
-            </td>
-        </tr>
-        <tr>
-             <td class="label-cell">
-                <label>권수</label>
-            </td>
-            <td>
-                {{ form.volume }}
-            </td>
-        </tr>
-        <tr>
-             <td class="label-cell">
-                <label>비교</label>
-            </td>
-            <td>
-                {{ form.remarks }}
-            </td>
-        </tr>
-        <tr>
-             <td class="label-cell">
-                <label>가격</label>
-            </td>
-            <td>
-                {{ form.price }}
-            </td>
-        </tr>
-        <tr>
-             <td class="label-cell">
-                <label>ISBN</label>
-            </td>
-            <td>
-                {{ form.isbn }}
-            </td>
-        </tr>
-    </table>
+            <div class="add_btn">
+                <button type="submit" class="btn btn-primary" onclick="showSuccessPopup()">저장</button>
+            </div>
+        </form>
 
-    
-
-    <div class="add_btn">
-        <button type="submit" class="btn btn-primary" onclick="showSuccessPopup()">저장</button>
-    </div>
-
-</form>
-        
-        
         {% if messages %}
-  <ul class="messages">
-    {% for message in messages %}
-      <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-  </ul>
-{% endif %}
-        <hr>
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <hr />
 
-    <script>
-      function showSuccessPopup() {
-    alert('저장되었습니다'); // 팝업 메시지
-}
+        <script>
+            function showSuccessPopup() {
+                alert('저장되었습니다'); 
+            }
+        </script>
 
-    </script>
-
-
-    {% endblock %}
-         </form></div></body>
-
+        {% endblock %}
+    </body>
 </html>

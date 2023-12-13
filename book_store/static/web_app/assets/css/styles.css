@@ -960,3 +960,30 @@ li {
     color: #666;
     outline: none;
 }
+
+/* 메인 검색 */
+.search_base {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    overflow: hidden;
+}
+
+.example {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 5px;
+
+}
+
+#search1 {
+    border: 2px solid #ccc; /* 임의의 색상과 두께를 설정할 수 있습니다. */
+    height: 30px;
+    width: 80%;
+    border-radius: 20px;
+    background-color: white;
+    padding: 5px;
+}
+

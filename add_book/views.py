@@ -3,10 +3,6 @@ from book.models import *
 from .forms import BookRequestForm
 from django.contrib import messages
 
-
-
-
-
 def add(request):
     if request.method == 'POST':
         form = BookRequestForm(request.POST)
@@ -19,6 +15,6 @@ def add(request):
     
     return render(request,'add_home.html', {'form': form})
 
-def bookadd_bookadd_changelist(request):
+def bookadd_changelist(request):
     return render(request, 'add_home.html')
 

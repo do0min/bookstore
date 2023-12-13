@@ -46,8 +46,6 @@ class UsedBook(models.Model):
     def __str__(self):
         return self.title
 
-
-
 class Comment(models.Model):
     userid = models.CharField(max_length=255)
     content = models.TextField()
