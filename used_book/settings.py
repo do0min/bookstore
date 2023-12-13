@@ -4,6 +4,7 @@ INSTALLED_APPS = [
 
 ]
 
+
 # Comment app settings
 COMMENTS_APP = 'django.contrib.comments'
 
