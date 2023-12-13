@@ -1,177 +1,127 @@
-
 <!DOCTYPE html>
 <html lang="en">
     {% load static %}
-  <head>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet" />
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+        <title>book store</title>
 
-    <title>book store</title>
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+        <link href="{% static 'web_app/assets/css/styles.css' %}" rel="stylesheet" />
 
-    <!-- Bootstrap core CSS -->
-    <link href= "{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href= "{% static 'web_app/assets/css/styles.css' %}" rel="stylesheet">
+        <!-- Additional CSS Files -->
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}">
-    <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}">
-    <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <div class="col-md-12">
+                    <ul class="navbar-nav ml-auto">
+                        {% if user.is_authenticated %} {% comment %}
+                        <li class="nav-item"></li>
+                        {% endcomment %}
 
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}"
+                                >로그아웃</a
+                            >
+                        </li>
 
-  </head>
+                        <form id="logout" method="POST" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <input type="hidden" />
+                        </form>
 
-  <body>
-    <!-- Pre Header -->
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="container">
-        <div class="col-md-12">
-        <ul class="navbar-nav ml-auto">
-          {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <span class="nav-link">안녕하세요, {{ user.username }}님</span>
+                        </li>
 
-          {% comment %} <li class="nav-item">
-          <a class="nav-link" href="{% url 'my_info' %}">My Page</a>
-          </li> {% endcomment %}
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">로그인</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'signup' %}">회원가입</a>
+                        </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">로그아웃</a>
-          </li>
-          
-          <form id="logout" method="POST" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <input type="hidden">
-          </form>
-          <li class="nav-item">
-          <a class="nav-link" href="{% url 'my_info' %}">마이페이지</a>
-          </li>
-          <li class="nav-item">
-            <span class="nav-link">안녕하세요, {{ user.username }}님</span>
-        </li>
-
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'login' %}">로그인</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'signup' %}">회원가입</a>
-          </li>
-
-          {% endif %}
-        </ul>
-      </div>
-    </div>
-  </nav>
-</div>
-  <!-- Navigation -->
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-  <div class="container">
-    <div style="margin: 0 auto;">
-    <a class="navbar-brand" href="{% url 'home' %}">
-        <img src="{% static 'web_app/assets/images/header-logo.png' %}" alt="" height="50px">
-    </a>
-</div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <!-- <span class="navbar-toggler-icon"></span> -->
-      </button>
-      <div class="search">
-        <form method="POST" class="example" action="{% url 'buy' %}" style="margin: auto; max-width: 350px;  top: 0; right: 0; ">
-            {% csrf_token %}
-            <input type="text" placeholder="도서 검색..." name="search" id="search1"/>
-          <button type="submit" style="border: none; background: none; cursor: pointer; font-size: 20px;">
-    &#128269; <!-- 돋보기 아이콘의 유니코드 -->
-</button>
-        </form>
-    </div>
-    </div>
-  <style>
-    .search {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        overflow: hidden;
-    }
-
-    .example {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        padding: 5px;
-
-    }
-
-    #search1 {
-    border: 2px solid #ccc; /* 임의의 색상과 두께를 설정할 수 있습니다. */
-    height: 30px;
-    width: 80%;
-    border-radius: 20px;
-    background-color: white;
-    padding: 5px;
-}
-
-</style>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'books_sub' subdepartment='전체' %}">구매하기</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'add' %}">도서 신청</a>
-        </li>
-
-          <li class="nav-item">
-            <a class="nav-link"  href="{% url 'used' %}">중고서적</a>
-          </li>
-      </ul></div>
-        </div>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-
-{% block content %}
-
-{% endblock %}
-
-
-    <!-- Footer Starts Here -->
-    <div class="footer">
-        <div class="container">
-
-            
-            
-          </div>
-        </div>
-      </div>
-      <!-- Footer Ends Here -->
-  
-  
-      <!-- Sub Footer Starts Here -->
-      <div class="sub-footer">
-        <div class="container">
-          <div class="">
-            <div class="">
-              <div class="copyright-text">
-                <p><a rel="nofollow" href="#">회사소개 </a> | 
-                  <a rel="nofollow" href="#"> 이용약관 </a> |
-                  <a rel="nofollow" href="#"> 개인정보처리방침 </a> |
-                  <a rel="nofollow" href="#"> 고객센터 </a>
-                </p>
-              </div>
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-          </div>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+            <div class="container">
+                <div style="margin: 0 auto">
+                    <a class="navbar-brand" href="{% url 'home' %}">
+                        <img src="{% static 'web_app/assets/images/header-logo.png' %}" alt="" height="50px" />
+                    </a>
+                </div>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                ></button>
+                <div class="search_base">
+                    <form
+                        method="POST"
+                        class="example"
+                        action="{% url 'buy' %}"
+                        style="margin: auto; max-width: 350px; top: 0; right: 0"
+                    >
+                        {% csrf_token %}
+                        <input type="text" placeholder="도서 검색..." name="search" id="search1" />
+                        <button type="submit" style="border: none; background: none; cursor: pointer; font-size: 20px">
+                            &#128269;
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'books_sub' subdepartment='전체' %}">구매하기</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'add' %}">도서 신청</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'used' %}">중고서적</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        {% block content %} {% endblock %}
+
+        <div class="sub-footer">
+            <div class="container">
+                <div class="copyright-text">
+                    <p>
+                        <a rel="nofollow" href="#">회사소개 </a> | <a rel="nofollow" href="#"> 이용약관 </a> |
+                        <a rel="nofollow" href="#"> 개인정보처리방침 </a> |
+                        <a rel="nofollow" href="#"> 고객센터 </a>
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-  
     </body>
-  
-  </html>
-  
+</html>

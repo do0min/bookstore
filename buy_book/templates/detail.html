@@ -26,10 +26,8 @@
         <div class="col-md-12">
           <div class="centered-div">
         </div>
-
     <br><br>
-      <!-- <div class="row"> -->
-        <!-- <div class="col-md-12"> -->
+
               <h3 class="center-text">{{ book.name }}</h3>
         </div>
         </div>
@@ -88,15 +86,6 @@
       }
     });
     </script>
-    </div>
-</div>
-</div>
-</div>
-    <br />
-    <hr />
-    <br />
-    <p class="card-text">{{book.desc}}</p>
-    <br><br><br>
 
 
 
@@ -117,20 +106,14 @@
       <a href="{% url 'kakaopay:kakaoPayLogic' %}" class="book-buy-btn"><button class="all-btn">결제</button></a>
     </div>
     </div>
-</div>
-  </div>
-</div>
-</div>
-
-<br />
-<hr />
-<br />
-<p class="card-text">{{book.desc}}</p>
-<br><br><br>
-
       {% endif %}
-
+</div>
+      <br />
+      <hr />
+      <br />
+      <p class="card-text">{{book.desc}}</p>
+      <br><br><br>
  </body>
- 
+
   {% endblock %}
 </html>

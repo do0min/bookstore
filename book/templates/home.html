@@ -19,8 +19,8 @@
         <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
 
         <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
-
     </head>
+    <body>
         <div class="banner">
             <div class="slide">
                 <img src="../images/banner-bg.jpg" alt="" />
@@ -39,35 +39,36 @@
             <span class="dot"></span>
         </div>
 
-            <br />
-            
+        <br />
+
         <div class="map">
-        <div class="map-container" align-items="center" text-align="center">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.88762617726!2d127.04381262934571!3d37.5577112561269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca4a55b2f2d93%3A0xffdfb5c8c57860f5!2z7ZWc7JaR7Jes7J6Q64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1694117136465!5m2!1sko!2skr"
-            ></iframe>
+            <div class="map-container" align-items="center" text-align="center">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.88762617726!2d127.04381262934571!3d37.5577112561269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca4a55b2f2d93%3A0xffdfb5c8c57860f5!2z7ZWc7JaR7Jes7J6Q64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1694117136465!5m2!1sko!2skr"
+                ></iframe>
+            </div>
+            <div class="info">
+                <p>
+                    서울 성동구 살곶이길 200<br />
+                    한양여대 본관 1F 행원스퀘어
+                </p>
+                <br />
+                <p>영업시간 8:00 ~ 18:00</p>
+            </div>
         </div>
-        <div class="info">
-            <p>서울 성동구 살곶이길 200<br>
-              한양여대 본관 1F 행원스퀘어</p>
-              <br>
-            <p>영업시간 8:00 ~ 18:00</p>
-        </div>
-      </div>
-<br><br><br>
+
+        <br /><br /><br />
         <div class="subscribe-form">
             <div class="container">
-                    <div class="container">
-                            <img src="{% static 'web_app/assets/images/header-logo.png' %}" width="40px">
-                            <br><br>
-                            <p>회사명: 미나상</p>
-                            <p>대표: 우희민</p>
-                            <p>소재지: 서울특별시 성동구 살곶이길 200</p>
-                            <p>대표 전화: 1588-0000</p>
-                            <p>대표 메일: mina@hyw.co.kr</p>
-                            </div>
-                          </div>
-                        </div>
+                <div class="container">
+                    <img src="{% static 'web_app/assets/images/header-logo.png' %}" width="40px" />
+                    <br /><br />
+                    <p>회사명: 미나상</p>
+                    <p>대표: 우희민</p>
+                    <p>소재지: 서울특별시 성동구 살곶이길 200</p>
+                    <p>대표 전화: 1588-0000</p>
+                    <p>대표 메일: mina@hyw.co.kr</p>
+                </div>
             </div>
         </div>
 

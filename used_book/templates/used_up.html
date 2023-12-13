@@ -1,171 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    {% extends 'base.html' %}
-    {% block content %}
-    {% load static %}
+    {% extends 'base.html' %} {% block content %} {% load static %}
     <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
 
-         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-    
         <title>중고 서적 업로드</title>
-    
+
         <!-- Bootstrap core CSS -->
-        <link href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-    
-    
+        <link href="{% static 'web_app/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+
         <!-- Additional CSS Files -->
-        <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}">
-        <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}">
-        <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}">
-        <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}">
-        <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}">
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/fontawesome.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/tooplate-main.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/owl.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
         <style>
-                /* 특정 페이지에서 검색창 숨기기 */
-            .page-specific .search {
+            .page-specific .search_base {
                 display: none;
             }
-            
             table {
                 width: 50%;
                 margin: 0 auto;
             }
-        
+
             label {
-                 padding: 5px; /* 원하는 여백을 설정하세요 */
-        
+                padding: 5px;
             }
-        
-        
-        
-            th, td {
+
+            th,
+            td {
                 padding: 20px;
                 text-align: left;
                 border: 1px solid #ddd;
             }
-        
-             input, select, textarea {
+
+            input,
+            select,
+            textarea {
                 width: 60%; /* 폼 필드의 가로 크기를 100%로 설정합니다 */
                 height: 35px;
                 border: 1px solid lightgray;
             }
-        
         </style>
-
     </head>
-    <br><br><br>
-    
-    <body>
-        <body class="page-specific">
+    <br /><br /><br />
+
+    <body class="page-specific">
         <div class="contact-page">
             <div class="container">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="section-heading">
-                    <div class="line-dec"></div>
-                    <h1>중고 서적 업로드</h1>
-                    ＊본교 재학생 하는 서비스입니다.
-                    <br>
-                    ＊도서 신청시 하단에 항목들을 정확히 기입하여 주시길 바랍니다.
-                  </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-heading">
+                            <div class="line-dec"></div>
+                            <h1>중고 서적 업로드</h1>
+                            ＊본교 재학생 하는 서비스입니다.
+                            <br />
+                            ＊도서 신청시 하단에 항목들을 정확히 기입하여 주시길 바랍니다.
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <table>
-                    <tr>
-                        <td class="label-cell">
-                            <label>도서명</label>
-                        </td>
-                        <td>
-                            {{ form.title }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label-cell">
-                            <label>저자</label>
-                        </td>
-                        <td>
-                            {{ form.author }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label-cell">
-                            <label>책 상태</label>
-                        </td>
-                        <td>
-                            {{ form.description }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label-cell">
-                            <label>가격</label>
-                        </td>
-                        <td>
-                            {{ form.price }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label-cell">
-                            <label>학과</label>
-                        </td>
-                        <td>
-                            {{ form.category }}
-                        </td>
-                    </tr>
-                    <tr>
-                         <td class="label-cell">
-                             <label>이미지</label>
-                             </td>
-                             <td>
-                             {{ form.image }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="label-cell">
-                            <label>상세 이미지</label>
-                        </td>
-                        <td>
-                            <input type="file" name="detail_images" multiple>
-                        </td>
-                    </tr>
-                </table>
-            
-                <div class="add_btn">
-                    <a href="{% url 'used'%}"><button type="submit" class="btn btn-primary" onclick="showSuccessPopup()">업로드</button></a>
-                </div>
-            </form>
-            {% if not request.user.is_authenticated %}
-                <script>
-                    alert('로그인이 필요합니다.'); // 팝업 메시지
-                    window.location.href = "{% url 'used' %}"; // 리디렉션
-                </script>
-            {% endif %}
-
-            {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
-
-            <hr>
-
-            <script>
-                function showSuccessPopup() {
-                    alert('저장되었습니다'); // 팝업 메시지
-                    window.opener.location.reload(); // 부모 창 새로고침
-                    window.close(); // 현재 창 닫기
-                }
-
-            </script>
         </div>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td class="label-cell">
+                        <label>도서명</label>
+                    </td>
+                    <td>{{ form.title }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        <label>저자</label>
+                    </td>
+                    <td>{{ form.author }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        <label>책 상태</label>
+                    </td>
+                    <td>{{ form.description }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        <label>가격</label>
+                    </td>
+                    <td>{{ form.price }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        <label>학과</label>
+                    </td>
+                    <td>{{ form.category }}</td>
+                </tr>
+
+                <tr>
+                    <td class="label-cell">
+                        <label>이미지</label>
+                    </td>
+                    <td>{{ form.image }}</td>
+                </tr>
+                <tr>
+                    <td class="label-cell">
+                        <label>상세 이미지</label>
+                    </td>
+                    <td>
+                        <input type="file" name="detail_images" multiple />
+                    </td>
+                </tr>
+            </table>
+
+            <div class="add_btn">
+                <a href="{% url 'used'%}"
+                    ><button type="submit" class="btn btn-primary" onclick="showSuccessPopup()">업로드</button></a
+                >
+            </div>
+        </form>
+
+        {% if not request.user.is_authenticated %}
+        <script>
+            alert('로그인이 필요합니다.'); // 팝업 메시지
+            window.location.href = "{% url 'used' %}"; // 리디렉션
+        </script>
+        {% endif %} {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <hr />
+
+        <script>
+            function showSuccessPopup() {
+                alert('저장되었습니다');
+                window.opener.location.reload();
+                window.close();
+            }
+        </script>
     </body>
     {% endblock %}
-           </form></div></body>
 </html>

@@ -1,171 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>    
-    {% extends 'base.html' %} {% block content %} {% load static %} {% load humanize %}
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
-    <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
-    <!-- jQuery -->
-    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-x.y.z.js"></script>
+    <head>
+        {% extends 'base.html' %} {% block content %} {% load static %} {% load humanize %}
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-    <!-- iamport.payment.js -->
-    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-    <script>
-        
-        IMP.request_pay({
-            pg : 'kakaopay',
-            pay_method : 'card', //생략 가능
-            merchant_uid: "order_no_0001", // 상점에서 관리하는 주문 번호
-            name : '주문명:결제테스트',
-            amount : 14000,
-            buyer_email : 'iamport@siot.do',
-            buyer_name : '구매자이름',
-            buyer_tel : '010-1234-5678',
-            buyer_addr : '서울특별시 강남구 삼성동',
-            buyer_postcode : '123-456'
-        }, function(rsp) { // callback 로직
-            //* ...중략 (README 파일에서 상세 샘플코드를 확인하세요)... *//
-        });
-      </script>
-</head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'web_app/assets/css/styles.css' %}" />
+        <script src="https://cdn.portone.io/v2/browser-sdk.js"></script>
+        <!-- jQuery -->
+        <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-x.y.z.js"></script>
 
-<body>
-    <br />
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-heading">
-                    <div class="line-dec"></div>
-                    <h1>주문/결제</h1>
-                    <div class="add_notice">
-                        <p>＊바로 픽업이 필요할 때, 더 빠른 배송이 필요할 때 픽업 서비스를 이용해보세요.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <br>
-    <div class="pick-buy-container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="pick_buy">
-                    <div class="d-flex">
-                        <p style="margin-right: 11%">픽업 장소</p>
-                        <p>한양여자대학교 서점</p>
-                    </div>
-                    <hr>
-                    <div class="d-flex">
-                    <p style="margin-right: 9%">선택 서비스</p>
-                    <b>픽업 존에서 준비</b>
-                    </div>
-                </div>
-                <div class="pick_buy d-flex">
-                    <p style="margin-right: 8%">받는 분 정보</p>
-                    <p>미나상 / 010-0000-0000 </p>
-                </div>
-                <div style="width: 100%;">
-                <div class="pick_buy">
-                    <div class="d-flex">
-                    <p style="margin-right: 12%">주문상품</p>
-                    <p>총 1 개</p>
-                    </div>
-                    <hr>
-                    <div class="won_box" >
-                        <img class="book-img" src="{{ book.image.url }}">
-                        <p>{{book.name}}</p>
-                        <p>1 개</p>
-                        <p><b>{{book.amount|intcomma}}</b>원</p>
-                    </div>
-                    <hr>
-                    <div class="d-flex">
-                    <p style="margin-right: 11%">픽업 시간</p>
-                    <p>10시 이후 가능 </p>
-                </div>
-                </div> 
-            </div>
-                <div class="pick_buy">
-                    <p>결제 수단</p>
-                    <hr>
-                    <div class="won_box">
-                        <label>
-                            <input type="radio" id="not-selected" name="bag" value="not-selected" checked> 신용카드
-                        </label>
-                        <label>
-                            <input type="radio" id="not-selected" name="bag" value="not-selected" > 네이버페이
-                        </label>
-                        <label>
-                            <input type="radio" id="not-selected" name="bag" value="not-selected" > 토스페이
-                        </label>
-                        <label>
-                            <input type="radio" id="not-selected" name="bag" value="not-selected" > 카카오페이
-                        </label>
-                        <label>
-                            <input type="radio" id="not-selected" name="bag" value="not-selected" > 실시간계좌이체
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="pb_box">
-                    <div class="pb_box_won">
-                        <div class="won_box">
-                            <p>상품금액</p>
-                            <p>{{book.amount|intcomma}}원</p>
-                        </div>
-                        <div class="won_box">
-                            <p>배송비</p>
-                            <p>0원</p>
-                        </div>
-                            <hr>
-                        <div class="won_box">
-                            <p>최종결제금액</p>
-                            <p>{{book.amount|intcomma}}원</p>
-                        </div>
-                        <br>
-                        <div class="buy-btn">
-                            <button onclick="requestPay()">결제하기</button> <!-- 결제하기 버튼 생성 -->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <!-- iamport.payment.js -->
+        <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+        <script>
+            IMP.request_pay(
+                {
+                    pg: 'kakaopay',
+                    pay_method: 'card', //생략 가능
+                    merchant_uid: 'order_no_0001', // 상점에서 관리하는 주문 번호
+                    name: '주문명:결제테스트',
+                    amount: 14000,
+                    buyer_email: 'iamport@siot.do',
+                    buyer_name: '구매자이름',
+                    buyer_tel: '010-1234-5678',
+                    buyer_addr: '서울특별시 강남구 삼성동',
+                    buyer_postcode: '123-456',
+                },
+                function (rsp) {
+                    // callback 로직
+                    //* ...중략 (README 파일에서 상세 샘플코드를 확인하세요)... *//
+                }
+            );
+        </script>
+    </head>
 
-                            <!-- <button onclick="request_pay()"> 결제하기</button> -->
-                            <!-- <a href="{% url 'kakaopay:kakaoPayLogic' %}"><button class="all-btn">결제하기</button></a> -->
-                        </div>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-        </div>
-
-<!-- 
-    <div>
-        위 주문내용을 확인하였으며, 결제에 동의합니다.
-        주문 상품 정보 동의
-        주문할 상품의 상품명, 가격, 배송정보 등을 최종 확인하였으며, 구매에 동의하십니까? (전자상거래법 제 8조 2항)
-    </div> -->
+    <body>
         <br />
-        <!-- <hr /> -->
-        <br />    
-
-
-</body>
-<script>
-    // imp.request_pay(pg = 'tosspay')
-// IMP.request_pay({
-//     pg : 'tosspay',
-//     pay_method : 'card',
-//     merchant_uid: "order_no_0001", //상점에서 생성한 고유 주문번호
-//     name : '주문명:결제테스트',   //필수 파라미터 입니다.
-//     amount : 1004,
-//     buyer_email : 'iamport@siot.do',
-//     buyer_name : '구매자이름',
-//     buyer_tel : '010-1234-5678',
-//     buyer_addr : '서울특별시 강남구 삼성동',
-//     buyer_postcode : '123-456',
-//     m_redirect_url : '{{buy}}' // 예: https://www.my-service.com/payments/complete
-// }, function(rsp) { // callback 로직
-// 	//* ...중략 (README 파일에서 상세 샘플코드를 확인하세요)... *//
-// });
-</script>
-{% endblock %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-heading">
+                        <div class="line-dec"></div>
+                        <h1>주문/결제</h1>
+                        <div class="add_notice">
+                            <p>＊바로 픽업이 필요할 때, 더 빠른 배송이 필요할 때 픽업 서비스를 이용해보세요.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="pick-buy-container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="pick_buy">
+                        <div class="d-flex">
+                            <p style="margin-right: 11%">픽업 장소</p>
+                            <p>한양여자대학교 서점</p>
+                        </div>
+                        <hr />
+                        <div class="d-flex">
+                            <p style="margin-right: 9%">선택 서비스</p>
+                            <b>픽업 존에서 준비</b>
+                        </div>
+                    </div>
+                    <div class="pick_buy d-flex">
+                        <p style="margin-right: 8%">받는 분 정보</p>
+                        <p>미나상 / 010-0000-0000</p>
+                    </div>
+                    <div style="width: 100%">
+                        <div class="pick_buy">
+                            <div class="d-flex">
+                                <p style="margin-right: 12%">주문상품</p>
+                                <p>총 1 개</p>
+                            </div>
+                            <hr />
+                            <div class="won_box">
+                                <img class="book-img" src="{{ book.image.url }}" />
+                                <p>{{book.name}}</p>
+                                <p>1 개</p>
+                                <p><b>{{book.amount|intcomma}}</b>원</p>
+                            </div>
+                            <hr />
+                            <div class="d-flex">
+                                <p style="margin-right: 11%">픽업 시간</p>
+                                <p>10시 이후 가능</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pick_buy">
+                        <p>결제 수단</p>
+                        <hr />
+                        <div class="won_box">
+                            <label>
+                                <input type="radio" id="not-selected" name="bag" value="not-selected" checked />
+                                신용카드
+                            </label>
+                            <label>
+                                <input type="radio" id="not-selected" name="bag" value="not-selected" /> 네이버페이
+                            </label>
+                            <label>
+                                <input type="radio" id="not-selected" name="bag" value="not-selected" /> 토스페이
+                            </label>
+                            <label>
+                                <input type="radio" id="not-selected" name="bag" value="not-selected" /> 카카오페이
+                            </label>
+                            <label>
+                                <input type="radio" id="not-selected" name="bag" value="not-selected" /> 실시간계좌이체
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="pb_box">
+                        <div class="pb_box_won">
+                            <div class="won_box">
+                                <p>상품금액</p>
+                                <p>{{book.amount|intcomma}}원</p>
+                            </div>
+                            <div class="won_box">
+                                <p>배송비</p>
+                                <p>0원</p>
+                            </div>
+                            <hr />
+                            <div class="won_box">
+                                <p>최종결제금액</p>
+                                <p>{{book.amount|intcomma}}원</p>
+                            </div>
+                            <br />
+                            <div class="buy-btn">
+                                <button onclick="requestPay()">결제하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
+    </body>
+    {% endblock %}
 </html>
